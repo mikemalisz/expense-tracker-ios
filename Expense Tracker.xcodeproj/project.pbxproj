@@ -16,6 +16,7 @@
 		8CD6DBCB25ABE888005DE50B /* Expense_TrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBCA25ABE888005DE50B /* Expense_TrackerTests.m */; };
 		8CD6DBD625ABE888005DE50B /* Expense_TrackerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBD525ABE888005DE50B /* Expense_TrackerUITests.m */; };
 		8CD6DBFC25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBFB25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m */; };
+		8CD6DC0A25ABF88B005DE50B /* ETExpenseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DC0925ABF88B005DE50B /* ETExpenseItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		8CD6DBFA25ABEF39005DE50B /* ETExpenseOverviewTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseOverviewTableViewController.h; sourceTree = "<group>"; };
 		8CD6DBFB25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseOverviewTableViewController.m; sourceTree = "<group>"; };
 		8CD6DC0425ABF620005DE50B /* ETServerAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETServerAPI.h; sourceTree = "<group>"; };
+		8CD6DC0825ABF88B005DE50B /* ETExpenseItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseItem.h; sourceTree = "<group>"; };
+		8CD6DC0925ABF88B005DE50B /* ETExpenseItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				8CD6DC0425ABF620005DE50B /* ETServerAPI.h */,
+				8CD6DC0825ABF88B005DE50B /* ETExpenseItem.h */,
+				8CD6DC0925ABF88B005DE50B /* ETExpenseItem.m */,
 			);
 			path = "Server API";
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 		8CD6DBA325ABE886005DE50B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = ET;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					8CD6DBAA25ABE886005DE50B = {
@@ -296,6 +302,7 @@
 				8CD6DBFC25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m in Sources */,
 				8CD6DBC125ABE887005DE50B /* main.m in Sources */,
 				8CD6DBB325ABE886005DE50B /* SceneDelegate.m in Sources */,
+				8CD6DC0A25ABF88B005DE50B /* ETExpenseItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
