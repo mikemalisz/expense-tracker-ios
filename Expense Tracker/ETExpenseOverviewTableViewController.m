@@ -1,17 +1,17 @@
 //
-//  ExpenseOverviewTableViewController.m
+//  ETExpenseOverviewTableViewController.m
 //  Expense Tracker
 //
 //  Created by Mike Maliszewski on 1/10/21.
 //
 
-#import "ExpenseOverviewTableViewController.h"
+#import "ETExpenseOverviewTableViewController.h"
 
-@interface ExpenseOverviewTableViewController ()
+@interface ETExpenseOverviewTableViewController ()
 
 @end
 
-@implementation ExpenseOverviewTableViewController
+@implementation ETExpenseOverviewTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -15,7 +15,7 @@
 		8CD6DBC125ABE887005DE50B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBC025ABE887005DE50B /* main.m */; };
 		8CD6DBCB25ABE888005DE50B /* Expense_TrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBCA25ABE888005DE50B /* Expense_TrackerTests.m */; };
 		8CD6DBD625ABE888005DE50B /* Expense_TrackerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBD525ABE888005DE50B /* Expense_TrackerUITests.m */; };
-		8CD6DBFC25ABEF39005DE50B /* ExpenseOverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBFB25ABEF39005DE50B /* ExpenseOverviewTableViewController.m */; };
+		8CD6DBFC25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBFB25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +52,9 @@
 		8CD6DBD125ABE888005DE50B /* Expense TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Expense TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD6DBD525ABE888005DE50B /* Expense_TrackerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Expense_TrackerUITests.m; sourceTree = "<group>"; };
 		8CD6DBD725ABE888005DE50B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8CD6DBFA25ABEF39005DE50B /* ExpenseOverviewTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpenseOverviewTableViewController.h; sourceTree = "<group>"; };
-		8CD6DBFB25ABEF39005DE50B /* ExpenseOverviewTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpenseOverviewTableViewController.m; sourceTree = "<group>"; };
+		8CD6DBFA25ABEF39005DE50B /* ETExpenseOverviewTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseOverviewTableViewController.h; sourceTree = "<group>"; };
+		8CD6DBFB25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseOverviewTableViewController.m; sourceTree = "<group>"; };
+		8CD6DC0425ABF620005DE50B /* ETServerAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETServerAPI.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +105,9 @@
 		8CD6DBAD25ABE886005DE50B /* Expense Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				8CD6DBFA25ABEF39005DE50B /* ExpenseOverviewTableViewController.h */,
-				8CD6DBFB25ABEF39005DE50B /* ExpenseOverviewTableViewController.m */,
+				8CD6DC0325ABF5FD005DE50B /* Server API */,
+				8CD6DBFA25ABEF39005DE50B /* ETExpenseOverviewTableViewController.h */,
+				8CD6DBFB25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m */,
 				8CD6DBB725ABE886005DE50B /* Main.storyboard */,
 				8CD6DBE925ABEB24005DE50B /* Application Lifecycle */,
 				8CD6DBED25ABEBCA005DE50B /* Supporting Files */,
@@ -151,6 +153,14 @@
 				8CD6DBBF25ABE887005DE50B /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8CD6DC0325ABF5FD005DE50B /* Server API */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6DC0425ABF620005DE50B /* ETServerAPI.h */,
+			);
+			path = "Server API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,7 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CD6DBB025ABE886005DE50B /* AppDelegate.m in Sources */,
-				8CD6DBFC25ABEF39005DE50B /* ExpenseOverviewTableViewController.m in Sources */,
+				8CD6DBFC25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m in Sources */,
 				8CD6DBC125ABE887005DE50B /* main.m in Sources */,
 				8CD6DBB325ABE886005DE50B /* SceneDelegate.m in Sources */,
 			);

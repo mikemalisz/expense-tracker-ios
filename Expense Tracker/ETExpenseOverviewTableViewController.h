@@ -1,5 +1,5 @@
 //
-//  ExpenseOverviewTableViewController.h
+//  ETExpenseOverviewTableViewController.h
 //  Expense Tracker
 //
 //  Created by Mike Maliszewski on 1/10/21.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ExpenseOverviewTableViewController : UITableViewController
+@interface ETExpenseOverviewTableViewController : UITableViewController
 
 @end
 
