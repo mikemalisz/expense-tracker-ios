@@ -10,7 +10,7 @@
         <!--Expense Overview Table View Controller-->
         <scene sceneID="gyF-GT-d3S">
             <objects>
-                <tableViewController id="SfQ-Uz-hW3" customClass="ExpenseOverviewTableViewController" sceneMemberID="viewController">
+                <tableViewController id="SfQ-Uz-hW3" customClass="ETExpenseOverviewTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="LeD-P3-p8C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

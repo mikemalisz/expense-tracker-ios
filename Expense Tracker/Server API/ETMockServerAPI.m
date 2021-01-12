@@ -13,5 +13,7 @@
     // 1. load mock-data
     // 2. parse it into array of Expense Items
     NSLog(@"%@", [[NSFileManager defaultManager] currentDirectoryPath]);
+    
+    onCompletion();
 }
 @end
