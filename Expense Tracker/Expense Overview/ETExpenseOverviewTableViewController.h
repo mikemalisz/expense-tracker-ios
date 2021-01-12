@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ETExpenseOverviewDataSourceManager.h"
+#import "ETExpenseOverviewDataSource.h"
 #import "ETServerAPI.h"
 
 NS_ASSUME_NONNULL_BEGIN

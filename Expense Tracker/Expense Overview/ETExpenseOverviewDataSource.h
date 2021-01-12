@@ -1,5 +1,5 @@
 //
-//  ETExpenseOverviewDataSourceManager.h
+//  ETExpenseOverviewDataSource.h
 //  Expense Tracker
 //
 //  Created by Mike Maliszewski on 1/12/21.
@@ -9,9 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ETExpenseOverviewDataSourceManager : NSObject
+@interface ETExpenseOverviewDataSource : NSObject <UITableViewDataSource>
 - (instancetype)initWithTableView:(UITableView *)tableView;
-
 typedef NS_ENUM(NSUInteger, ETExpenseOverviewSection);
 @end
 

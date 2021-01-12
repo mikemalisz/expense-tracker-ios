@@ -1,28 +1,22 @@
 //
-//  ETExpenseOverviewDataSourceManager.m
+//  ETExpenseOverviewDataSource.m
 //  Expense Tracker
 //
 //  Created by Mike Maliszewski on 1/12/21.
 //
 
-#import "ETExpenseOverviewDataSourceManager.h"
+#import "ETExpenseOverviewDataSource.h"
 
-@interface ETExpenseOverviewDataSourceManager ()
+@interface ETExpenseOverviewDataSource ()
 @property UITableView *tableView;
 @property UITableViewDiffableDataSource *dataSource;
 @end
 
-@implementation ETExpenseOverviewDataSourceManager
+@implementation ETExpenseOverviewDataSource
 - (instancetype)initWithTableView:(UITableView *)tableView {
     self = [super init];
     if (self) {
         _tableView = tableView;
-        
-        _dataSource = [[UITableViewDiffableDataSource alloc]
-                       initWithTableView:tableView
-                       cellProvider:^UITableViewCell * _Nullable(UITableView *tableView, NSIndexPath *indexPath, id item) {
-            return [self cellProviderForDataSourceWithTableView:tableView at:indexPath with:item];
-        }];
     }
     return self;
 }

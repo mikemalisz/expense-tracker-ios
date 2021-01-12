@@ -8,7 +8,7 @@
 #import "ETExpenseOverviewTableViewController.h"
 
 @interface ETExpenseOverviewTableViewController ()
-@property ETExpenseOverviewDataSourceManager *dataSource;
+@property ETExpenseOverviewDataSource *dataSource;
 @end
 
 @implementation ETExpenseOverviewTableViewController
@@ -16,8 +16,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ETExpenseOverviewDataSourceManager *newDataSource = [[ETExpenseOverviewDataSourceManager alloc] initWithTableView:[self tableView]];
-    [self setDataSource: newDataSource];
+//    ETExpenseOverviewDataSourceManager *newDataSource = [[ETExpenseOverviewDataSourceManager alloc] initWithTableView:[self tableView]];
+//    [self setDataSource: newDataSource];
     
     [[self networkService] getExpenses:^(NSArray<ETExpenseItem*> *expenseItems) {
         for (ETExpenseItem *item in expenseItems) {
