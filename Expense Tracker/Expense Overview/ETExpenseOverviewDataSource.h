@@ -10,8 +10,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ETExpenseOverviewDataSource : NSObject <UITableViewDataSource>
-- (instancetype)initWithTableView:(UITableView *)tableView;
-typedef NS_ENUM(NSUInteger, ETExpenseOverviewSection);
 @end
 
 NS_ASSUME_NONNULL_END

@@ -16,8 +16,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    ETExpenseOverviewDataSourceManager *newDataSource = [[ETExpenseOverviewDataSourceManager alloc] initWithTableView:[self tableView]];
-//    [self setDataSource: newDataSource];
+    ETExpenseOverviewDataSource *dataSource = [[ETExpenseOverviewDataSource alloc] init];
+    [self setDataSource:dataSource];
+    [[self tableView] setDataSource:dataSource];
     
     [[self networkService] getExpenses:^(NSArray<ETExpenseItem*> *expenseItems) {
         for (ETExpenseItem *item in expenseItems) {
