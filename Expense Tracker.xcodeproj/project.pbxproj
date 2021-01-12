@@ -82,6 +82,15 @@
 			path = "Mock Data";
 			sourceTree = "<group>";
 		};
+		8CA6196525AE12D1001F3547 /* Expense Overview */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6DBFA25ABEF39005DE50B /* ETExpenseOverviewTableViewController.h */,
+				8CD6DBFB25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m */,
+			);
+			path = "Expense Overview";
+			sourceTree = "<group>";
+		};
 		8CD6DBA225ABE886005DE50B = {
 			isa = PBXGroup;
 			children = (
@@ -103,9 +112,8 @@
 		8CD6DBAD25ABE886005DE50B /* Expense Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				8CA6196525AE12D1001F3547 /* Expense Overview */,
 				8CD6DC0325ABF5FD005DE50B /* Server API */,
-				8CD6DBFA25ABEF39005DE50B /* ETExpenseOverviewTableViewController.h */,
-				8CD6DBFB25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m */,
 				8CD6DBB725ABE886005DE50B /* Main.storyboard */,
 				8CD6DBE925ABEB24005DE50B /* Application Lifecycle */,
 				8CD6DBED25ABEBCA005DE50B /* Supporting Files */,
