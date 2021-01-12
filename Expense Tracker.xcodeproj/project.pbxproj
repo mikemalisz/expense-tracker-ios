@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C375D7325AD3CED00EFB202 /* ETMockServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */; };
 		8C375D7E25AD47F900EFB202 /* mock-expenses.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C375D7D25AD47F900EFB202 /* mock-expenses.json */; };
+		8CA6196825AE137A001F3547 /* ETExpenseOverviewDataSourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSourceManager.m */; };
 		8CD6DBB025ABE886005DE50B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBAF25ABE886005DE50B /* AppDelegate.m */; };
 		8CD6DBB325ABE886005DE50B /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBB225ABE886005DE50B /* SceneDelegate.m */; };
 		8CD6DBB925ABE886005DE50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6DBB725ABE886005DE50B /* Main.storyboard */; };
@@ -35,6 +36,8 @@
 		8C375D7125AD3CED00EFB202 /* ETMockServerAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETMockServerAPI.h; sourceTree = "<group>"; };
 		8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETMockServerAPI.m; sourceTree = "<group>"; };
 		8C375D7D25AD47F900EFB202 /* mock-expenses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mock-expenses.json"; sourceTree = "<group>"; };
+		8CA6196625AE137A001F3547 /* ETExpenseOverviewDataSourceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseOverviewDataSourceManager.h; sourceTree = "<group>"; };
+		8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSourceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseOverviewDataSourceManager.m; sourceTree = "<group>"; };
 		8CD6DBAB25ABE886005DE50B /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD6DBAE25ABE886005DE50B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8CD6DBAF25ABE886005DE50B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -87,6 +90,8 @@
 			children = (
 				8CD6DBFA25ABEF39005DE50B /* ETExpenseOverviewTableViewController.h */,
 				8CD6DBFB25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m */,
+				8CA6196625AE137A001F3547 /* ETExpenseOverviewDataSourceManager.h */,
+				8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSourceManager.m */,
 			);
 			path = "Expense Overview";
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 			files = (
 				8CD6DBB025ABE886005DE50B /* AppDelegate.m in Sources */,
 				8CD6DBFC25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m in Sources */,
+				8CA6196825AE137A001F3547 /* ETExpenseOverviewDataSourceManager.m in Sources */,
 				8C375D7325AD3CED00EFB202 /* ETMockServerAPI.m in Sources */,
 				8CD6DBC125ABE887005DE50B /* main.m in Sources */,
 				8CD6DBB325ABE886005DE50B /* SceneDelegate.m in Sources */,
