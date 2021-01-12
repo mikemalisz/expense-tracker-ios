@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C375D7325AD3CED00EFB202 /* ETMockServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */; };
 		8CD6DBB025ABE886005DE50B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBAF25ABE886005DE50B /* AppDelegate.m */; };
 		8CD6DBB325ABE886005DE50B /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBB225ABE886005DE50B /* SceneDelegate.m */; };
 		8CD6DBB925ABE886005DE50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6DBB725ABE886005DE50B /* Main.storyboard */; };
@@ -14,9 +15,9 @@
 		8CD6DBBE25ABE887005DE50B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6DBBC25ABE887005DE50B /* LaunchScreen.storyboard */; };
 		8CD6DBC125ABE887005DE50B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBC025ABE887005DE50B /* main.m */; };
 		8CD6DBCB25ABE888005DE50B /* Expense_TrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBCA25ABE888005DE50B /* Expense_TrackerTests.m */; };
-		8CD6DBD625ABE888005DE50B /* Expense_TrackerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBD525ABE888005DE50B /* Expense_TrackerUITests.m */; };
 		8CD6DBFC25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBFB25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m */; };
 		8CD6DC0A25ABF88B005DE50B /* ETExpenseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DC0925ABF88B005DE50B /* ETExpenseItem.m */; };
+		8CD6DC1025AC0072005DE50B /* ETExpenseItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DC0F25AC0072005DE50B /* ETExpenseItemTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,16 +28,11 @@
 			remoteGlobalIDString = 8CD6DBAA25ABE886005DE50B;
 			remoteInfo = "Expense Tracker";
 		};
-		8CD6DBD225ABE888005DE50B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8CD6DBA325ABE886005DE50B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8CD6DBAA25ABE886005DE50B;
-			remoteInfo = "Expense Tracker";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C375D7125AD3CED00EFB202 /* ETMockServerAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETMockServerAPI.h; sourceTree = "<group>"; };
+		8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETMockServerAPI.m; sourceTree = "<group>"; };
 		8CD6DBAB25ABE886005DE50B /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD6DBAE25ABE886005DE50B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8CD6DBAF25ABE886005DE50B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -50,14 +46,12 @@
 		8CD6DBC625ABE887005DE50B /* Expense TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Expense TrackerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD6DBCA25ABE888005DE50B /* Expense_TrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Expense_TrackerTests.m; sourceTree = "<group>"; };
 		8CD6DBCC25ABE888005DE50B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8CD6DBD125ABE888005DE50B /* Expense TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Expense TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CD6DBD525ABE888005DE50B /* Expense_TrackerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Expense_TrackerUITests.m; sourceTree = "<group>"; };
-		8CD6DBD725ABE888005DE50B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CD6DBFA25ABEF39005DE50B /* ETExpenseOverviewTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseOverviewTableViewController.h; sourceTree = "<group>"; };
 		8CD6DBFB25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseOverviewTableViewController.m; sourceTree = "<group>"; };
 		8CD6DC0425ABF620005DE50B /* ETServerAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETServerAPI.h; sourceTree = "<group>"; };
 		8CD6DC0825ABF88B005DE50B /* ETExpenseItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseItem.h; sourceTree = "<group>"; };
 		8CD6DC0925ABF88B005DE50B /* ETExpenseItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseItem.m; sourceTree = "<group>"; };
+		8CD6DC0F25AC0072005DE50B /* ETExpenseItemTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseItemTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,13 +69,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8CD6DBCE25ABE888005DE50B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -90,7 +77,6 @@
 			children = (
 				8CD6DBAD25ABE886005DE50B /* Expense Tracker */,
 				8CD6DBC925ABE888005DE50B /* Expense TrackerTests */,
-				8CD6DBD425ABE888005DE50B /* Expense TrackerUITests */,
 				8CD6DBAC25ABE886005DE50B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,7 +86,6 @@
 			children = (
 				8CD6DBAB25ABE886005DE50B /* Expense Tracker.app */,
 				8CD6DBC625ABE887005DE50B /* Expense TrackerTests.xctest */,
-				8CD6DBD125ABE888005DE50B /* Expense TrackerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,19 +106,11 @@
 		8CD6DBC925ABE888005DE50B /* Expense TrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				8CD6DC0E25AC0042005DE50B /* Server API Tests */,
 				8CD6DBCA25ABE888005DE50B /* Expense_TrackerTests.m */,
 				8CD6DBCC25ABE888005DE50B /* Info.plist */,
 			);
 			path = "Expense TrackerTests";
-			sourceTree = "<group>";
-		};
-		8CD6DBD425ABE888005DE50B /* Expense TrackerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				8CD6DBD525ABE888005DE50B /* Expense_TrackerUITests.m */,
-				8CD6DBD725ABE888005DE50B /* Info.plist */,
-			);
-			path = "Expense TrackerUITests";
 			sourceTree = "<group>";
 		};
 		8CD6DBE925ABEB24005DE50B /* Application Lifecycle */ = {
@@ -164,8 +141,18 @@
 				8CD6DC0425ABF620005DE50B /* ETServerAPI.h */,
 				8CD6DC0825ABF88B005DE50B /* ETExpenseItem.h */,
 				8CD6DC0925ABF88B005DE50B /* ETExpenseItem.m */,
+				8C375D7125AD3CED00EFB202 /* ETMockServerAPI.h */,
+				8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */,
 			);
 			path = "Server API";
+			sourceTree = "<group>";
+		};
+		8CD6DC0E25AC0042005DE50B /* Server API Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6DC0F25AC0072005DE50B /* ETExpenseItemTests.m */,
+			);
+			path = "Server API Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,24 +193,6 @@
 			productReference = 8CD6DBC625ABE887005DE50B /* Expense TrackerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8CD6DBD025ABE888005DE50B /* Expense TrackerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8CD6DBE025ABE888005DE50B /* Build configuration list for PBXNativeTarget "Expense TrackerUITests" */;
-			buildPhases = (
-				8CD6DBCD25ABE888005DE50B /* Sources */,
-				8CD6DBCE25ABE888005DE50B /* Frameworks */,
-				8CD6DBCF25ABE888005DE50B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8CD6DBD325ABE888005DE50B /* PBXTargetDependency */,
-			);
-			name = "Expense TrackerUITests";
-			productName = "Expense TrackerUITests";
-			productReference = 8CD6DBD125ABE888005DE50B /* Expense TrackerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -237,10 +206,6 @@
 						CreatedOnToolsVersion = 12.3;
 					};
 					8CD6DBC525ABE887005DE50B = {
-						CreatedOnToolsVersion = 12.3;
-						TestTargetID = 8CD6DBAA25ABE886005DE50B;
-					};
-					8CD6DBD025ABE888005DE50B = {
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = 8CD6DBAA25ABE886005DE50B;
 					};
@@ -261,7 +226,6 @@
 			targets = (
 				8CD6DBAA25ABE886005DE50B /* Expense Tracker */,
 				8CD6DBC525ABE887005DE50B /* Expense TrackerTests */,
-				8CD6DBD025ABE888005DE50B /* Expense TrackerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -284,13 +248,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8CD6DBCF25ABE888005DE50B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -300,6 +257,7 @@
 			files = (
 				8CD6DBB025ABE886005DE50B /* AppDelegate.m in Sources */,
 				8CD6DBFC25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m in Sources */,
+				8C375D7325AD3CED00EFB202 /* ETMockServerAPI.m in Sources */,
 				8CD6DBC125ABE887005DE50B /* main.m in Sources */,
 				8CD6DBB325ABE886005DE50B /* SceneDelegate.m in Sources */,
 				8CD6DC0A25ABF88B005DE50B /* ETExpenseItem.m in Sources */,
@@ -310,15 +268,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CD6DC1025AC0072005DE50B /* ETExpenseItemTests.m in Sources */,
 				8CD6DBCB25ABE888005DE50B /* Expense_TrackerTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8CD6DBCD25ABE888005DE50B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8CD6DBD625ABE888005DE50B /* Expense_TrackerUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,11 +280,6 @@
 			isa = PBXTargetDependency;
 			target = 8CD6DBAA25ABE886005DE50B /* Expense Tracker */;
 			targetProxy = 8CD6DBC725ABE887005DE50B /* PBXContainerItemProxy */;
-		};
-		8CD6DBD325ABE888005DE50B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8CD6DBAA25ABE886005DE50B /* Expense Tracker */;
-			targetProxy = 8CD6DBD225ABE888005DE50B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -515,6 +461,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_STATIC_ANALYZER_MODE = deep;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MN9J6C3HRT;
 				INFOPLIST_FILE = "Expense TrackerTests/Info.plist";
@@ -526,6 +473,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ski.maliszew.Expense-TrackerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Expense Tracker.app/Expense Tracker";
 			};
@@ -535,6 +483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_STATIC_ANALYZER_MODE = deep;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MN9J6C3HRT;
 				INFOPLIST_FILE = "Expense TrackerTests/Info.plist";
@@ -546,44 +495,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ski.maliszew.Expense-TrackerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Expense Tracker.app/Expense Tracker";
-			};
-			name = Release;
-		};
-		8CD6DBE125ABE888005DE50B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MN9J6C3HRT;
-				INFOPLIST_FILE = "Expense TrackerUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ski.maliszew.Expense-TrackerUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Expense Tracker";
-			};
-			name = Debug;
-		};
-		8CD6DBE225ABE888005DE50B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MN9J6C3HRT;
-				INFOPLIST_FILE = "Expense TrackerUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ski.maliszew.Expense-TrackerUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Expense Tracker";
 			};
 			name = Release;
 		};
@@ -613,15 +527,6 @@
 			buildConfigurations = (
 				8CD6DBDE25ABE888005DE50B /* Debug */,
 				8CD6DBDF25ABE888005DE50B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8CD6DBE025ABE888005DE50B /* Build configuration list for PBXNativeTarget "Expense TrackerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8CD6DBE125ABE888005DE50B /* Debug */,
-				8CD6DBE225ABE888005DE50B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -7,12 +7,12 @@
 
 #import "ETExpenseItem.h"
 
-static NSString *const ETExpenseItemIdentifierKey = @"id";
-static NSString *const ETExpenseItemAmountInCentsKey = @"amountInCents";
-static NSString *const ETExpenseItemTitleKey = @"title";
-static NSString *const ETExpenseItemExpenseDescriptionKey = @"description";
-static NSString *const ETExpenseItemDateOfPurchaseKey = @"dateOfPurchase";
-static NSString *const ETExpenseItemDateCreatedKey = @"dateCreated";
+NSString *const ETExpenseItemIdentifierKey = @"id";
+NSString *const ETExpenseItemAmountInCentsKey = @"amountInCents";
+NSString *const ETExpenseItemExpenseTitleKey = @"title";
+NSString *const ETExpenseItemExpenseDescriptionKey = @"description";
+NSString *const ETExpenseItemDateOfPurchaseKey = @"dateOfPurchase";
+NSString *const ETExpenseItemDateCreatedKey = @"dateCreated";
 
 
 @implementation ETExpenseItem
@@ -24,7 +24,7 @@ static NSString *const ETExpenseItemDateCreatedKey = @"dateCreated";
         NSArray *requiredDictionaryKeys = @[
             ETExpenseItemIdentifierKey,
             ETExpenseItemAmountInCentsKey,
-            ETExpenseItemTitleKey,
+            ETExpenseItemExpenseTitleKey,
             ETExpenseItemExpenseDescriptionKey,
             ETExpenseItemDateOfPurchaseKey,
             ETExpenseItemDateCreatedKey];
@@ -37,7 +37,7 @@ static NSString *const ETExpenseItemDateCreatedKey = @"dateCreated";
         
         _identifier = values[ETExpenseItemIdentifierKey];
         _amountInCents = [values[ETExpenseItemAmountInCentsKey] integerValue];
-        _expenseTitle = values[ETExpenseItemTitleKey];
+        _expenseTitle = values[ETExpenseItemExpenseTitleKey];
         _expenseDescription = values[ETExpenseItemExpenseDescriptionKey];
         _dateOfPurchase = values[ETExpenseItemDateOfPurchaseKey];
         _dateCreated = values[ETExpenseItemDateCreatedKey];

@@ -9,12 +9,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSString *const ETExpenseItemIdentifierKey;
-static NSString *const ETExpenseItemAmountInCentsKey;
-static NSString *const ETExpenseItemTitleKey;
-static NSString *const ETExpenseItemExpenseDescriptionKey;
-static NSString *const ETExpenseItemDateOfPurchaseKey;
-static NSString *const ETExpenseItemDateCreatedKey;
+extern NSString *const ETExpenseItemIdentifierKey;
+extern NSString *const ETExpenseItemAmountInCentsKey;
+extern NSString *const ETExpenseItemExpenseTitleKey;
+extern NSString *const ETExpenseItemExpenseDescriptionKey;
+extern NSString *const ETExpenseItemDateOfPurchaseKey;
+extern NSString *const ETExpenseItemDateCreatedKey;
 
 @interface ETExpenseItem : NSObject
 @property NSString *identifier;

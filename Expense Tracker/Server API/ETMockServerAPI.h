@@ -1,15 +1,16 @@
 //
-//  ETServerAPI.h
+//  ETMockServerAPI.h
 //  Expense Tracker
 //
-//  Created by Mike Maliszewski on 1/10/21.
+//  Created by Mike Maliszewski on 1/11/21.
 //
 
 #import <Foundation/Foundation.h>
+#import "ETServerAPI.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol ETServerAPI <NSObject>
+@interface ETMockServerAPI : NSObject<ETServerAPI>
 - (void)getExpenses:(void (^)(void))onCompletion;
 @end
 
