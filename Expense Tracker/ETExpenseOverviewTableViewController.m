@@ -16,8 +16,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[self networkService] getExpenses:^{
-        NSLog(@"sup");
+    [[self networkService] getExpenses:^(NSArray<ETExpenseItem*> *expenseItems) {
+        for (ETExpenseItem *item in expenseItems) {
+            NSLog(@"%@", item.identifier);
+        }
     }];
 }
 

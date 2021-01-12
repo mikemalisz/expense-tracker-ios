@@ -6,11 +6,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ETExpenseItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol ETServerAPI <NSObject>
-- (void)getExpenses:(void (^)(void))onCompletion;
+- (void)getExpenses:(void (^)(NSArray<ETExpenseItem*>*))onCompletion;
 @end
 
 NS_ASSUME_NONNULL_END

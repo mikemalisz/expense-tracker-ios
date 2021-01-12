@@ -1,0 +1,82 @@
+[
+  {
+    "id": "5ffd1650cf1327e33f8e1273",
+    "amountInCents": 78761,
+    "title": "non",
+    "description": "Labore cupidatat consequat ipsum id.",
+    "dateOfPurchase": "2021-01-07 04:32:17",
+    "dateCreated": "2021-01-10 02:46:55"
+  },
+  {
+    "id": "5ffd16501e8c8f5fb57cdd76",
+    "amountInCents": 96335,
+    "title": "eiusmod",
+    "description": "Enim aute magna elit Lorem duis.",
+    "dateOfPurchase": "2021-01-01 12:13:39",
+    "dateCreated": "2021-01-08 06:48:49"
+  },
+  {
+    "id": "5ffd1650af3c84d4e82ad57a",
+    "amountInCents": 55915,
+    "title": "duis",
+    "description": "Labore commodo mollit nostrud sunt consequat in pariatur consectetur in adipisicing commodo voluptate labore.",
+    "dateOfPurchase": "2021-01-01 09:19:18",
+    "dateCreated": "2021-01-07 06:14:41"
+  },
+  {
+    "id": "5ffd165035bf2f0d9e816d7f",
+    "amountInCents": 75743,
+    "title": "occaecat",
+    "description": "Velit tempor incididunt ut esse excepteur.",
+    "dateOfPurchase": "2021-01-10 01:07:00",
+    "dateCreated": "2021-01-09 06:24:09"
+  },
+  {
+    "id": "5ffd1650d783405df7c417d5",
+    "amountInCents": 20210,
+    "title": "Lorem",
+    "description": "Ullamco in est aute pariatur anim culpa adipisicing proident non laborum sint.",
+    "dateOfPurchase": "2021-01-07 12:00:19",
+    "dateCreated": "2021-01-04 09:08:09"
+  },
+  {
+    "id": "5ffd16502b53335183dea962",
+    "amountInCents": 47485,
+    "title": "exercitation",
+    "description": "Ad occaecat exercitation ipsum adipisicing consequat eu.",
+    "dateOfPurchase": "2021-01-10 06:03:06",
+    "dateCreated": "2021-01-10 01:09:38"
+  },
+  {
+    "id": "5ffd16509e1347bf71536ebf",
+    "amountInCents": 4503,
+    "title": "aliqua",
+    "description": "Reprehenderit enim laboris irure cillum reprehenderit.",
+    "dateOfPurchase": "2021-01-08 03:13:53",
+    "dateCreated": "2021-01-07 07:09:59"
+  },
+  {
+    "id": "5ffd1650a552c7b0cc962849",
+    "amountInCents": 43223,
+    "title": "eiusmod",
+    "description": "Minim sit enim in irure dolor quis cupidatat sunt proident officia sit.",
+    "dateOfPurchase": "2021-01-04 04:17:31",
+    "dateCreated": "2021-01-11 02:52:17"
+  },
+  {
+    "id": "5ffd16504615cea87b0c9e0b",
+    "amountInCents": 65630,
+    "title": "amet",
+    "description": "Dolor ex aliqua id Lorem exercitation deserunt ut.",
+    "dateOfPurchase": "2021-01-08 12:13:44",
+    "dateCreated": "2021-01-04 08:48:30"
+  },
+  {
+    "id": "5ffd1650efad5ef40ca98c0c",
+    "amountInCents": 33026,
+    "title": "aliqua",
+    "description": "Quis pariatur consectetur do ex sint cillum ad ipsum commodo minim nulla anim anim cupidatat.",
+    "dateOfPurchase": "2021-01-05 10:17:14",
+    "dateCreated": "2021-01-05 01:16:55"
+  }
+]

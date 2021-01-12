@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C375D7325AD3CED00EFB202 /* ETMockServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */; };
+		8C375D7E25AD47F900EFB202 /* mock-expenses.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C375D7D25AD47F900EFB202 /* mock-expenses.json */; };
 		8CD6DBB025ABE886005DE50B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBAF25ABE886005DE50B /* AppDelegate.m */; };
 		8CD6DBB325ABE886005DE50B /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBB225ABE886005DE50B /* SceneDelegate.m */; };
 		8CD6DBB925ABE886005DE50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6DBB725ABE886005DE50B /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		8C375D7125AD3CED00EFB202 /* ETMockServerAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETMockServerAPI.h; sourceTree = "<group>"; };
 		8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETMockServerAPI.m; sourceTree = "<group>"; };
+		8C375D7D25AD47F900EFB202 /* mock-expenses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mock-expenses.json"; sourceTree = "<group>"; };
 		8CD6DBAB25ABE886005DE50B /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD6DBAE25ABE886005DE50B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8CD6DBAF25ABE886005DE50B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -72,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C375D7825AD479200EFB202 /* Mock Data */ = {
+			isa = PBXGroup;
+			children = (
+				8C375D7D25AD47F900EFB202 /* mock-expenses.json */,
+			);
+			path = "Mock Data";
+			sourceTree = "<group>";
+		};
 		8CD6DBA225ABE886005DE50B = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +138,7 @@
 		8CD6DBED25ABEBCA005DE50B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8C375D7825AD479200EFB202 /* Mock Data */,
 				8CD6DBBA25ABE887005DE50B /* Assets.xcassets */,
 				8CD6DBBC25ABE887005DE50B /* LaunchScreen.storyboard */,
 				8CD6DBBF25ABE887005DE50B /* Info.plist */,
@@ -235,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C375D7E25AD47F900EFB202 /* mock-expenses.json in Resources */,
 				8CD6DBBE25ABE887005DE50B /* LaunchScreen.storyboard in Resources */,
 				8CD6DBBB25ABE887005DE50B /* Assets.xcassets in Resources */,
 				8CD6DBB925ABE886005DE50B /* Main.storyboard in Resources */,
