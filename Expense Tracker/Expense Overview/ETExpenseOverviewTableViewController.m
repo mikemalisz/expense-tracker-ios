@@ -20,8 +20,11 @@
     [self setDataSource:dataSource];
     [[self tableView] setDataSource:dataSource];
     
-    [[self networkService] getExpenses:^(NSArray<ETExpenseItem*> *expenseItems) {
-        for (ETExpenseItem *item in expenseItems) {
+    [[self networkService] retrieveExpenseItems:^(NSArray<ETExpenseItem*> *expenseItems, NSError *error) {
+		if (error != nil) {
+			NSLog(@"%@", error);
+		}
+		for (ETExpenseItem *item in expenseItems) {
             NSLog(@"%@", item.identifier);
         }
     }];

@@ -9,7 +9,7 @@
 
 @implementation ETMockServerAPI
 
-- (void)getExpenses:(nonnull void (^)(NSArray<ETExpenseItem*>*))onCompletion {
+- (void)retrieveExpenseItems:(nonnull void (^)(NSArray<ETExpenseItem*>*))onCompletion {
     // configure our date formatter
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];

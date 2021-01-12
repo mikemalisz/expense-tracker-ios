@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ETMockServerAPI : NSObject<ETServerAPI>
-- (void)getExpenses:(void (^)(NSArray<ETExpenseItem *>*))onCompletion;
+- (void)retrieveExpenseItems:(void (^)(NSArray<ETExpenseItem *>*))onCompletion;
 @end
 
 NS_ASSUME_NONNULL_END
