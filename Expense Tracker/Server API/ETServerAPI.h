@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ETServerAPI <NSObject>
 - (void)retrieveExpenseItems:(void (^)(NSArray<ETExpenseItem*>*, NSError*))onCompletion;
-- (void)createExpenseItem:(ETExpenseItem*)expenseItem completionHandler:(void (^)(NSError*))onCompletion;
-- (void)updateExpenseItem:(ETExpenseItem*)expenseItem completionHandler:(void (^)(NSError*))onCompletion;
+- (void)persistNewExpenseItem:(ETExpenseItem*)expenseItem completionHandler:(void (^)(NSError*))onCompletion;
+- (void)updateExistingExpenseItem:(ETExpenseItem*)expenseItem completionHandler:(void (^)(NSError*))onCompletion;
 - (void)deleteExpenseItem:(ETExpenseItem*)expenseItem completionHandler:(void (^)(NSError*))onCompletion;
 @end
 

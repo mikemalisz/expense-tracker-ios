@@ -9,7 +9,7 @@
 
 @implementation ETMockServerAPI
 
-- (void)retrieveExpenseItems:(nonnull void (^)(NSArray<ETExpenseItem*>*))onCompletion {
+- (void)retrieveExpenseItems:(nonnull void (^)(NSArray<ETExpenseItem*>*, NSError*))onCompletion {
     // configure our date formatter
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
@@ -39,6 +39,21 @@
     }
     
     // call completion handler with a copied version of our expense item list
-    onCompletion([expenseItemList copy]);
+    onCompletion([expenseItemList copy], nil);
 }
+
+- (void)persistNewExpenseItem:(nonnull ETExpenseItem *)expenseItem completionHandler:(nonnull void (^)(NSError * _Nonnull))onCompletion {
+	<#code#>
+}
+
+
+- (void)deleteExpenseItem:(nonnull ETExpenseItem *)expenseItem completionHandler:(nonnull void (^)(NSError * _Nonnull))onCompletion {
+	<#code#>
+}
+
+
+- (void)updateExistingExpenseItem:(nonnull ETExpenseItem *)expenseItem completionHandler:(nonnull void (^)(NSError * _Nonnull))onCompletion {
+	<#code#>
+}
+
 @end
