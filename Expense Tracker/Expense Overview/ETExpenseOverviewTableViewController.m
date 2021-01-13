@@ -14,6 +14,8 @@
 
 @implementation ETExpenseOverviewTableViewController
 
+#pragma mark - Controller Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -29,6 +31,8 @@
 	[super viewDidDisappear:animated];
 	[[self propertyObserver] removeObservers];
 }
+
+#pragma mark - Configuration
 
 - (void)configurePropertyObserver {
 	ETExpenseOverviewKVOManager *propertyObserver = [[ETExpenseOverviewKVOManager alloc] initWithExpenseItemManager:[self itemManager]];
