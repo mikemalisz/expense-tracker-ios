@@ -19,80 +19,20 @@ NSString *const mockDataFilename = @"mock-data";
 	return self;
 }
 
+/// saves the mock expenses j
 - (void)saveBundleMockDataToDocuments {
-	NSLog(@"saving bundle mock data to documents");
-	// configure our date formatter
-	NSDateFormatter *formatter = [NSDateFormatter new];
-	[formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
-	
-	// get raw data from the mock expenses json file
-	NSString *mockExpensesPath = [[NSBundle mainBundle] pathForResource:@"mock-expenses" ofType:@".json"];
-	NSData *fileData = [NSData dataWithContentsOfFile:mockExpensesPath];
-	
-	NSURL *mockDataFilePath = [[NSFileManager documentsDirectoryForCurrentUser] URLByAppendingPathComponent:mockDataFilename];
-	
-	NSError *copyError;
-	[[NSFileManager defaultManager] copyItemAtPath:mockExpensesPath toPath:[mockDataFilePath path] error:&copyError];
-	if (copyError != nil) {
-		NSLog(@"%@", copyError);
-	}
-	
-	NSArray<NSDictionary*> *dictionaryList = [NSJSONSerialization JSONObjectWithData:fileData options:0 error:nil];
-	
-	// get ready to create new expense items and store them in this list
-	NSMutableArray *expenseItemList = [NSMutableArray new];
-	
-	// loop through each raw expense item in dictionary format, and
-	// initialize an expense item from it
-	for (NSDictionary *expenseItem in dictionaryList) {
-		NSDate *dateOfPurchase = [formatter dateFromString:expenseItem[ETExpenseItemDateOfPurchaseKey]];
-		NSDate *dateCreated = [formatter dateFromString:expenseItem[ETExpenseItemDateCreatedKey]];
-		NSDictionary *initializationItems = @{
-			ETExpenseItemIdentifierKey: expenseItem[ETExpenseItemIdentifierKey],
-			ETExpenseItemAmountInCentsKey: expenseItem[ETExpenseItemAmountInCentsKey],
-			ETExpenseItemExpenseTitleKey: expenseItem[ETExpenseItemExpenseTitleKey],
-			ETExpenseItemExpenseDescriptionKey: expenseItem[ETExpenseItemExpenseDescriptionKey],
-			ETExpenseItemDateOfPurchaseKey: dateOfPurchase,
-			ETExpenseItemDateCreatedKey: dateCreated};
-		ETExpenseItem *newExpenseItem = [[ETExpenseItem alloc] initWithDictionary:initializationItems];
-		[expenseItemList addObject:newExpenseItem];
-	}
-	
-	
+	NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"mock-expenses" ofType:@".json"];
+	NSURL *localFilePath = [[NSFileManager documentsDirectoryForCurrentUser] URLByAppendingPathComponent:mockDataFilename];
+	[[NSFileManager defaultManager] copyItemAtPath:bundlePath toPath:[localFilePath path] error:nil];
 }
 
 - (void)retrieveExpenseItems:(nonnull void (^)(NSArray<ETExpenseItem*>*, NSError*))onCompletion {
-    // configure our date formatter
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
-    
-    // get raw data from the mock expenses json file
-	
-    
-    // get ready to create new expense items and store them in this list
-    NSMutableArray *expenseItemList = [NSMutableArray new];
-    
-    // loop through each raw expense item in dictionary format, and
-    // initialize an expense item from it
-    for (NSDictionary *expenseItem in expenseItemList) {
-        NSDate *dateOfPurchase = [formatter dateFromString:expenseItem[ETExpenseItemDateOfPurchaseKey]];
-        NSDate *dateCreated = [formatter dateFromString:expenseItem[ETExpenseItemDateCreatedKey]];
-        NSDictionary *initializationItems = @{
-            ETExpenseItemIdentifierKey: expenseItem[ETExpenseItemIdentifierKey],
-            ETExpenseItemAmountInCentsKey: expenseItem[ETExpenseItemAmountInCentsKey],
-            ETExpenseItemExpenseTitleKey: expenseItem[ETExpenseItemExpenseTitleKey],
-            ETExpenseItemExpenseDescriptionKey: expenseItem[ETExpenseItemExpenseDescriptionKey],
-            ETExpenseItemDateOfPurchaseKey: dateOfPurchase,
-            ETExpenseItemDateCreatedKey: dateCreated};
-        ETExpenseItem *newExpenseItem = [[ETExpenseItem alloc] initWithDictionary:initializationItems];
-        [expenseItemList addObject:newExpenseItem];
-    }
-    
-    // call completion handler with a copied version of our expense item list
-    onCompletion([expenseItemList copy], nil);
+	NSArray<ETExpenseItem *> *expenseItemList = [self readDataFromMockDataFile];
+    onCompletion(expenseItemList, nil);
 }
 
 - (void)persistNewExpenseItem:(nonnull ETExpenseItem *)expenseItem completionHandler:(nonnull void (^)(NSError * _Nonnull))onCompletion {
+	
 }
 
 
@@ -105,17 +45,14 @@ NSString *const mockDataFilename = @"mock-data";
 	
 }
 
-@end
+#pragma mark - File IO
 
-#pragma mark - file IO
-
-@implementation ETMockServerAPI (FileIO)
-
-- (NSArray<NSDictionary*>*)readDataFromMockDataFile {
+- (NSArray<ETExpenseItem *> *)readDataFromMockDataFile {
+	// retrieve the dictionary data from the mock data file in the user's documents directory
 	NSURL *fileUrl = [[NSFileManager documentsDirectoryForCurrentUser] URLByAppendingPathComponent:mockDataFilename];
 	NSData *fileData = [[NSFileManager defaultManager] contentsAtPath:[fileUrl path]];
-	NSArray<NSDictionary*> *dictionaryList = [NSJSONSerialization JSONObjectWithData:fileData options:0 error:nil];
-	return dictionaryList;
+	NSArray<NSDictionary *> *dictionaryList = [NSJSONSerialization JSONObjectWithData:fileData options:0 error:nil];
+	return [self createExpenseItemsFromDictionaryList:dictionaryList];
 }
 
 - (void)writeDataToMockDataFileWithExpenseItems:(NSArray<ETExpenseItem*>*)expenseItemList {
@@ -130,6 +67,32 @@ NSString *const mockDataFilename = @"mock-data";
 	NSData *serializedData = [NSJSONSerialization dataWithJSONObject:expenseItemDictionaryList options:0 error:nil];
 	BOOL didComplete = [serializedData writeToURL:fileUrl atomically:YES];
 	NSLog(@"%c", didComplete);
+}
+
+#pragma mark - Data Preparation
+
+- (NSArray<ETExpenseItem *> *)createExpenseItemsFromDictionaryList:(NSArray<NSDictionary *> *)dictionaryList {
+	// configure our date formatter
+	NSDateFormatter *formatter = [NSDateFormatter new];
+	[formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+	
+	// get ready to create new expense items and store them in this list
+	NSMutableArray<ETExpenseItem *> *expenseItemList = [NSMutableArray new];
+	
+	// loop through each raw expense item in dictionary format, and
+	// initialize an expense item from it
+	for (NSDictionary *expenseItem in dictionaryList) {
+		NSDate *dateOfPurchase = [formatter dateFromString:expenseItem[ETExpenseItemDateOfPurchaseKey]];
+		NSDate *dateCreated = [formatter dateFromString:expenseItem[ETExpenseItemDateCreatedKey]];
+		
+		NSMutableDictionary *initializationItems = [expenseItem mutableCopy];
+		[initializationItems setObject:dateOfPurchase forKey:ETExpenseItemDateOfPurchaseKey];
+		[initializationItems setObject:dateCreated forKey:ETExpenseItemDateCreatedKey];
+		
+		ETExpenseItem *newExpenseItem = [[ETExpenseItem alloc] initWithDictionary:initializationItems];
+		[expenseItemList addObject:newExpenseItem];
+	}
+	return expenseItemList;
 }
 
 @end

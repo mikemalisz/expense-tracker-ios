@@ -22,7 +22,7 @@
     
     [[self networkService] retrieveExpenseItems:^(NSArray<ETExpenseItem*> *expenseItems, NSError *error) {
 		if (error != nil) {
-			NSLog(@"%@", error);
+			NSLog(@"Controller Error: %@", error);
 		}
 		for (ETExpenseItem *item in expenseItems) {
             NSLog(@"%@", item.identifier);
