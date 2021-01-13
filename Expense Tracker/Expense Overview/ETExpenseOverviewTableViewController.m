@@ -50,7 +50,9 @@
 #pragma mark - Add Expense Button
 
 - (IBAction)didPressAddExpense:(UIBarButtonItem *)sender {
-    
+    ETAddExpenseTableViewController *controller = [ETAddExpenseTableViewController initiateUsingStoryboard];
+    [controller setItemManager:[self itemManager]];
+    [self presentViewController:controller animated:true completion:nil];
 }
 
 @end

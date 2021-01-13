@@ -10,11 +10,13 @@
 #import "ETServerAPI.h"
 #import "ETExpenseItemManager.h"
 #import "ETExpenseOverviewKVOManager.h"
+#import "ETAddExpenseTableViewController.h"
+#import "UIViewController+initiateUsingStoryboard.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ETExpenseOverviewTableViewController : UITableViewController
-@property ETExpenseItemManager *itemManager;
+@property ETExpenseItemManager * _Null_unspecified itemManager;
 @end
 
 NS_ASSUME_NONNULL_END

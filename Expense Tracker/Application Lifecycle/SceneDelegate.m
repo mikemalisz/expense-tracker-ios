@@ -19,11 +19,13 @@
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     
     UIViewController *rootController = [[self window] rootViewController];
-    if ([rootController isKindOfClass:[ETExpenseOverviewTableViewController class]]) {
-        ETExpenseOverviewTableViewController *expenseController = (ETExpenseOverviewTableViewController *)rootController;
+    BOOL expenseOverviewControllerExists = [[(UINavigationController *)rootController topViewController] isKindOfClass:[ETExpenseOverviewTableViewController class]];
+    if (expenseOverviewControllerExists) {
+        ETExpenseOverviewTableViewController *expenseController = (ETExpenseOverviewTableViewController *)[(UINavigationController *) rootController topViewController];
 		
 		ETExpenseItemManager *itemManager = [[ETExpenseItemManager alloc] initWithServerAPI:[ETMockServerAPI new]];
         [expenseController setItemManager:itemManager];
+        NSLog(@"%@", itemManager);
     }
 }
 
