@@ -6,13 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ETExpenseItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ETExpenseItemTableViewCell : UITableViewCell
-- (void)setDollarAmountText:(NSString *)text;
-- (void)setExpenseItemTitleText:(NSString *)text;
-- (void)setDatePurchasedText:(NSString *)text;
+- (void)updateCellUsingExpenseItem:(ETExpenseItem *)expenseItem;
 @end
 
 NS_ASSUME_NONNULL_END

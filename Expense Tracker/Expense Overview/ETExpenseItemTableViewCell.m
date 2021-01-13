@@ -14,15 +14,22 @@
 @end
 
 @implementation ETExpenseItemTableViewCell
-- (void)setDollarAmountText:(NSString *)text {
-    [[self dollarAmountLabel] setText:text];
+
+- (void)updateCellUsingExpenseItem:(ETExpenseItem *)expenseItem {
+    // dollar amount
+    NSString *dollarAmountText = [NSString stringWithFormat:@"%ld", [expenseItem amountInCents]];
+    [[self dollarAmountLabel] setText:dollarAmountText];
+    
+    // item title
+    [[self expenseTitleLabel] setText:[expenseItem expenseTitle]];
+    
+    // date of purchase
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    NSString *dateOfPurchaseText = [formatter stringFromDate:[expenseItem dateOfPurchase]];
+    
+    [[self datePurchasedLabel] setText:dateOfPurchaseText];
 }
 
-- (void)setExpenseItemTitleText:(NSString *)text {
-    [[self expenseTitleLabel] setText:text];
-}
-
-- (void)setDatePurchasedText:(NSString *)text {
-    [[self datePurchasedLabel] setText:text];
-}
 @end
