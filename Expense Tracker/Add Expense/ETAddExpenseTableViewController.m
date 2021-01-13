@@ -28,6 +28,19 @@
 }
 
 - (IBAction)userDidPressSubmit:(id)sender {
+    NSString *expenseTitle = [[self expenseTitleField] text];
+    NSString *amount = [[self expenseAmountField] text];
+    NSDate *datePurchased = [[self datePurchasedPicker] date];
     
+    if ((expenseTitle != nil) && (amount != nil)) {
+        [[self itemManager]
+         submitNewExpenseItemWithTitle:expenseTitle
+         dollarAmount:amount
+         datePurchased:datePurchased
+         completionHandler:^(NSError * _Nullable error) {
+            #warning handle error
+            NSLog(@"%@", error);
+        }];
+    }
 }
 @end

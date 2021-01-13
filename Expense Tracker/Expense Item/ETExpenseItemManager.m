@@ -42,7 +42,9 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
 	}];
 }
 
-- (void)submitNewExpenseItemWithTitle:(NSString *)title dollarAmount:(NSString *)amount datePurchased:(NSDate *)datePurchased {
+- (void)submitNewExpenseItemWithTitle:(NSString *)title dollarAmount:(NSString *)amount datePurchased:(NSDate *)datePurchased completionHandler:(void (^)(NSError * nullable))onCompletion {
     NSLog(@"to be implemented");
+    
+    onCompletion(nil);
 }
 @end
