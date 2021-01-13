@@ -33,4 +33,12 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
 		}
 	}];
 }
+
+- (NSInteger)retrieveTotalSpend {
+    NSInteger totalSpend = 0;
+    for (ETExpenseItem *item in [self expenseItemList]) {
+        totalSpend += item.amountInCents;
+    }
+    return totalSpend;
+}
 @end

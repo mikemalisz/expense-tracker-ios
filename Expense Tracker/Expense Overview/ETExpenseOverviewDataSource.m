@@ -50,7 +50,9 @@ typedef NS_ENUM(NSUInteger, ETExpenseOverviewSection) {
 
 - (UITableViewCell*)totalSpendOverviewCellForTableView:(UITableView*)tableView at:(NSIndexPath*)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TotalSpendOverviewCell" forIndexPath:indexPath];
-    [[cell textLabel] setText:@"yee"];
+    
+    NSInteger totalSpend = [[self itemManager] retrieveTotalSpend];
+    [[cell textLabel] setText:[NSString stringWithFormat:@"%ld", totalSpend]];
     return cell;
 }
 

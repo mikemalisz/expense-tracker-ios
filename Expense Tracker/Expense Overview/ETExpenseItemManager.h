@@ -19,6 +19,7 @@ extern NSString *const ETExpenseItemManagerItemListKeyPath;
 - (instancetype)initWithServerAPI:(id<ETServerAPI>)networkService;
 
 - (void)refreshExpenseItems;
+- (NSInteger)retrieveTotalSpend;
 @end
 
 NS_ASSUME_NONNULL_END
