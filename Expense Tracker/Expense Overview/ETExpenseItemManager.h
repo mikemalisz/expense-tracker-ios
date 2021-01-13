@@ -11,6 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern NSString *const ETExpenseItemManagerItemListKeyPath;
+
 @interface ETExpenseItemManager : NSObject
 @property (readonly) NSArray<ETExpenseItem *> *expenseItemList;
 

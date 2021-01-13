@@ -21,8 +21,9 @@
     UIViewController *rootController = [[self window] rootViewController];
     if ([rootController isKindOfClass:[ETExpenseOverviewTableViewController class]]) {
         ETExpenseOverviewTableViewController *expenseController = (ETExpenseOverviewTableViewController *)rootController;
-        ETMockServerAPI *mockServerApi = [ETMockServerAPI new];
-        [expenseController setNetworkService:mockServerApi];
+		
+		ETExpenseItemManager *itemManager = [[ETExpenseItemManager alloc] initWithServerAPI:[ETMockServerAPI new]];
+        [expenseController setItemManager:itemManager];
     }
 }
 

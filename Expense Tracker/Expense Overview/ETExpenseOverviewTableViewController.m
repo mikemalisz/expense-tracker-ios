@@ -16,18 +16,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ETExpenseOverviewDataSource *dataSource = [[ETExpenseOverviewDataSource alloc] init];
+    ETExpenseOverviewDataSource *dataSource = [[ETExpenseOverviewDataSource alloc] initWithExpenseItemManager:[self itemManager]];
     [self setDataSource:dataSource];
     [[self tableView] setDataSource:dataSource];
     
-    [[self networkService] retrieveExpenseItems:^(NSArray<ETExpenseItem*> *expenseItems, NSError *error) {
-		if (error != nil) {
-			NSLog(@"Controller Error: %@", error);
-		}
-		for (ETExpenseItem *item in expenseItems) {
-            NSLog(@"%@", item.identifier);
-        }
-    }];
+	[[self itemManager] addObserver:self
+						 forKeyPath:ETExpenseItemManagerItemListKeyPath
+							options:NSKeyValueObservingOptionNew
+							context:nil];
+	
+	[[self itemManager] refreshExpenseItems];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+					  ofObject:(id)object
+						change:(NSDictionary *)change
+					   context:(void *)context {
+	NSLog(@"observing....");
+	ETExpenseItemManager *itemManager = object;
+	if (itemManager) {
+		NSLog(@"%@", change);
+	} else {
+		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+	}
 }
 
 @end

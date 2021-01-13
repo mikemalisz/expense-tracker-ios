@@ -8,11 +8,12 @@
 #import <UIKit/UIKit.h>
 #import "ETExpenseOverviewDataSource.h"
 #import "ETServerAPI.h"
+#import "ETExpenseItemManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ETExpenseOverviewTableViewController : UITableViewController
-@property id <ETServerAPI> networkService;
+@property ETExpenseItemManager *itemManager;
 @end
 
 NS_ASSUME_NONNULL_END

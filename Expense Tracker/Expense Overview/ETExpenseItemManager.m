@@ -7,6 +7,8 @@
 
 #import "ETExpenseItemManager.h"
 
+NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
+
 @interface ETExpenseItemManager ()
 @property (readwrite) NSArray<ETExpenseItem *> *expenseItemList;
 
@@ -22,7 +24,7 @@
 	return self;
 }
 
-- (void)refreshExpenseItems:(void (^)(NSArray<ETExpenseItem *> *))onCompletion {
+- (void)refreshExpenseItems {
 	typeof(self) __weak weakSelf = self;
 	[[self networkService] retrieveExpenseItems:^(NSArray<ETExpenseItem *> *expenseItems, NSError *error) {
 		typeof(self) strongSelf = weakSelf;
