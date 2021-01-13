@@ -38,8 +38,12 @@
 	ETExpenseOverviewKVOManager *propertyObserver = [[ETExpenseOverviewKVOManager alloc] initWithExpenseItemManager:[self itemManager]];
 	[self setPropertyObserver:propertyObserver];
 	
+    typeof(self) __weak weakSelf = self;
 	[[self propertyObserver] setExpenseItemListDidUpdate:^{
-		NSLog(@"Property Observed!");
+        typeof(weakSelf) strongSelf = weakSelf;
+        if (strongSelf != nil) {
+            [[strongSelf tableView] reloadData];
+        }
 	}];
 }
 
