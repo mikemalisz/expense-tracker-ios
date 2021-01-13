@@ -7,6 +7,22 @@
 
 #import "ETExpenseItemTableViewCell.h"
 
-@implementation ETExpenseItemTableViewCell
+@interface ETExpenseItemTableViewCell ()
+@property (weak, nonatomic) IBOutlet UILabel *dollarAmountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *expenseTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *datePurchasedLabel;
+@end
 
+@implementation ETExpenseItemTableViewCell
+- (void)setDollarAmountText:(NSString *)text {
+    [[self dollarAmountLabel] setText:text];
+}
+
+- (void)setExpenseItemTitleText:(NSString *)text {
+    [[self expenseTitleLabel] setText:text];
+}
+
+- (void)setDatePurchasedText:(NSString *)text {
+    [[self datePurchasedLabel] setText:text];
+}
 @end

@@ -81,6 +81,11 @@
                                         <constraint firstItem="Mkl-Wd-WUi" firstAttribute="leading" secondItem="YYh-IV-tK4" secondAttribute="leading" constant="20" symbolic="YES" id="k0x-mK-Qv2"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="datePurchasedLabel" destination="M7M-ml-fgF" id="Zk3-Yj-rYq"/>
+                                    <outlet property="dollarAmountLabel" destination="vlp-on-U3j" id="0Le-4s-Z8R"/>
+                                    <outlet property="expenseTitleLabel" destination="GjK-oC-K6z" id="5X0-gy-U2O"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
