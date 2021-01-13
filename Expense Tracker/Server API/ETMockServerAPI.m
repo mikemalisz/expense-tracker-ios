@@ -31,18 +31,36 @@ NSString *const mockDataFilename = @"mock-data";
     onCompletion(expenseItemList, nil);
 }
 
-- (void)persistNewExpenseItem:(nonnull ETExpenseItem *)expenseItem completionHandler:(nonnull void (^)(NSError * _Nonnull))onCompletion {
-	
+- (void)persistNewExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError *))onCompletion {
+	NSMutableArray *expenseItemList = [[self readDataFromMockDataFile] mutableCopy];
+	[expenseItemList addObject:expenseItem];
+	[self writeDataToMockDataFileWithExpenseItems:[expenseItemList copy]];
+	onCompletion(nil);
 }
 
 
-- (void)deleteExpenseItem:(nonnull ETExpenseItem *)expenseItem completionHandler:(nonnull void (^)(NSError * _Nonnull))onCompletion {
-	
+- (void)deleteExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError *))onCompletion {
+	NSMutableArray *expenseItemList = [[self readDataFromMockDataFile] mutableCopy];
+	NSUInteger index = [expenseItemList indexOfObjectPassingTest:^BOOL(ETExpenseItem *obj, NSUInteger idx, BOOL *stop) {
+		return obj.identifier == expenseItem.identifier;
+	}];
+	if (index != NSNotFound) {
+		[expenseItemList removeObjectAtIndex:index];
+	}
+	[self writeDataToMockDataFileWithExpenseItems:[expenseItemList copy]];
+	onCompletion(nil);
 }
 
 
-- (void)updateExistingExpenseItem:(nonnull ETExpenseItem *)expenseItem completionHandler:(nonnull void (^)(NSError * _Nonnull))onCompletion {
-	
+- (void)updateExistingExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError *))onCompletion {
+	NSMutableArray *expenseItemList = [[self readDataFromMockDataFile] mutableCopy];
+	NSUInteger index = [expenseItemList indexOfObjectPassingTest:^BOOL(ETExpenseItem *obj, NSUInteger idx, BOOL *stop) {
+		return obj.identifier == expenseItem.identifier;
+	}];
+	if (index != NSNotFound) {
+		[expenseItemList replaceObjectAtIndex:index withObject:expenseItem];
+	}
+	[self writeDataToMockDataFileWithExpenseItems:[expenseItemList copy]];
 }
 
 #pragma mark - File IO
