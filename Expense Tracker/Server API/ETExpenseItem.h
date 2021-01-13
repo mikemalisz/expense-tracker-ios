@@ -25,6 +25,7 @@ extern NSString *const ETExpenseItemDateCreatedKey;
 @property NSDate *dateCreated;
 
 - (nullable instancetype)initWithDictionary:(NSDictionary<NSString*, id>*)values;
+- (NSDictionary *)toDictionary;
 @end
 
 NS_ASSUME_NONNULL_END

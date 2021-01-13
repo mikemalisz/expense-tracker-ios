@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ETServerAPI.h"
+#import "NSFileManager+documentsDirectoryForCurrentUser.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

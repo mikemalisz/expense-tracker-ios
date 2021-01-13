@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7819C06225AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7819C06125AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m */; };
 		8C375D7325AD3CED00EFB202 /* ETMockServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */; };
 		8C375D7E25AD47F900EFB202 /* mock-expenses.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C375D7D25AD47F900EFB202 /* mock-expenses.json */; };
 		8CA6196825AE137A001F3547 /* ETExpenseOverviewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSource.m */; };
@@ -33,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7819C05C25AE6A3400D4569A /* NSFileManager+documentsDirectoryForCurrentUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+documentsDirectoryForCurrentUser.h"; sourceTree = "<group>"; };
+		7819C06125AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+documentsDirectoryForCurrentUser.m"; sourceTree = "<group>"; };
 		8C375D7125AD3CED00EFB202 /* ETMockServerAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETMockServerAPI.h; sourceTree = "<group>"; };
 		8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETMockServerAPI.m; sourceTree = "<group>"; };
 		8C375D7D25AD47F900EFB202 /* mock-expenses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mock-expenses.json"; sourceTree = "<group>"; };
@@ -77,6 +80,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7819C05B25AE6A0500D4569A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7819C05C25AE6A3400D4569A /* NSFileManager+documentsDirectoryForCurrentUser.h */,
+				7819C06125AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		8C375D7825AD479200EFB202 /* Mock Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +132,7 @@
 				8CA6196525AE12D1001F3547 /* Expense Overview */,
 				8CD6DC0325ABF5FD005DE50B /* Server API */,
 				8CD6DBB725ABE886005DE50B /* Main.storyboard */,
+				7819C05B25AE6A0500D4569A /* Extensions */,
 				8CD6DBE925ABEB24005DE50B /* Application Lifecycle */,
 				8CD6DBED25ABEBCA005DE50B /* Supporting Files */,
 			);
@@ -282,6 +295,7 @@
 			files = (
 				8CD6DBB025ABE886005DE50B /* AppDelegate.m in Sources */,
 				8CD6DBFC25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m in Sources */,
+				7819C06225AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m in Sources */,
 				8CA6196825AE137A001F3547 /* ETExpenseOverviewDataSource.m in Sources */,
 				8C375D7325AD3CED00EFB202 /* ETMockServerAPI.m in Sources */,
 				8CD6DBC125ABE887005DE50B /* main.m in Sources */,

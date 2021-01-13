@@ -44,4 +44,16 @@ NSString *const ETExpenseItemDateCreatedKey = @"dateCreated";
     }
     return self;
 }
+
+- (NSDictionary<NSString *, id> *)toDictionary {
+	NSDictionary<NSString *, id> *propertyValues = @{
+		ETExpenseItemIdentifierKey: [self identifier],
+		ETExpenseItemAmountInCentsKey: [NSNumber numberWithInteger:[self amountInCents]],
+		ETExpenseItemExpenseTitleKey: [self expenseTitle],
+		ETExpenseItemExpenseDescriptionKey: [self expenseDescription],
+		ETExpenseItemDateOfPurchaseKey: [self dateOfPurchase],
+		ETExpenseItemDateCreatedKey: [self dateCreated]
+	};
+	return propertyValues;
+}
 @end
