@@ -24,7 +24,7 @@
 #pragma mark - User Intents
 
 - (IBAction)userDidPressCancel:(id)sender {
-
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 - (IBAction)userDidPressSubmit:(id)sender {
