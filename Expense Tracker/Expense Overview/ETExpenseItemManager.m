@@ -24,6 +24,14 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
 	return self;
 }
 
+- (NSInteger)retrieveTotalSpend {
+    NSInteger totalSpend = 0;
+    for (ETExpenseItem *item in [self expenseItemList]) {
+        totalSpend += item.amountInCents;
+    }
+    return totalSpend;
+}
+
 - (void)refreshExpenseItems {
 	typeof(self) __weak weakSelf = self;
 	[[self networkService] retrieveExpenseItems:^(NSArray<ETExpenseItem *> *expenseItems, NSError *error) {
@@ -34,11 +42,7 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
 	}];
 }
 
-- (NSInteger)retrieveTotalSpend {
-    NSInteger totalSpend = 0;
-    for (ETExpenseItem *item in [self expenseItemList]) {
-        totalSpend += item.amountInCents;
-    }
-    return totalSpend;
+- (void)submitNewExpenseItemWithTitle:(NSString *)title dollarAmount:(NSString *)amount datePurchased:(NSDate *)datePurchased {
+    NSLog(@"to be implemented");
 }
 @end

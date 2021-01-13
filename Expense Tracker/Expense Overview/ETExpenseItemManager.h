@@ -18,8 +18,10 @@ extern NSString *const ETExpenseItemManagerItemListKeyPath;
 
 - (instancetype)initWithServerAPI:(id<ETServerAPI>)networkService;
 
-- (void)refreshExpenseItems;
 - (NSInteger)retrieveTotalSpend;
+- (void)refreshExpenseItems;
+
+- (void)submitNewExpenseItemWithTitle:(NSString *)title dollarAmount:(NSString *)amount datePurchased:(NSDate *)datePurchased;
 @end
 
 NS_ASSUME_NONNULL_END
