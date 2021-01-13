@@ -55,7 +55,9 @@ typedef NS_ENUM(NSUInteger, ETExpenseOverviewSection) {
 }
 
 - (UITableViewCell*)expenseItemCellForTableView:(UITableView*)tableView at:(NSIndexPath*)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExpenseItemCell" forIndexPath:indexPath];
+    ETExpenseItemTableViewCell *cell = [tableView
+                                        dequeueReusableCellWithIdentifier:[ETExpenseItemTableViewCell cellIdentifier]
+                                        forIndexPath:indexPath];
     
     return cell;
 }

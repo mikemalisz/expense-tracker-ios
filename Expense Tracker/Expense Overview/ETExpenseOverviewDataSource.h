@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ETExpenseItemManager.h"
+#import "ETExpenseItemTableViewCell.h"
 #import "UITableViewCell+cellIdentifier.h"
 
 NS_ASSUME_NONNULL_BEGIN

@@ -14,6 +14,7 @@
 		8C375D7E25AD47F900EFB202 /* mock-expenses.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C375D7D25AD47F900EFB202 /* mock-expenses.json */; };
 		8CA6196825AE137A001F3547 /* ETExpenseOverviewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSource.m */; };
 		8CC0BAC725AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0BAC625AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m */; };
+		8CC0BAD025AF3F130064EBEC /* ETExpenseItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0BACF25AF3F130064EBEC /* ETExpenseItemTableViewCell.m */; };
 		8CD6DBB025ABE886005DE50B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBAF25ABE886005DE50B /* AppDelegate.m */; };
 		8CD6DBB325ABE886005DE50B /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBB225ABE886005DE50B /* SceneDelegate.m */; };
 		8CD6DBB925ABE886005DE50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6DBB725ABE886005DE50B /* Main.storyboard */; };
@@ -50,6 +51,8 @@
 		8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseOverviewDataSource.m; sourceTree = "<group>"; };
 		8CC0BAC525AF3CE00064EBEC /* UITableViewCell+cellIdentifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+cellIdentifier.h"; sourceTree = "<group>"; };
 		8CC0BAC625AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+cellIdentifier.m"; sourceTree = "<group>"; };
+		8CC0BACE25AF3F130064EBEC /* ETExpenseItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseItemTableViewCell.h; sourceTree = "<group>"; };
+		8CC0BACF25AF3F130064EBEC /* ETExpenseItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseItemTableViewCell.m; sourceTree = "<group>"; };
 		8CD6DBAB25ABE886005DE50B /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD6DBAE25ABE886005DE50B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8CD6DBAF25ABE886005DE50B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 				7819C06625AE94CA00D4569A /* ETExpenseItemManager.m */,
 				7819C06A25AEA26900D4569A /* ETExpenseOverviewKVOManager.h */,
 				7819C06B25AEA26900D4569A /* ETExpenseOverviewKVOManager.m */,
+				8CC0BACE25AF3F130064EBEC /* ETExpenseItemTableViewCell.h */,
+				8CC0BACF25AF3F130064EBEC /* ETExpenseItemTableViewCell.m */,
 			);
 			path = "Expense Overview";
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 			files = (
 				8CD6DBB025ABE886005DE50B /* AppDelegate.m in Sources */,
 				8CC0BAC725AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m in Sources */,
+				8CC0BAD025AF3F130064EBEC /* ETExpenseItemTableViewCell.m in Sources */,
 				8CD6DBFC25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m in Sources */,
 				7819C06225AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m in Sources */,
 				8CA6196825AE137A001F3547 /* ETExpenseOverviewDataSource.m in Sources */,
