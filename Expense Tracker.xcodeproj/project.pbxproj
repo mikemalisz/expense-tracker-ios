@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7819C06225AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7819C06125AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m */; };
 		7819C06725AE94CA00D4569A /* ETExpenseItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7819C06625AE94CA00D4569A /* ETExpenseItemManager.m */; };
+		7819C06C25AEA26900D4569A /* ETExpenseOverviewKVOManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7819C06B25AEA26900D4569A /* ETExpenseOverviewKVOManager.m */; };
 		8C375D7325AD3CED00EFB202 /* ETMockServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */; };
 		8C375D7E25AD47F900EFB202 /* mock-expenses.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C375D7D25AD47F900EFB202 /* mock-expenses.json */; };
 		8CA6196825AE137A001F3547 /* ETExpenseOverviewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSource.m */; };
@@ -39,6 +40,8 @@
 		7819C06125AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+documentsDirectoryForCurrentUser.m"; sourceTree = "<group>"; };
 		7819C06525AE94CA00D4569A /* ETExpenseItemManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseItemManager.h; sourceTree = "<group>"; };
 		7819C06625AE94CA00D4569A /* ETExpenseItemManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseItemManager.m; sourceTree = "<group>"; };
+		7819C06A25AEA26900D4569A /* ETExpenseOverviewKVOManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseOverviewKVOManager.h; sourceTree = "<group>"; };
+		7819C06B25AEA26900D4569A /* ETExpenseOverviewKVOManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseOverviewKVOManager.m; sourceTree = "<group>"; };
 		8C375D7125AD3CED00EFB202 /* ETMockServerAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETMockServerAPI.h; sourceTree = "<group>"; };
 		8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETMockServerAPI.m; sourceTree = "<group>"; };
 		8C375D7D25AD47F900EFB202 /* mock-expenses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mock-expenses.json"; sourceTree = "<group>"; };
@@ -109,6 +112,8 @@
 				8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSource.m */,
 				7819C06525AE94CA00D4569A /* ETExpenseItemManager.h */,
 				7819C06625AE94CA00D4569A /* ETExpenseItemManager.m */,
+				7819C06A25AEA26900D4569A /* ETExpenseOverviewKVOManager.h */,
+				7819C06B25AEA26900D4569A /* ETExpenseOverviewKVOManager.m */,
 			);
 			path = "Expense Overview";
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 				8CD6DBB325ABE886005DE50B /* SceneDelegate.m in Sources */,
 				8CD6DC0A25ABF88B005DE50B /* ETExpenseItem.m in Sources */,
 				7819C06725AE94CA00D4569A /* ETExpenseItemManager.m in Sources */,
+				7819C06C25AEA26900D4569A /* ETExpenseOverviewKVOManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

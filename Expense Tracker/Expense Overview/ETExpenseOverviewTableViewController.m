@@ -9,6 +9,7 @@
 
 @interface ETExpenseOverviewTableViewController ()
 @property ETExpenseOverviewDataSource *dataSource;
+@property ETExpenseOverviewKVOManager *propertyObserver;
 @end
 
 @implementation ETExpenseOverviewTableViewController
@@ -19,26 +20,23 @@
     ETExpenseOverviewDataSource *dataSource = [[ETExpenseOverviewDataSource alloc] initWithExpenseItemManager:[self itemManager]];
     [self setDataSource:dataSource];
     [[self tableView] setDataSource:dataSource];
-    
-	[[self itemManager] addObserver:self
-						 forKeyPath:ETExpenseItemManagerItemListKeyPath
-							options:NSKeyValueObservingOptionNew
-							context:nil];
 	
+	[self configurePropertyObserver];
 	[[self itemManager] refreshExpenseItems];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath
-					  ofObject:(id)object
-						change:(NSDictionary *)change
-					   context:(void *)context {
-	NSLog(@"observing....");
-	ETExpenseItemManager *itemManager = object;
-	if (itemManager) {
-		NSLog(@"%@", change);
-	} else {
-		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-	}
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+	[[self propertyObserver] removeObservers];
+}
+
+- (void)configurePropertyObserver {
+	ETExpenseOverviewKVOManager *propertyObserver = [[ETExpenseOverviewKVOManager alloc] initWithExpenseItemManager:[self itemManager]];
+	[self setPropertyObserver:propertyObserver];
+	
+	[[self propertyObserver] setExpenseItemListDidUpdate:^{
+		NSLog(@"Property Observed!");
+	}];
 }
 
 @end

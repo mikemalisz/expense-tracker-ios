@@ -9,6 +9,7 @@
 #import "ETExpenseOverviewDataSource.h"
 #import "ETServerAPI.h"
 #import "ETExpenseItemManager.h"
+#import "ETExpenseOverviewKVOManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
