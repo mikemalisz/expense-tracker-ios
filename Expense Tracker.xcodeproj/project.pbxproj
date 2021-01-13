@@ -121,8 +121,6 @@
 				8CD6DBFB25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m */,
 				8CA6196625AE137A001F3547 /* ETExpenseOverviewDataSource.h */,
 				8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSource.m */,
-				7819C06525AE94CA00D4569A /* ETExpenseItemManager.h */,
-				7819C06625AE94CA00D4569A /* ETExpenseItemManager.m */,
 				7819C06A25AEA26900D4569A /* ETExpenseOverviewKVOManager.h */,
 				7819C06B25AEA26900D4569A /* ETExpenseOverviewKVOManager.m */,
 				8CC0BACE25AF3F130064EBEC /* ETExpenseItemTableViewCell.h */,
@@ -138,6 +136,17 @@
 				8CC0BAD525AF52800064EBEC /* ETAddExpenseTableViewController.m */,
 			);
 			path = "Add Expense";
+			sourceTree = "<group>";
+		};
+		8CC0BADB25AF9CC70064EBEC /* Expense Item */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6DC0825ABF88B005DE50B /* ETExpenseItem.h */,
+				8CD6DC0925ABF88B005DE50B /* ETExpenseItem.m */,
+				7819C06525AE94CA00D4569A /* ETExpenseItemManager.h */,
+				7819C06625AE94CA00D4569A /* ETExpenseItemManager.m */,
+			);
+			path = "Expense Item";
 			sourceTree = "<group>";
 		};
 		8CD6DBA225ABE886005DE50B = {
@@ -161,6 +170,7 @@
 		8CD6DBAD25ABE886005DE50B /* Expense Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				8CC0BADB25AF9CC70064EBEC /* Expense Item */,
 				8CC0BAD325AF52600064EBEC /* Add Expense */,
 				8CA6196525AE12D1001F3547 /* Expense Overview */,
 				8CD6DC0325ABF5FD005DE50B /* Server API */,
@@ -209,8 +219,6 @@
 			isa = PBXGroup;
 			children = (
 				8CD6DC0425ABF620005DE50B /* ETServerAPI.h */,
-				8CD6DC0825ABF88B005DE50B /* ETExpenseItem.h */,
-				8CD6DC0925ABF88B005DE50B /* ETExpenseItem.m */,
 				8C375D7125AD3CED00EFB202 /* ETMockServerAPI.h */,
 				8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */,
 			);
