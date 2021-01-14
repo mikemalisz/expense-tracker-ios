@@ -42,9 +42,24 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
 	}];
 }
 
-- (void)submitNewExpenseItemWithTitle:(NSString *)title dollarAmount:(NSString *)amount datePurchased:(NSDate *)datePurchased completionHandler:(void (^)(NSError * nullable))onCompletion {
-    NSLog(@"to be implemented");
+- (void)submitNewExpenseItemWithTitle:(NSString *)title dollarAmount:(NSString *)amountText datePurchased:(NSDate *)datePurchased completionHandler:(void (^)(NSError * _Nullable))onCompletion {
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    NSInteger dollarAmount = [[formatter numberFromString:amountText] integerValue];
+    NSNumber *amountInCents = [NSNumber numberWithInteger:(dollarAmount * 100)];
     
-    onCompletion(nil);
+    NSDictionary *initializationItems = @{
+        ETExpenseItemIdentifierKey: [[NSUUID new] UUIDString],
+        ETExpenseItemAmountInCentsKey: amountInCents,
+        ETExpenseItemExpenseTitleKey: title,
+        ETExpenseItemExpenseDescriptionKey: @"",
+        ETExpenseItemDateOfPurchaseKey: datePurchased,
+        ETExpenseItemDateCreatedKey: [NSDate new]};
+    
+    ETExpenseItem *newItem = [[ETExpenseItem alloc] initWithDictionary:initializationItems];
+    [[self networkService] persistNewExpenseItem:newItem completionHandler:^(NSError * _Nullable error) {
+        NSLog(@"%@", error);
+        onCompletion(error);
+    }];
 }
 @end

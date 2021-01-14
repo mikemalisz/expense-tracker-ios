@@ -33,13 +33,18 @@
     NSDate *datePurchased = [[self datePurchasedPicker] date];
     
     if ((expenseTitle != nil) && (amount != nil)) {
+        typeof(self) weakSelf = self;
         [[self itemManager]
          submitNewExpenseItemWithTitle:expenseTitle
          dollarAmount:amount
          datePurchased:datePurchased
          completionHandler:^(NSError * _Nullable error) {
-            #warning handle error
-            NSLog(@"%@", error);
+            typeof(weakSelf) strongSelf = weakSelf;
+            if (error != nil) {
+                #warning handle error
+            } else {
+                [strongSelf dismissViewControllerAnimated:true completion:nil];
+            }
         }];
     }
 }

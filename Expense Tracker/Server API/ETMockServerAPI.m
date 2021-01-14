@@ -11,27 +11,12 @@ NSString *const mockDataFilename = @"mock-data";
 
 @implementation ETMockServerAPI
 
-- (instancetype)init {
-	self = [super init];
-	if (self) {
-		[self saveBundleMockDataToDocuments];
-	}
-	return self;
-}
-
-/// saves the mock expenses j
-- (void)saveBundleMockDataToDocuments {
-	NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"mock-expenses" ofType:@".json"];
-	NSURL *localFilePath = [[NSFileManager documentsDirectoryForCurrentUser] URLByAppendingPathComponent:mockDataFilename];
-	[[NSFileManager defaultManager] copyItemAtPath:bundlePath toPath:[localFilePath path] error:nil];
-}
-
-- (void)retrieveExpenseItems:(nonnull void (^)(NSArray<ETExpenseItem*>*, NSError*))onCompletion {
+- (void)retrieveExpenseItems:(nonnull void (^)(NSArray<ETExpenseItem*>*, NSError * _Nullable))onCompletion {
 	NSArray<ETExpenseItem *> *expenseItemList = [self readDataFromMockDataFile];
     onCompletion(expenseItemList, nil);
 }
 
-- (void)persistNewExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError *))onCompletion {
+- (void)persistNewExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError * _Nullable))onCompletion {
 	NSMutableArray *expenseItemList = [[self readDataFromMockDataFile] mutableCopy];
 	[expenseItemList addObject:expenseItem];
 	[self writeDataToMockDataFileWithExpenseItems:[expenseItemList copy]];
@@ -39,7 +24,7 @@ NSString *const mockDataFilename = @"mock-data";
 }
 
 
-- (void)deleteExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError *))onCompletion {
+- (void)deleteExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError * _Nullable))onCompletion {
 	NSMutableArray *expenseItemList = [[self readDataFromMockDataFile] mutableCopy];
 	NSUInteger index = [expenseItemList indexOfObjectPassingTest:^BOOL(ETExpenseItem *obj, NSUInteger idx, BOOL *stop) {
 		return obj.identifier == expenseItem.identifier;
@@ -52,7 +37,7 @@ NSString *const mockDataFilename = @"mock-data";
 }
 
 
-- (void)updateExistingExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError *))onCompletion {
+- (void)updateExistingExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError * _Nullable))onCompletion {
 	NSMutableArray *expenseItemList = [[self readDataFromMockDataFile] mutableCopy];
 	NSUInteger index = [expenseItemList indexOfObjectPassingTest:^BOOL(ETExpenseItem *obj, NSUInteger idx, BOOL *stop) {
 		return obj.identifier == expenseItem.identifier;
@@ -68,9 +53,15 @@ NSString *const mockDataFilename = @"mock-data";
 - (NSArray<ETExpenseItem *> *)readDataFromMockDataFile {
 	// retrieve the dictionary data from the mock data file in the user's documents directory
 	NSURL *fileUrl = [[NSFileManager documentsDirectoryForCurrentUser] URLByAppendingPathComponent:mockDataFilename];
-	NSData *fileData = [[NSFileManager defaultManager] contentsAtPath:[fileUrl path]];
-	NSArray<NSDictionary *> *dictionaryList = [NSJSONSerialization JSONObjectWithData:fileData options:0 error:nil];
-	return [self createExpenseItemsFromDictionaryList:dictionaryList];
+    NSData *fileData = [[NSFileManager defaultManager] contentsAtPath:[fileUrl path]];
+    if (fileData != nil) {
+        // contents of mock data file exists
+        NSArray<NSDictionary *> *dictionaryList = [NSJSONSerialization JSONObjectWithData:fileData options:0 error:nil];
+        return [self createExpenseItemsFromDictionaryList:dictionaryList];
+    } else {
+        // mock data file doesn't exist
+        return [NSArray new];
+    }
 }
 
 - (void)writeDataToMockDataFileWithExpenseItems:(NSArray<ETExpenseItem*>*)expenseItemList {
@@ -82,9 +73,14 @@ NSString *const mockDataFilename = @"mock-data";
 
 	// write the expense item dictionary list to the mock data file
 	NSURL *fileUrl = [[NSFileManager documentsDirectoryForCurrentUser] URLByAppendingPathComponent:mockDataFilename];
-	NSData *serializedData = [NSJSONSerialization dataWithJSONObject:expenseItemDictionaryList options:0 error:nil];
-	BOOL didComplete = [serializedData writeToURL:fileUrl atomically:YES];
-	NSLog(@"%c", didComplete);
+    if ([NSJSONSerialization isValidJSONObject:expenseItemDictionaryList]) {
+        NSLog(@"valid json");
+        NSData *serializedData = [NSJSONSerialization dataWithJSONObject:expenseItemDictionaryList options:0 error:nil];
+        BOOL didComplete = [serializedData writeToURL:fileUrl atomically:YES];
+        NSLog(@"%c", didComplete);
+    } else {
+        NSLog(@"invalid json");
+    }
 }
 
 #pragma mark - Data Preparation
@@ -92,7 +88,8 @@ NSString *const mockDataFilename = @"mock-data";
 - (NSArray<ETExpenseItem *> *)createExpenseItemsFromDictionaryList:(NSArray<NSDictionary *> *)dictionaryList {
 	// configure our date formatter
 	NSDateFormatter *formatter = [NSDateFormatter new];
-	[formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+	[formatter setDateStyle:NSDateFormatterShortStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
 	
 	// get ready to create new expense items and store them in this list
 	NSMutableArray<ETExpenseItem *> *expenseItemList = [NSMutableArray new];
