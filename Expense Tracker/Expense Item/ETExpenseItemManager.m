@@ -70,9 +70,11 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
     }];
     
     NSPredicate *filterPredicate = [NSPredicate predicateWithBlock:^BOOL(ETExpenseItem  *obj, id bindings) {
-        return obj.identifier == expenseItem.identifier;
+        BOOL isIdentifiersEqual = [[obj identifier] isEqualToString:[expenseItem identifier]];
+        return !isIdentifiersEqual;
     }];
     NSArray *filteredExpenseItems = [[self expenseItemList] filteredArrayUsingPredicate:filterPredicate];
+    NSLog(@"%@ -> %@", [self expenseItemList], filteredExpenseItems);
     [self setExpenseItemList:filteredExpenseItems];
 }
 @end
