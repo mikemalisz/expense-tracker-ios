@@ -64,8 +64,15 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
 }
 
 - (void)deleteExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError * _Nullable))onCompletion {
+    
     [[self networkService] deleteExpenseItem:expenseItem completionHandler:^(NSError * _Nullable error) {
         onCompletion(error);
     }];
+    
+    NSPredicate *filterPredicate = [NSPredicate predicateWithBlock:^BOOL(ETExpenseItem  *obj, id bindings) {
+        return obj.identifier == expenseItem.identifier;
+    }];
+    NSArray *filteredExpenseItems = [[self expenseItemList] filteredArrayUsingPredicate:filterPredicate];
+    [self setExpenseItemList:filteredExpenseItems];
 }
 @end

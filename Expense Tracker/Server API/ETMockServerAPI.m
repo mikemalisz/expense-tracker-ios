@@ -27,7 +27,7 @@ NSString *const mockDataFilename = @"mock-data";
 - (void)deleteExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError * _Nullable))onCompletion {
 	NSMutableArray *expenseItemList = [[self readDataFromMockDataFile] mutableCopy];
 	NSUInteger index = [expenseItemList indexOfObjectPassingTest:^BOOL(ETExpenseItem *obj, NSUInteger idx, BOOL *stop) {
-		return obj.identifier == expenseItem.identifier;
+		return [[obj identifier] isEqualToString:[expenseItem identifier]];
 	}];
 	if (index != NSNotFound) {
 		[expenseItemList removeObjectAtIndex:index];
@@ -40,7 +40,7 @@ NSString *const mockDataFilename = @"mock-data";
 - (void)updateExistingExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError * _Nullable))onCompletion {
 	NSMutableArray *expenseItemList = [[self readDataFromMockDataFile] mutableCopy];
 	NSUInteger index = [expenseItemList indexOfObjectPassingTest:^BOOL(ETExpenseItem *obj, NSUInteger idx, BOOL *stop) {
-		return obj.identifier == expenseItem.identifier;
+        return [[obj identifier] isEqualToString:[expenseItem identifier]];
 	}];
 	if (index != NSNotFound) {
 		[expenseItemList replaceObjectAtIndex:index withObject:expenseItem];
