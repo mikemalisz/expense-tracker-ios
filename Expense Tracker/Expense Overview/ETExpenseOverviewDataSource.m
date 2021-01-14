@@ -66,4 +66,21 @@ typedef NS_ENUM(NSUInteger, ETExpenseOverviewSection) {
     }
     return cell;
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSArray *itemList = [[self itemManager] expenseItemList];
+        ETExpenseItem *item = [itemList objectAtIndex:[indexPath row]];
+        
+        [[self itemManager] deleteExpenseItem:item completionHandler:^(NSError * _Nullable error) {
+            if (error != nil) {
+                #warning handle error
+            }
+        }];
+    }
+}
 @end

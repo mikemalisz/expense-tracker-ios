@@ -22,6 +22,8 @@ extern NSString *const ETExpenseItemManagerItemListKeyPath;
 - (void)refreshExpenseItems;
 
 - (void)submitNewExpenseItemWithTitle:(NSString *)title dollarAmount:(NSString *)amountText datePurchased:(NSDate *)datePurchased completionHandler:(void (^)(NSError * _Nullable))onCompletion;
-@end
 
+- (void)deleteExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError * _Nullable))onCompletion;
+
+@end
 NS_ASSUME_NONNULL_END

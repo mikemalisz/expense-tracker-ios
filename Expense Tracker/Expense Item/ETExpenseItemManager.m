@@ -62,4 +62,10 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
         onCompletion(error);
     }];
 }
+
+- (void)deleteExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError * _Nullable))onCompletion {
+    [[self networkService] deleteExpenseItem:expenseItem completionHandler:^(NSError * _Nullable error) {
+        onCompletion(error);
+    }];
+}
 @end
