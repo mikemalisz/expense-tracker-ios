@@ -86,20 +86,21 @@ NSString *const mockDataFilename = @"mock-data";
 #pragma mark - Data Preparation
 
 - (NSArray<ETExpenseItem *> *)createExpenseItemsFromDictionaryList:(NSArray<NSDictionary *> *)dictionaryList {
-	// configure our date formatter
-	NSDateFormatter *formatter = [NSDateFormatter new];
-	[formatter setDateStyle:NSDateFormatterShortStyle];
-    [formatter setTimeStyle:NSDateFormatterShortStyle];
-	
 	// get ready to create new expense items and store them in this list
 	NSMutableArray<ETExpenseItem *> *expenseItemList = [NSMutableArray new];
 	
 	// loop through each raw expense item in dictionary format, and
 	// initialize an expense item from it
 	for (NSDictionary *expenseItem in dictionaryList) {
-		NSDate *dateOfPurchase = [formatter dateFromString:expenseItem[ETExpenseItemDateOfPurchaseKey]];
-		NSDate *dateCreated = [formatter dateFromString:expenseItem[ETExpenseItemDateCreatedKey]];
-		
+        // get the timestamp number values that are stored in expense item dictionary
+        NSNumber *dateOfPurchaseTimestamp = expenseItem[ETExpenseItemDateOfPurchaseKey];
+        NSNumber *dateCreatedTimestamp = expenseItem[ETExpenseItemDateCreatedKey];
+        
+        // create dates from the timestamps
+        NSDate *dateOfPurchase = [[NSDate alloc] initWithTimeIntervalSince1970:[dateOfPurchaseTimestamp doubleValue]];
+        NSDate *dateCreated = [[NSDate alloc] initWithTimeIntervalSince1970:[dateCreatedTimestamp doubleValue]];
+        
+        // create a copy of the expense item and update the dates to be date objects
 		NSMutableDictionary *initializationItems = [expenseItem mutableCopy];
 		[initializationItems setObject:dateOfPurchase forKey:ETExpenseItemDateOfPurchaseKey];
 		[initializationItems setObject:dateCreated forKey:ETExpenseItemDateCreatedKey];
