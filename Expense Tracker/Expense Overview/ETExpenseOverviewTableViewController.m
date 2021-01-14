@@ -42,7 +42,7 @@
 	[[self propertyObserver] setExpenseItemListDidUpdate:^{
         typeof(weakSelf) strongSelf = weakSelf;
         if (strongSelf != nil) {
-            [[strongSelf tableView] reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [[strongSelf tableView] reloadSections:[NSIndexSet indexSetWithIndex:ETExpenseOverviewSectionExpenseItems] withRowAnimation:UITableViewRowAnimationAutomatic];
         }
 	}];
 }

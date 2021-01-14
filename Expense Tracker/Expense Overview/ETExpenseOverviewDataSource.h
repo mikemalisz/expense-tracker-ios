@@ -12,6 +12,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, ETExpenseOverviewSection) {
+    ETExpenseOverviewSectionTotalSpendOverview,
+    ETExpenseOverviewSectionExpenseItems
+};
+
 @interface ETExpenseOverviewDataSource : NSObject <UITableViewDataSource>
 - (instancetype)initWithExpenseItemManager:(ETExpenseItemManager *)itemManager;
 @end

@@ -7,11 +7,6 @@
 
 #import "ETExpenseOverviewDataSource.h"
 
-typedef NS_ENUM(NSUInteger, ETExpenseOverviewSection) {
-    totalSpendOverview,
-    expenseItems
-};
-
 @interface ETExpenseOverviewDataSource ()
 @property ETExpenseItemManager *itemManager;
 @end
@@ -33,8 +28,8 @@ typedef NS_ENUM(NSUInteger, ETExpenseOverviewSection) {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     ETExpenseOverviewSection expenseOverviewSection = section;
     switch (expenseOverviewSection) {
-        case totalSpendOverview: return 1;
-        case expenseItems:
+        case ETExpenseOverviewSectionTotalSpendOverview: return 1;
+        case ETExpenseOverviewSectionExpenseItems:
 			return [[[self itemManager] expenseItemList] count];
     }
 }
@@ -42,9 +37,9 @@ typedef NS_ENUM(NSUInteger, ETExpenseOverviewSection) {
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
 	ETExpenseOverviewSection section = [indexPath section];
     switch (section) {
-        case totalSpendOverview:
+        case ETExpenseOverviewSectionTotalSpendOverview:
             return [self totalSpendOverviewCellForTableView:tableView at:indexPath];
-        case expenseItems: return [self expenseItemCellForTableView:tableView at:indexPath];
+        case ETExpenseOverviewSectionExpenseItems: return [self expenseItemCellForTableView:tableView at:indexPath];
     }
 }
 
