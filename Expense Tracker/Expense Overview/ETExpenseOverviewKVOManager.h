@@ -11,10 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ETExpenseOverviewKVOManager : NSObject
+
 @property (copy, nullable) void (^expenseItemListDidUpdate)(void);
 - (instancetype)initWithExpenseItemManager:(ETExpenseItemManager *)itemManager;
-
 - (void)removeObservers;
+
 @end
 
 NS_ASSUME_NONNULL_END

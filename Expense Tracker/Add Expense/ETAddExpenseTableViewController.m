@@ -44,6 +44,7 @@
                 #warning handle error
             } else {
                 [strongSelf dismissViewControllerAnimated:true completion:nil];
+                [[strongSelf itemManager] refreshExpenseItems];
             }
         }];
     }
