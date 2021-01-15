@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AuthenticationServices/AuthenticationServices.h>
+#import "ETServerProvider.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

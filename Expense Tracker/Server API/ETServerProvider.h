@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ETServerProvider : NSObject
+- (void)testServerConnection;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -27,14 +27,18 @@
 }
 
 - (void)handleSignInButtonPress {
-    ASAuthorizationAppleIDProvider *provider = [ASAuthorizationAppleIDProvider new];
-    ASAuthorizationAppleIDRequest *request = [provider createRequest];
-    [request setRequestedScopes:@[ASAuthorizationScopeEmail]];
+    ETServerProvider *provider = [ETServerProvider new];
+    [provider testServerConnection];
     
-    ASAuthorizationController *controller = [[ASAuthorizationController alloc] initWithAuthorizationRequests:@[request]];
-    [controller setDelegate:self];
-    [controller setPresentationContextProvider:self];
-    [controller performRequests];
+    
+//    ASAuthorizationAppleIDProvider *provider = [ASAuthorizationAppleIDProvider new];
+//    ASAuthorizationAppleIDRequest *request = [provider createRequest];
+//    [request setRequestedScopes:@[ASAuthorizationScopeEmail]];
+//
+//    ASAuthorizationController *controller = [[ASAuthorizationController alloc] initWithAuthorizationRequests:@[request]];
+//    [controller setDelegate:self];
+//    [controller setPresentationContextProvider:self];
+//    [controller performRequests];
 }
 
 #pragma mark - Authorizaton Controller Delegate
