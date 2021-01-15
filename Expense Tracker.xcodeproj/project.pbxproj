@@ -12,7 +12,9 @@
 		7819C06C25AEA26900D4569A /* ETExpenseOverviewKVOManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7819C06B25AEA26900D4569A /* ETExpenseOverviewKVOManager.m */; };
 		8C375D7325AD3CED00EFB202 /* ETMockServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */; };
 		8C375D7E25AD47F900EFB202 /* mock-expenses.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C375D7D25AD47F900EFB202 /* mock-expenses.json */; };
+		8C879D0725B0D74800BBD953 /* ETLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C879D0625B0D74800BBD953 /* ETLoginViewController.m */; };
 		8CA6196825AE137A001F3547 /* ETExpenseOverviewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSource.m */; };
+		8CAC311925B246320071AF9B /* ETServerProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAC311825B246320071AF9B /* ETServerProvider.m */; };
 		8CC0BAC725AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0BAC625AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m */; };
 		8CC0BAD025AF3F130064EBEC /* ETExpenseItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0BACF25AF3F130064EBEC /* ETExpenseItemTableViewCell.m */; };
 		8CC0BAD625AF52800064EBEC /* ETAddExpenseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0BAD525AF52800064EBEC /* ETAddExpenseTableViewController.m */; };
@@ -50,8 +52,12 @@
 		8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETMockServerAPI.m; sourceTree = "<group>"; };
 		8C375D7D25AD47F900EFB202 /* mock-expenses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mock-expenses.json"; sourceTree = "<group>"; };
 		8C879CF725B0D51900BBD953 /* Expense Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Expense Tracker.entitlements"; sourceTree = "<group>"; };
+		8C879D0525B0D74800BBD953 /* ETLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETLoginViewController.h; sourceTree = "<group>"; };
+		8C879D0625B0D74800BBD953 /* ETLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETLoginViewController.m; sourceTree = "<group>"; };
 		8CA6196625AE137A001F3547 /* ETExpenseOverviewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseOverviewDataSource.h; sourceTree = "<group>"; };
 		8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseOverviewDataSource.m; sourceTree = "<group>"; };
+		8CAC311725B246320071AF9B /* ETServerProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETServerProvider.h; sourceTree = "<group>"; };
+		8CAC311825B246320071AF9B /* ETServerProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETServerProvider.m; sourceTree = "<group>"; };
 		8CC0BAC525AF3CE00064EBEC /* UITableViewCell+cellIdentifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+cellIdentifier.h"; sourceTree = "<group>"; };
 		8CC0BAC625AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+cellIdentifier.m"; sourceTree = "<group>"; };
 		8CC0BACE25AF3F130064EBEC /* ETExpenseItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseItemTableViewCell.h; sourceTree = "<group>"; };
@@ -123,6 +129,8 @@
 		8C879CFA25B0D6B800BBD953 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
+				8C879D0525B0D74800BBD953 /* ETLoginViewController.h */,
+				8C879D0625B0D74800BBD953 /* ETLoginViewController.m */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -236,6 +244,8 @@
 				8CD6DC0425ABF620005DE50B /* ETServerAPI.h */,
 				8C375D7125AD3CED00EFB202 /* ETMockServerAPI.h */,
 				8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */,
+				8CAC311725B246320071AF9B /* ETServerProvider.h */,
+				8CAC311825B246320071AF9B /* ETServerProvider.m */,
 			);
 			path = "Server API";
 			sourceTree = "<group>";
@@ -353,9 +363,11 @@
 				8CC0BAE025AFA8D90064EBEC /* UIViewController+initiateUsingStoryboard.m in Sources */,
 				8CC0BAC725AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m in Sources */,
 				8CC0BAD625AF52800064EBEC /* ETAddExpenseTableViewController.m in Sources */,
+				8C879D0725B0D74800BBD953 /* ETLoginViewController.m in Sources */,
 				8CC0BAD025AF3F130064EBEC /* ETExpenseItemTableViewCell.m in Sources */,
 				8CD6DBFC25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m in Sources */,
 				7819C06225AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m in Sources */,
+				8CAC311925B246320071AF9B /* ETServerProvider.m in Sources */,
 				8CA6196825AE137A001F3547 /* ETExpenseOverviewDataSource.m in Sources */,
 				8C375D7325AD3CED00EFB202 /* ETMockServerAPI.m in Sources */,
 				8CD6DBC125ABE887005DE50B /* main.m in Sources */,

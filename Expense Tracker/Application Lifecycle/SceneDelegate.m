@@ -19,6 +19,9 @@
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     
     UIViewController *rootController = [[self window] rootViewController];
+    if (![rootController isKindOfClass:[UINavigationController class]]) {
+        return;
+    }
     BOOL expenseOverviewControllerExists = [[(UINavigationController *)rootController topViewController] isKindOfClass:[ETExpenseOverviewTableViewController class]];
     if (expenseOverviewControllerExists) {
         ETExpenseOverviewTableViewController *expenseController = (ETExpenseOverviewTableViewController *)[(UINavigationController *) rootController topViewController];

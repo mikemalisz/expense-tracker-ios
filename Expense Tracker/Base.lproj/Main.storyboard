@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="85a-48-gSQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SU7-2L-4LI">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -265,6 +267,40 @@
             </objects>
             <point key="canvasLocation" x="1292.753623188406" y="-14.0625"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="jSm-u3-nNe">
+            <objects>
+                <viewController storyboardIdentifier="ETLoginViewController" id="SU7-2L-4LI" customClass="ETLoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tPa-Sh-1FZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ugn-U5-hsv">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="obL-SF-Nii">
+                                        <rect key="frame" x="107" y="0.0" width="200" height="818"/>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Zbw-1y-5Hq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ugn-U5-hsv" firstAttribute="leading" secondItem="Zbw-1y-5Hq" secondAttribute="leading" id="6vq-No-cDZ"/>
+                            <constraint firstItem="Zbw-1y-5Hq" firstAttribute="trailing" secondItem="Ugn-U5-hsv" secondAttribute="trailing" id="Dhn-Wt-w98"/>
+                            <constraint firstItem="Ugn-U5-hsv" firstAttribute="top" secondItem="Zbw-1y-5Hq" secondAttribute="top" id="LuP-0H-aSR"/>
+                            <constraint firstItem="Zbw-1y-5Hq" firstAttribute="bottom" secondItem="Ugn-U5-hsv" secondAttribute="bottom" id="XrQ-OF-35N"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginProviderStackView" destination="obL-SF-Nii" id="CHl-2W-eHS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ous-ht-rlH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-642" y="-727"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="C6L-bn-ZP2">
             <objects>
@@ -284,4 +320,9 @@
             <point key="canvasLocation" x="-694.20289855072474" y="-14.0625"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
