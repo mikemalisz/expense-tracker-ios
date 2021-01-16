@@ -8,7 +8,7 @@
 #import "ETAuthenticationManager.h"
 
 NSString *const ETAuthenticationService = @"authentication";
-NSString *const ETIdentityTokenAccount = @"identityToken";
+NSString *const ETUserAccount = @"userAccount";
 
 @interface ETAuthenticationManager ()
 
@@ -22,7 +22,7 @@ NSString *const ETIdentityTokenAccount = @"identityToken";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _identityTokenKeychain = [[ETKeychainItem alloc] initWithServiceString:ETAuthenticationService accountString:ETIdentityTokenAccount];
+        _identityTokenKeychain = [[ETKeychainItem alloc] initWithServiceString:ETAuthenticationService accountString:ETUserAccount];
     }
     return self;
 }
@@ -34,16 +34,7 @@ NSString *const ETIdentityTokenAccount = @"identityToken";
     id credential = [authorization credential];
     
     if ([credential isKindOfClass:[ASAuthorizationAppleIDCredential class]]) {
-        ASAuthorizationAppleIDCredential *appleIDCredential = credential;
-        
-        NSError *error;
-        BOOL isSuccessful = [[self identityTokenKeychain] setItemValueWithItemData:[appleIDCredential identityToken] error:&error];
-        
-        if (!isSuccessful) {
-            #warning handle error
-            NSLog(@"Couldn't set identityTokenKeychain: %@", error);
-        }
-        
+        [self persistAppleIDCredentialToKeychain:credential];
     } else if ([credential isKindOfClass:[ASPasswordCredential class]]) {
         NSLog(@"ASPasswordCredential: %@", credential);
     }
@@ -52,6 +43,35 @@ NSString *const ETIdentityTokenAccount = @"identityToken";
 - (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error {
     #warning handle error
     NSLog(@"%@", error);
+}
+
+#pragma mark - Convenience
+
+- (void)persistAppleIDCredentialToKeychain:(ASAuthorizationAppleIDCredential *)credential {
+    NSMutableDictionary *valuesToPersist = [NSMutableDictionary new];
+    [valuesToPersist setObject:[credential user] forKey:@"userId"];
+    if ([credential email]) {
+        [valuesToPersist setObject:[credential email] forKey:@"email"];
+    }
+    if ([credential identityToken]) {
+        NSString *decodedToken = [[NSString alloc] initWithData:[credential identityToken] encoding:NSUTF8StringEncoding];
+        if (decodedToken) {
+            [valuesToPersist setObject:decodedToken forKey:@"identityToken"];
+        }
+    }
+    
+    NSError *error;
+    NSData *serializedData = [NSJSONSerialization dataWithJSONObject:[valuesToPersist copy] options:0 error:&error];
+    if (serializedData == nil) {
+        #warning handle error
+        return NSLog(@"%@", error);
+    }
+    
+    BOOL isSuccessful = [[self identityTokenKeychain] setItemValueWithItemData:serializedData error:&error];
+    if (!isSuccessful) {
+        #warning handle error
+        NSLog(@"Couldn't set identityTokenKeychain: %@", error);
+    }
 }
 
 @end
