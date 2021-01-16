@@ -23,6 +23,7 @@
 		8CC8717025B27733008F6B66 /* ETAppError.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8716F25B27733008F6B66 /* ETAppError.m */; };
 		8CC8718725B28F9F008F6B66 /* ETAppErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8718625B28F9F008F6B66 /* ETAppErrorTests.m */; };
 		8CC8718D25B29202008F6B66 /* ETKeychainItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8718C25B29202008F6B66 /* ETKeychainItemTests.m */; };
+		8CC8719425B29CB8008F6B66 /* ETAuthenticationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8719325B29CB8008F6B66 /* ETAuthenticationManager.m */; };
 		8CD6DBB025ABE886005DE50B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBAF25ABE886005DE50B /* AppDelegate.m */; };
 		8CD6DBB325ABE886005DE50B /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBB225ABE886005DE50B /* SceneDelegate.m */; };
 		8CD6DBB925ABE886005DE50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6DBB725ABE886005DE50B /* Main.storyboard */; };
@@ -76,6 +77,8 @@
 		8CC8716F25B27733008F6B66 /* ETAppError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETAppError.m; sourceTree = "<group>"; };
 		8CC8718625B28F9F008F6B66 /* ETAppErrorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETAppErrorTests.m; sourceTree = "<group>"; };
 		8CC8718C25B29202008F6B66 /* ETKeychainItemTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETKeychainItemTests.m; sourceTree = "<group>"; };
+		8CC8719225B29CB8008F6B66 /* ETAuthenticationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETAuthenticationManager.h; sourceTree = "<group>"; };
+		8CC8719325B29CB8008F6B66 /* ETAuthenticationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETAuthenticationManager.m; sourceTree = "<group>"; };
 		8CD6DBAB25ABE886005DE50B /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD6DBAE25ABE886005DE50B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8CD6DBAF25ABE886005DE50B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -141,6 +144,8 @@
 			children = (
 				8C879D0525B0D74800BBD953 /* ETLoginViewController.h */,
 				8C879D0625B0D74800BBD953 /* ETLoginViewController.m */,
+				8CC8719225B29CB8008F6B66 /* ETAuthenticationManager.h */,
+				8CC8719325B29CB8008F6B66 /* ETAuthenticationManager.m */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -399,6 +404,7 @@
 				8C879D0725B0D74800BBD953 /* ETLoginViewController.m in Sources */,
 				8CC0BAD025AF3F130064EBEC /* ETExpenseItemTableViewCell.m in Sources */,
 				8CC8716B25B26F3A008F6B66 /* ETKeychainItem.m in Sources */,
+				8CC8719425B29CB8008F6B66 /* ETAuthenticationManager.m in Sources */,
 				8CD6DBFC25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m in Sources */,
 				7819C06225AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m in Sources */,
 				8CAC311925B246320071AF9B /* ETServerProvider.m in Sources */,

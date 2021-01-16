@@ -18,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configureSignInButton];
+    
+    [self setAuthenticationManager:[ETAuthenticationManager new]];
+    
 }
 
 - (void)configureSignInButton {
@@ -27,36 +30,14 @@
 }
 
 - (void)handleSignInButtonPress {
-    ETServerProvider *provider = [ETServerProvider new];
-    [provider testServerConnection];
-    
-    
-//    ASAuthorizationAppleIDProvider *provider = [ASAuthorizationAppleIDProvider new];
-//    ASAuthorizationAppleIDRequest *request = [provider createRequest];
-//    [request setRequestedScopes:@[ASAuthorizationScopeEmail]];
-//
-//    ASAuthorizationController *controller = [[ASAuthorizationController alloc] initWithAuthorizationRequests:@[request]];
-//    [controller setDelegate:self];
-//    [controller setPresentationContextProvider:self];
-//    [controller performRequests];
-}
+    ASAuthorizationAppleIDProvider *provider = [ASAuthorizationAppleIDProvider new];
+    ASAuthorizationAppleIDRequest *request = [provider createRequest];
+    [request setRequestedScopes:@[ASAuthorizationScopeEmail]];
 
-#pragma mark - Authorizaton Controller Delegate
-
-- (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithAuthorization:(ASAuthorization *)authorization {
-    id credential = [authorization credential];
-    
-    if ([credential isKindOfClass:[ASAuthorizationAppleIDCredential class]]) {
-        NSLog(@"ASAuthorizatonAppleIDCredential: %@", credential);
-    } else if ([credential isKindOfClass:[ASPasswordCredential class]]) {
-        NSLog(@"ASPasswordCredential: %@", credential);
-    }
-}
-
-- (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error {
-    #warning handle error
-    NSLog(@"%@", error);
-    NSLog(@"%@", [error localizedDescription]);
+    ASAuthorizationController *controller = [[ASAuthorizationController alloc] initWithAuthorizationRequests:@[request]];
+    [controller setDelegate:[self authenticationManager]];
+    [controller setPresentationContextProvider:self];
+    [controller performRequests];
 }
 
 #pragma mark - Authorizaton Context Providing

@@ -45,13 +45,13 @@ NSString *const ETKeychainAccountString = @"test-account";
     ETKeychainItem *sut = [self sut];
     
     NSError *testError;
-    NSString *storedValue = [sut readItemValueWithError:&testError];
+    NSString *storedValue = [sut stringByReadingItemValueWithError:&testError];
     
     XCTAssertNil(storedValue);
     XCTAssert(testError);
 }
 
-- (void)test_setAndReadItem_thatItemIsSavedAndReadProperly {
+- (void)test_setAndReadStringItem_thatItemIsSavedAndReadProperly {
     // setup
     NSString *passwordToSave = @"Random password";
     NSError *error;
@@ -64,9 +64,31 @@ NSString *const ETKeychainAccountString = @"test-account";
     XCTAssertNil(error);
     
     // read item - should return our password without errors
-    NSString *retrievedPassword = [sut readItemValueWithError:&error];
+    NSString *retrievedPassword = [sut stringByReadingItemValueWithError:&error];
     
     XCTAssert([passwordToSave isEqualToString:retrievedPassword]);
+    XCTAssertNil(error);
+}
+
+- (void)test_setAndReadDictionaryItem_thatItemIsSavedAndReadProperly {
+    // setup
+    NSDictionary *testDictionary = @{ @"testKey": @"value", @"secondKey": @10 };
+    NSData *encodedDictionary = [NSJSONSerialization dataWithJSONObject:testDictionary options:0 error:nil];
+    
+    NSError *error;
+    ETKeychainItem *sut = [self sut];
+    
+    // set item - should save without errors
+    BOOL isSuccessful = [sut setItemValueWithItemData:encodedDictionary error:&error];
+    
+    XCTAssert(isSuccessful);
+    XCTAssertNil(error);
+    
+    // read item - should return our password without errors
+    NSData *retrievedData = [sut dataByReadingItemValueWithError:&error];
+    NSMutableDictionary *deserializedDictionary = [NSJSONSerialization JSONObjectWithData:retrievedData options:0 error:nil];
+    
+    XCTAssert([testDictionary isEqualToDictionary:deserializedDictionary]);
     XCTAssertNil(error);
 }
 
@@ -87,7 +109,7 @@ NSString *const ETKeychainAccountString = @"test-account";
     XCTAssertNil(error);
     
     // read item - should return our second password without errors
-    NSString *retrievedPassword = [sut readItemValueWithError:&error];
+    NSString *retrievedPassword = [sut stringByReadingItemValueWithError:&error];
     
     XCTAssert([secondPassword isEqualToString:retrievedPassword]);
     XCTAssertNil(error);

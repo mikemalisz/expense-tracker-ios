@@ -17,7 +17,18 @@
     return self;
 }
 
-- (NSString * _Nullable)readItemValueWithError:(NSError * _Nullable * _Nullable)errorPointer {
+#pragma mark - Read Item
+
+- (NSString * _Nullable)stringByReadingItemValueWithError:(NSError * _Nullable * _Nullable)errorPointer {
+    NSData *item = [self dataByReadingItemValueWithError:errorPointer];
+    NSString *itemAsString;
+    if (item != nil) {
+        itemAsString = [[NSString alloc] initWithData:item encoding:NSUTF8StringEncoding];
+    }
+    return itemAsString;
+}
+
+- (NSData *)dataByReadingItemValueWithError:(NSError * _Nullable __autoreleasing *)errorPointer {
     NSMutableDictionary *query = [[self keychainQueryWithService:[self service] account:[self account]] mutableCopy];
     
     [query setObject:(id)kSecMatchLimitOne forKey:(id)kSecMatchLimit];
@@ -27,12 +38,14 @@
     SecKeyRef key = NULL;
     OSStatus status = SecItemCopyMatching((CFDictionaryRef)query, (CFTypeRef *)&key);
     
-    NSString *item;
+    NSData *storedItem;
     if (status == errSecSuccess) {
         // make sure password our key pointer contains the password data
         NSDictionary *passwordData = (__bridge NSDictionary *)key;
-        if ((passwordData != nil) && [passwordData objectForKey:(id)kSecValueData] != nil) {
-            item = [[NSString alloc] initWithData:[passwordData objectForKey:(id)kSecValueData] encoding:NSUTF8StringEncoding];
+        BOOL passwordDataExists = (passwordData != nil);
+        
+        if (passwordDataExists && [passwordData objectForKey:(id)kSecValueData] != nil) {
+            storedItem = [passwordData objectForKey:(id)kSecValueData];
         }
     } else if (errorPointer) {
         // Query was unsuccessful
@@ -42,8 +55,10 @@
     // If the key exists, we have to free its memory!
     if (key) { CFRelease(key); }
     
-    return item;
+    return storedItem;
 }
+
+#pragma mark - Set Item
 
 - (BOOL)setItemValueWithItemString:(NSString *)item error:(NSError * _Nullable * _Nullable)errorPointer {
     
@@ -58,7 +73,7 @@
 }
 
 - (BOOL)setItemValueWithItemData:(NSData *)itemData error:(NSError * _Nullable * _Nullable)errorPointer {
-    id storedItem = [self readItemValueWithError:nil];
+    id storedItem = [self stringByReadingItemValueWithError:nil];
     
     if (storedItem) {
         // item exists, perform update command for existing item
@@ -91,6 +106,8 @@
     }
     return NO;
 }
+
+#pragma mark - Delete Item
 
 - (BOOL)deleteItemValueWithError:(NSError * _Nullable * _Nullable)errorPointer {
     NSDictionary *queryToDelete = [self keychainQueryWithService:[self service] account:[self account]];
