@@ -17,7 +17,10 @@ NSErrorDomain const ETAppErrorDomain = @"ski.maliszew.Expense-Tracker";
             userInfo = @{ NSLocalizedDescriptionKey: @"An error has occurred" };
             break;
         case ETDataConversionFailureErrorCode:
-            userInfo = @{NSLocalizedDescriptionKey: @"Unable to convert data successfully" };
+            userInfo = @{ NSLocalizedDescriptionKey: @"Unable to convert data successfully" };
+            break;
+        case ETServerResponseErrorCode:
+            userInfo = @{ NSLocalizedDescriptionKey: @"An error was received from the server" };
             break;
     }
     return [[ETAppError alloc] initWithDomain:ETAppErrorDomain code:code userInfo:userInfo];

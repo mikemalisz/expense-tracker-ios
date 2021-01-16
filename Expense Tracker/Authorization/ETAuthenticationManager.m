@@ -48,6 +48,7 @@ NSString *const ETUserAccount = @"userAccount";
 #pragma mark - Convenience
 
 - (void)persistAppleIDCredentialToKeychain:(ASAuthorizationAppleIDCredential *)credential {
+    // create a dictionary containing the user's account details
     NSMutableDictionary *valuesToPersist = [NSMutableDictionary new];
     [valuesToPersist setObject:[credential user] forKey:@"userId"];
     if ([credential email]) {
@@ -59,6 +60,8 @@ NSString *const ETUserAccount = @"userAccount";
             [valuesToPersist setObject:decodedToken forKey:@"identityToken"];
         }
     }
+    
+    // serialize and persist the dictionry as a keychain item
     
     NSError *error;
     NSData *serializedData = [NSJSONSerialization dataWithJSONObject:[valuesToPersist copy] options:0 error:&error];

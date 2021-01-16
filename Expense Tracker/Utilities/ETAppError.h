@@ -15,7 +15,8 @@ extern NSErrorDomain const ETAppErrorDomain;
 /// Common error codes produced by the app
 typedef NS_ENUM(NSUInteger, ETAppErrorCode) {
     ETGenericErrorCode,
-    ETDataConversionFailureErrorCode
+    ETDataConversionFailureErrorCode,
+    ETServerResponseErrorCode
 };
 
 @interface ETAppError : NSError
