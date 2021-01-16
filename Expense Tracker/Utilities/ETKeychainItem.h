@@ -16,8 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSString *service;
 @property NSString *account;
 
-- (NSString * _Nullable)readItemValue;
-- (BOOL)setItemValueWithItemData:(NSData *)item error:(NSError * _Nullable * _Nullable)errorPointer;
+- (NSString * _Nullable)readItemValueWithError:(NSError * _Nullable * _Nullable)errorPointer;
+- (BOOL)setItemValueWithItemData:(NSData *)itemData error:(NSError * _Nullable * _Nullable)errorPointer;
 - (BOOL)setItemValueWithItemString:(NSString *)item error:(NSError * _Nullable * _Nullable)errorPointer;
 
 @end

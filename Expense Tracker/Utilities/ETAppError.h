@@ -14,11 +14,14 @@ extern NSErrorDomain const ETAppErrorDomain;
 
 /// Common error codes produced by the app
 typedef NS_ENUM(NSUInteger, ETAppErrorCode) {
+    ETGenericErrorCode,
     ETDataConversionFailureErrorCode
 };
 
 @interface ETAppError : NSError
-+ (ETAppError *)initWithErrorCode:(ETAppErrorCode)code;
++ (ETAppError *)appErrorWithErrorCode:(ETAppErrorCode)code;
+
++ (ETAppError *)appErrorWithErrorMessage:(NSString *)message;
 @end
 
 NS_ASSUME_NONNULL_END
