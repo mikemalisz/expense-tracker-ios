@@ -15,20 +15,15 @@
 
 @implementation ETAppErrorTests
 
-- (void)test_whenInitializing_withGenericErrorCode_thatObjectInitializedProperly {
-    ETAppError *sut = [ETAppError appErrorWithErrorCode:ETGenericErrorCode];
-    
-    XCTAssert(sut != nil);
-    XCTAssert([[sut domain] isEqualToString:ETAppErrorDomain]);
-    XCTAssert([sut code] == ETGenericErrorCode);
-}
-
-- (void)test_whenInitializing_withDataConversionErrorCode_thatObjectInitializedProperly {
-    ETAppError *sut = [ETAppError appErrorWithErrorCode:ETDataConversionFailureErrorCode];
-    
-    XCTAssert(sut != nil);
-    XCTAssert([[sut domain] isEqualToString:ETAppErrorDomain]);
-    XCTAssert([sut code] == ETDataConversionFailureErrorCode);
+- (void)test_whenInitializing_withEnumeratedErrorCodes_thatObjectsInitializeProperly {
+    // app error codes should start at 0 and go up to ETAppErrorCodeCount
+    for (int errorCode = 0; errorCode < ETAppErrorCodeCount; ++errorCode) {
+        ETAppError *sut = [ETAppError appErrorWithErrorCode:errorCode];
+        
+        XCTAssert(sut != nil);
+        XCTAssert([[sut domain] isEqualToString:ETAppErrorDomain]);
+        XCTAssert([sut code] == errorCode);
+    }
 }
 
 - (void)test_whenInitializing_withErrorMessage_thatObjectInitializedProperly {
