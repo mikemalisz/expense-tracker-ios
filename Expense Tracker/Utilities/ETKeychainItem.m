@@ -97,8 +97,8 @@
     
     OSStatus status = SecItemDelete((CFDictionaryRef)queryToDelete);
     
-    // return truthy if successful, other falsey
-    if (status == errSecSuccess) {
+    // return truthy if successful or item not found, other falsey
+    if ((status == errSecSuccess) || (status == errSecItemNotFound)) {
         return YES;
     } else if (errorPointer) {
         // set error if error pointer exists
