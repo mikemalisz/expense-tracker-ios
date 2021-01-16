@@ -92,6 +92,23 @@
     return NO;
 }
 
+- (BOOL)deleteItemValueWithError:(NSError * _Nullable * _Nullable)errorPointer {
+    NSDictionary *queryToDelete = [self keychainQueryWithService:[self service] account:[self account]];
+    
+    OSStatus status = SecItemDelete((CFDictionaryRef)queryToDelete);
+    
+    // return truthy if successful, other falsey
+    if (status == errSecSuccess) {
+        return YES;
+    } else if (errorPointer) {
+        // set error if error pointer exists
+        *errorPointer = [ETAppError appErrorWithErrorCode:ETGenericErrorCode];
+    }
+    return NO;
+}
+
+#pragma mark - Convenience
+
 - (NSDictionary *)keychainQueryWithService:(NSString * _Nullable)service account:(NSString * _Nullable)account {
     NSMutableDictionary *query = [NSMutableDictionary new];
     [query setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];

@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString * _Nullable)readItemValueWithError:(NSError * _Nullable * _Nullable)errorPointer;
 - (BOOL)setItemValueWithItemData:(NSData *)itemData error:(NSError * _Nullable * _Nullable)errorPointer;
 - (BOOL)setItemValueWithItemString:(NSString *)item error:(NSError * _Nullable * _Nullable)errorPointer;
+- (BOOL)deleteItemValueWithError:(NSError * _Nullable * _Nullable)errorPointer;
 
 @end
 
