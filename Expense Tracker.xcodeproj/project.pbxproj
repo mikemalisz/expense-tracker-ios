@@ -19,6 +19,8 @@
 		8CC0BAD025AF3F130064EBEC /* ETExpenseItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0BACF25AF3F130064EBEC /* ETExpenseItemTableViewCell.m */; };
 		8CC0BAD625AF52800064EBEC /* ETAddExpenseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0BAD525AF52800064EBEC /* ETAddExpenseTableViewController.m */; };
 		8CC0BAE025AFA8D90064EBEC /* UIViewController+initiateUsingStoryboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0BADF25AFA8D90064EBEC /* UIViewController+initiateUsingStoryboard.m */; };
+		8CC8716B25B26F3A008F6B66 /* ETKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8716A25B26F3A008F6B66 /* ETKeychainItem.m */; };
+		8CC8717025B27733008F6B66 /* ETAppError.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8716F25B27733008F6B66 /* ETAppError.m */; };
 		8CD6DBB025ABE886005DE50B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBAF25ABE886005DE50B /* AppDelegate.m */; };
 		8CD6DBB325ABE886005DE50B /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBB225ABE886005DE50B /* SceneDelegate.m */; };
 		8CD6DBB925ABE886005DE50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6DBB725ABE886005DE50B /* Main.storyboard */; };
@@ -66,6 +68,10 @@
 		8CC0BAD525AF52800064EBEC /* ETAddExpenseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETAddExpenseTableViewController.m; sourceTree = "<group>"; };
 		8CC0BADE25AFA8D90064EBEC /* UIViewController+initiateUsingStoryboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+initiateUsingStoryboard.h"; sourceTree = "<group>"; };
 		8CC0BADF25AFA8D90064EBEC /* UIViewController+initiateUsingStoryboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+initiateUsingStoryboard.m"; sourceTree = "<group>"; };
+		8CC8716925B26F3A008F6B66 /* ETKeychainItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETKeychainItem.h; sourceTree = "<group>"; };
+		8CC8716A25B26F3A008F6B66 /* ETKeychainItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETKeychainItem.m; sourceTree = "<group>"; };
+		8CC8716E25B27733008F6B66 /* ETAppError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETAppError.h; sourceTree = "<group>"; };
+		8CC8716F25B27733008F6B66 /* ETAppError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETAppError.m; sourceTree = "<group>"; };
 		8CD6DBAB25ABE886005DE50B /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD6DBAE25ABE886005DE50B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8CD6DBAF25ABE886005DE50B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -170,6 +176,17 @@
 			path = "Expense Item";
 			sourceTree = "<group>";
 		};
+		8CC8716825B26DDA008F6B66 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8CC8716925B26F3A008F6B66 /* ETKeychainItem.h */,
+				8CC8716A25B26F3A008F6B66 /* ETKeychainItem.m */,
+				8CC8716E25B27733008F6B66 /* ETAppError.h */,
+				8CC8716F25B27733008F6B66 /* ETAppError.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		8CD6DBA225ABE886005DE50B = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +215,7 @@
 				8CD6DC0325ABF5FD005DE50B /* Server API */,
 				8CD6DBB725ABE886005DE50B /* Main.storyboard */,
 				7819C05B25AE6A0500D4569A /* Extensions */,
+				8CC8716825B26DDA008F6B66 /* Utilities */,
 				8CD6DBE925ABEB24005DE50B /* Application Lifecycle */,
 				8CD6DBED25ABEBCA005DE50B /* Supporting Files */,
 			);
@@ -360,11 +378,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CD6DBB025ABE886005DE50B /* AppDelegate.m in Sources */,
+				8CC8717025B27733008F6B66 /* ETAppError.m in Sources */,
 				8CC0BAE025AFA8D90064EBEC /* UIViewController+initiateUsingStoryboard.m in Sources */,
 				8CC0BAC725AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m in Sources */,
 				8CC0BAD625AF52800064EBEC /* ETAddExpenseTableViewController.m in Sources */,
 				8C879D0725B0D74800BBD953 /* ETLoginViewController.m in Sources */,
 				8CC0BAD025AF3F130064EBEC /* ETExpenseItemTableViewCell.m in Sources */,
+				8CC8716B25B26F3A008F6B66 /* ETKeychainItem.m in Sources */,
 				8CD6DBFC25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m in Sources */,
 				7819C06225AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m in Sources */,
 				8CAC311925B246320071AF9B /* ETServerProvider.m in Sources */,
@@ -468,7 +488,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -521,7 +541,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
