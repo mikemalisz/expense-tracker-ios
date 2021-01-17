@@ -35,8 +35,7 @@ NSString *const ETUserAccount = @"userAccount";
     
     if ([credential isKindOfClass:[ASAuthorizationAppleIDCredential class]]) {
         [self persistAppleIDCredentialToKeychain:credential];
-    } else if ([credential isKindOfClass:[ASPasswordCredential class]]) {
-        NSLog(@"ASPasswordCredential: %@", credential);
+        NSLog(@"%@", [[NSString alloc] initWithData:[credential identityToken] encoding:NSUTF8StringEncoding]);
     }
 }
 
