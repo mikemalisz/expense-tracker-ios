@@ -12,14 +12,14 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
 @interface ETExpenseItemManager ()
 @property (readwrite) NSArray<ETExpenseItem *> *expenseItemList;
 
-@property id<ETItemServer> networkService;
+@property id<ETItemServer> itemServer;
 @end
 
 @implementation ETExpenseItemManager
 - (instancetype)initWithServerAPI:(id<ETItemServer>)networkService {
 	self = [super init];
 	if (self) {
-		_networkService = networkService;
+		_itemServer = networkService;
 	}
 	return self;
 }
@@ -34,7 +34,7 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
 
 - (void)refreshExpenseItems {
 	typeof(self) __weak weakSelf = self;
-	[[self networkService] retrieveExpenseItems:^(NSArray<ETExpenseItem *> *expenseItems, NSError *error) {
+	[[self itemServer] retrieveExpenseItems:^(NSArray<ETExpenseItem *> *expenseItems, NSError *error) {
 		typeof(self) strongSelf = weakSelf;
 		if (strongSelf) {
 			[strongSelf setExpenseItemList:expenseItems];
@@ -57,7 +57,7 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
         ETExpenseItemDateCreatedKey: [NSDate new]};
     
     ETExpenseItem *newItem = [[ETExpenseItem alloc] initWithDictionary:initializationItems];
-    [[self networkService] persistNewExpenseItem:newItem completionHandler:^(NSError * _Nullable error) {
+    [[self itemServer] persistNewExpenseItem:newItem completionHandler:^(NSError * _Nullable error) {
         NSLog(@"%@", error);
         onCompletion(error);
     }];
@@ -65,7 +65,7 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
 
 - (void)deleteExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError * _Nullable))onCompletion {
     
-    [[self networkService] deleteExpenseItem:expenseItem completionHandler:^(NSError * _Nullable error) {
+    [[self itemServer] deleteExpenseItem:expenseItem completionHandler:^(NSError * _Nullable error) {
         onCompletion(error);
     }];
     

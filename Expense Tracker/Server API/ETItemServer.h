@@ -7,14 +7,18 @@
 
 #import <Foundation/Foundation.h>
 #import "ETExpenseItem.h"
+#import "ETServerCompletionHandler.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol ETItemServer
-- (void)retrieveExpenseItems:(void (^)(NSArray<ETExpenseItem*>*, NSError * _Nullable))onCompletion;
-- (void)persistNewExpenseItem:(ETExpenseItem*)expenseItem completionHandler:(void (^)(NSError * _Nullable))onCompletion;
-- (void)updateExistingExpenseItem:(ETExpenseItem*)expenseItem completionHandler:(void (^)(NSError * _Nullable))onCompletion;
-- (void)deleteExpenseItem:(ETExpenseItem*)expenseItem completionHandler:(void (^)(NSError * _Nullable))onCompletion;
+- (void)retrieveExpenseItems:(ServerCompletionHandler)onCompletion;
+
+- (void)persistNewExpenseItem:(NSData *)expenseItem completionHandler:(ServerCompletionHandler)onCompletion;
+
+- (void)updateExistingExpenseItem:(NSData *)expenseItem completionHandler:(ServerCompletionHandler)onCompletion;
+
+- (void)deleteExpenseItem:(NSData *)expenseItem completionHandler:(ServerCompletionHandler)onCompletion;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -9,16 +9,31 @@
 
 @implementation ETItemServerProvider
 
-- (void)deleteExpenseItem:(nonnull ETExpenseItem *)expenseItem completionHandler:(nonnull void (^)(NSError * _Nullable))onCompletion {
+- (void)retrieveExpenseItems:(ServerCompletionHandler)onCompletion {
+    NSMutableURLRequest *request = [self generateRequestWithPath:@"expense-items/retrieve"];
+    [self performDataTaskWithRequest:request completionHandler:onCompletion];
 }
 
-- (void)persistNewExpenseItem:(nonnull ETExpenseItem *)expenseItem completionHandler:(nonnull void (^)(NSError * _Nullable))onCompletion {
+- (void)persistNewExpenseItem:(NSData *)expenseItem completionHandler:(ServerCompletionHandler)onCompletion {
+    NSMutableURLRequest *request = [self generateRequestWithPath:@"expense-items/create"];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:expenseItem];
+    
+    [self performDataTaskWithRequest:request completionHandler:onCompletion];
 }
 
-- (void)retrieveExpenseItems:(nonnull void (^)(NSArray<ETExpenseItem *> * _Nonnull, NSError * _Nullable))onCompletion {
+- (void)updateExistingExpenseItem:(NSData *)expenseItem completionHandler:(ServerCompletionHandler)onCompletion {
+    NSAssert(NO, @"Unimplemented");
 }
 
-- (void)updateExistingExpenseItem:(nonnull ETExpenseItem *)expenseItem completionHandler:(nonnull void (^)(NSError * _Nullable))onCompletion {
+- (void)deleteExpenseItem:(NSData *)expenseItem completionHandler:(ServerCompletionHandler)onCompletion {
+    NSMutableURLRequest *request = [self generateRequestWithPath:@"expense-items/"];
+    [request setHTTPMethod:@"DELETE"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:expenseItem];
+    
+    [self performDataTaskWithRequest:request completionHandler:onCompletion];
 }
 
 @end
