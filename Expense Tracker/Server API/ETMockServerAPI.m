@@ -74,10 +74,8 @@ NSString *const mockDataFilename = @"mock-data";
 	// write the expense item dictionary list to the mock data file
 	NSURL *fileUrl = [[NSFileManager documentsDirectoryForCurrentUser] URLByAppendingPathComponent:mockDataFilename];
     if ([NSJSONSerialization isValidJSONObject:expenseItemDictionaryList]) {
-        NSLog(@"valid json");
         NSData *serializedData = [NSJSONSerialization dataWithJSONObject:expenseItemDictionaryList options:0 error:nil];
         BOOL didComplete = [serializedData writeToURL:fileUrl atomically:YES];
-        NSLog(@"%c", didComplete);
     } else {
         NSLog(@"invalid json");
     }

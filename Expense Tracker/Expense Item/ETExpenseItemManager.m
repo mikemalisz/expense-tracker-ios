@@ -45,7 +45,6 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
 - (void)setExpenseItemListFromData:(NSDictionary *)data {
     NSMutableArray *expenseItems = [NSMutableArray new];
     for (NSDictionary *itemData in [data objectForKey:@"expenseItems"]) {
-        NSLog(@"%@", itemData);
         ETExpenseItem *newItem = [[ETExpenseItem alloc] initWithDictionary:itemData];
         if (newItem != nil) {
             [expenseItems addObject:newItem];
@@ -53,7 +52,6 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
         }
     }
     [self setExpenseItemList:expenseItems];
-    NSLog(@"%@", self.expenseItemList);
 }
 
 - (void)submitNewExpenseItemWithTitle:(NSString *)title description:(NSString *)expenseDescription dollarAmount:(NSString *)amountText datePurchased:(NSDate *)datePurchased completionHandler:(void (^)(NSError * _Nullable))onCompletion {

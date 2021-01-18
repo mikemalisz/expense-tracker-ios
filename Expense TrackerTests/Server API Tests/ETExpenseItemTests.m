@@ -30,7 +30,6 @@
     NSDate *dateOfPurchase = [NSDate date];
     NSDate *dateCreated = [NSDate date];
     
-    NSLog(@"%@", ETExpenseItemIdentifierKey);
     NSDictionary *newDictionary = @{
         ETExpenseItemIdentifierKey: identifier,
         ETExpenseItemAmountInCentsKey: amountInCents,

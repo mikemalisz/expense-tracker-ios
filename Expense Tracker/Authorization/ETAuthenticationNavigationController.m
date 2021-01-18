@@ -29,7 +29,6 @@ static void *AuthenticationControllerAuthenticationStateContext = &Authenticatio
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (context == AuthenticationControllerAuthenticationStateContext) {
-        NSLog(@"context did change: %@", change);
         [self updateRootController];
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];

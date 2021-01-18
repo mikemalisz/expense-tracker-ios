@@ -34,7 +34,7 @@
     
     if ((expenseTitle != nil) && (amount != nil)) {
         typeof(self) __weak weakSelf = self;
-        [[self itemManager]
+        [self.itemManager
          submitNewExpenseItemWithTitle:expenseTitle
          description:[NSString new]
          dollarAmount:amount
