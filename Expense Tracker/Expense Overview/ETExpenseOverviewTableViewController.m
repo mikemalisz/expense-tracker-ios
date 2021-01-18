@@ -24,7 +24,10 @@
     [[self tableView] setDataSource:dataSource];
 	
 	[self configurePropertyObserver];
-	[[self itemManager] refreshExpenseItems];
+    [self.itemManager refreshExpenseItemsWithCompletionHandler:^(NSError * _Nullable error) {
+        #warning handle error
+        NSLog(@"%@", error);
+    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

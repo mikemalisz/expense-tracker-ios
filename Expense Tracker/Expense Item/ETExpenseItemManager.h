@@ -6,8 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "EtItemServer.h"
+#import "ETItemServer.h"
 #import "ETExpenseItem.h"
+#import "ETAppError.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +20,8 @@ extern NSString *const ETExpenseItemManagerItemListKeyPath;
 - (instancetype)initWithServerAPI:(id<ETItemServer>)networkService;
 
 - (NSInteger)retrieveTotalSpend;
-- (void)refreshExpenseItems;
+
+- (void)refreshExpenseItemsWithCompletionHandler:(void (^)(NSError * _Nullable))onCompletion;
 
 - (void)submitNewExpenseItemWithTitle:(NSString *)title description:(NSString *)expenseDescription dollarAmount:(NSString *)amountText datePurchased:(NSDate *)datePurchased completionHandler:(void (^)(NSError * _Nullable))onCompletion;
 

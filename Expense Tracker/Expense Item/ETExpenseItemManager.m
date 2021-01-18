@@ -32,15 +32,13 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
     return totalSpend;
 }
 
-- (void)refreshExpenseItems {
+- (void)refreshExpenseItemsWithCompletionHandler:(void (^)(NSError * _Nullable))onCompletion {
 	typeof(self) __weak weakSelf = self;
     [self.itemServer retrieveExpenseItems:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
-        if (error != nil) {
-            #warning handle error
-            NSLog(@"%@", error);
-        } else if (data != nil) {
+        if (data) {
             [weakSelf setExpenseItemListFromData:data];
         }
+        onCompletion(error);
     }];
 }
 
@@ -75,7 +73,7 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
     NSData *serializedItem = [NSJSONSerialization dataWithJSONObject:newItem options:0 error:&error];
     
     if (serializedItem == nil) {
-        #warning handle error
+        onCompletion([ETAppError appErrorWithErrorCode:ETDataConversionFailureErrorCode]);
         return;
     }
     
@@ -83,10 +81,8 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
     [self.itemServer persistNewExpenseItem:serializedItem completionHandler:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
         if (data) {
             [weakSelf setExpenseItemListFromData:data];
-        } else if (error) {
-            #warning handle error
-            NSLog(@"%@", error);
         }
+        onCompletion(error);
     }];
 }
 
@@ -100,7 +96,7 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
     NSData *serializedData = [NSJSONSerialization dataWithJSONObject:data options:0 error:&error];
     
     if (serializedData == nil) {
-        #warning handle error
+        onCompletion([ETAppError appErrorWithErrorCode:ETDataConversionFailureErrorCode]);
         return;
     }
     
@@ -108,10 +104,8 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
     [self.itemServer deleteExpenseItem:serializedData completionHandler:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
         if (data) {
             [weakSelf setExpenseItemListFromData:data];
-        } else if (error) {
-            #warning handle error
-            NSLog(@"%@", error);
         }
+        onCompletion(error);
     }];
 }
 @end
