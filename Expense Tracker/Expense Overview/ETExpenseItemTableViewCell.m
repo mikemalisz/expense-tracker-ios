@@ -18,6 +18,7 @@ float ETExpenseItemCentsToDollarsMultiplier = 0.01;
 @implementation ETExpenseItemTableViewCell
 
 - (void)updateCellUsingExpenseItem:(ETExpenseItem *)expenseItem {
+    
     // dollar amount
     NSString *dollarAmountText = [self createFormattedDollarAmountFromCents:[expenseItem amountInCents]];
     [[self dollarAmountLabel] setText:dollarAmountText];
@@ -29,17 +30,16 @@ float ETExpenseItemCentsToDollarsMultiplier = 0.01;
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateStyle:NSDateFormatterShortStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    NSString *dateOfPurchaseText = [formatter stringFromDate:[expenseItem dateOfPurchase]];
+    NSString *dateOfPurchaseText = [formatter stringFromDate:expenseItem.dateOfPurchase];
     
     [[self datePurchasedLabel] setText:dateOfPurchaseText];
 }
 
 - (NSString *)createFormattedDollarAmountFromCents:(NSInteger)cents {
-    float dollars = cents*ETExpenseItemCentsToDollarsMultiplier;
-    
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    return [formatter stringFromNumber:[NSNumber numberWithFloat:dollars]];
+    [formatter setMultiplier:[NSNumber numberWithDouble:0.01]];
+    return [formatter stringFromNumber:[NSNumber numberWithInteger:cents]];
 }
 
 @end

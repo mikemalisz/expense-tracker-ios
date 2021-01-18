@@ -27,8 +27,11 @@
     NSNumber *amountInCents = @500;
     NSString *title = @"title";
     NSString *description = @"random description";
-    NSDate *dateOfPurchase = [NSDate date];
-    NSDate *dateCreated = [NSDate date];
+    
+    NSDate *currentDate = [NSDate date];
+    NSTimeInterval timestamp = currentDate.timeIntervalSince1970 * 1000;
+    NSNumber *dateOfPurchase = [NSNumber numberWithDouble:timestamp];
+    NSNumber *dateCreated = [NSNumber numberWithDouble:timestamp];
     
     NSDictionary *newDictionary = @{
         ETExpenseItemIdentifierKey: identifier,
@@ -44,8 +47,10 @@
     XCTAssert(sut.amountInCents == [amountInCents integerValue]);
     XCTAssert([[sut expenseTitle] isEqualToString:title]);
     XCTAssert([[sut expenseDescription] isEqualToString:description]);
-    XCTAssert([[sut dateOfPurchase] isEqualToDate:dateOfPurchase]);
-    XCTAssert([[sut dateCreated] isEqualToDate:dateCreated]);
+    
+    // expense item should automatically converts timestamp to date during initialization
+    XCTAssert([[sut dateOfPurchase] isEqualToDate:currentDate]);
+    XCTAssert([[sut dateCreated] isEqualToDate:currentDate]);
 }
 
 @end

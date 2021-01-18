@@ -39,8 +39,13 @@ NSString *const ETExpenseItemDateCreatedKey = @"dateCreated";
         _amountInCents = [values[ETExpenseItemAmountInCentsKey] integerValue];
         _expenseTitle = values[ETExpenseItemExpenseTitleKey];
         _expenseDescription = values[ETExpenseItemExpenseDescriptionKey];
-        _dateOfPurchase = values[ETExpenseItemDateOfPurchaseKey];
-        _dateCreated = values[ETExpenseItemDateCreatedKey];
+        
+        // divided by 1000 since database stores as milliseconds
+        NSTimeInterval purchaseInterval = [values[ETExpenseItemDateOfPurchaseKey] doubleValue] / 1000;
+        NSTimeInterval createdInterval = [values[ETExpenseItemDateCreatedKey] doubleValue] / 1000;
+        
+        _dateOfPurchase = [NSDate dateWithTimeIntervalSince1970:purchaseInterval];
+        _dateCreated = [NSDate dateWithTimeIntervalSince1970:createdInterval];
     }
     return self;
 }
