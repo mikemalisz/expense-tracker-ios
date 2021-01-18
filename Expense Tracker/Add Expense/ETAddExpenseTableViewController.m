@@ -41,8 +41,7 @@
          datePurchased:datePurchased
          completionHandler:^(NSError * _Nullable error) {
             if (error != nil) {
-                #warning handle error
-                NSLog(@"%@", error);
+                [weakSelf displayErrorAlertWithMessage:error.localizedDescription];
             } else {
                 [weakSelf dismissViewControllerAnimated:true completion:nil];
             }

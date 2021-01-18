@@ -18,6 +18,7 @@
 		8C58B34525B544B6006BA7E6 /* ETAuthenticationServerProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C58B34425B544B6006BA7E6 /* ETAuthenticationServerProvider.m */; };
 		8C58B34A25B5453E006BA7E6 /* ETItemServerProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C58B34925B5453E006BA7E6 /* ETItemServerProvider.m */; };
 		8C879D0725B0D74800BBD953 /* ETLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C879D0625B0D74800BBD953 /* ETLoginViewController.m */; };
+		8C9CBFF625B6434000A4995F /* UIViewController+displayErrorAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBFF525B6434000A4995F /* UIViewController+displayErrorAlert.m */; };
 		8CA6196825AE137A001F3547 /* ETExpenseOverviewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSource.m */; };
 		8CC0BAC725AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0BAC625AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m */; };
 		8CC0BAD025AF3F130064EBEC /* ETExpenseItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0BACF25AF3F130064EBEC /* ETExpenseItemTableViewCell.m */; };
@@ -73,6 +74,8 @@
 		8C879CF725B0D51900BBD953 /* Expense Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Expense Tracker.entitlements"; sourceTree = "<group>"; };
 		8C879D0525B0D74800BBD953 /* ETLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETLoginViewController.h; sourceTree = "<group>"; };
 		8C879D0625B0D74800BBD953 /* ETLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETLoginViewController.m; sourceTree = "<group>"; };
+		8C9CBFF425B6434000A4995F /* UIViewController+displayErrorAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+displayErrorAlert.h"; sourceTree = "<group>"; };
+		8C9CBFF525B6434000A4995F /* UIViewController+displayErrorAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+displayErrorAlert.m"; sourceTree = "<group>"; };
 		8CA6196625AE137A001F3547 /* ETExpenseOverviewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseOverviewDataSource.h; sourceTree = "<group>"; };
 		8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseOverviewDataSource.m; sourceTree = "<group>"; };
 		8CC0BAC525AF3CE00064EBEC /* UITableViewCell+cellIdentifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+cellIdentifier.h"; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 				8CC0BAC625AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m */,
 				8CC0BADE25AFA8D90064EBEC /* UIViewController+initiateUsingStoryboard.h */,
 				8CC0BADF25AFA8D90064EBEC /* UIViewController+initiateUsingStoryboard.m */,
+				8C9CBFF425B6434000A4995F /* UIViewController+displayErrorAlert.h */,
+				8C9CBFF525B6434000A4995F /* UIViewController+displayErrorAlert.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -431,6 +436,7 @@
 				8CD6DBFC25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m in Sources */,
 				8C58B31F25B522AA006BA7E6 /* ETServerCompletionHandler.h in Sources */,
 				7819C06225AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m in Sources */,
+				8C9CBFF625B6434000A4995F /* UIViewController+displayErrorAlert.m in Sources */,
 				8CA6196825AE137A001F3547 /* ETExpenseOverviewDataSource.m in Sources */,
 				8C375D7325AD3CED00EFB202 /* ETMockServerAPI.m in Sources */,
 				8CD6DBC125ABE887005DE50B /* main.m in Sources */,

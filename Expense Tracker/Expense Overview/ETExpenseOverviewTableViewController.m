@@ -24,9 +24,12 @@
     [[self tableView] setDataSource:dataSource];
 	
 	[self configurePropertyObserver];
+    
+    typeof(self) __weak weakSelf = self;
     [self.itemManager refreshExpenseItemsWithCompletionHandler:^(NSError * _Nullable error) {
-        #warning handle error
-        NSLog(@"%@", error);
+        if (error) {
+            [weakSelf displayErrorAlertWithMessage:error.localizedDescription];
+        }
     }];
 }
 

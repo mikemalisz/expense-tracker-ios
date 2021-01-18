@@ -12,6 +12,7 @@
 #import "ETExpenseOverviewKVOManager.h"
 #import "ETAddExpenseTableViewController.h"
 #import "UIViewController+initiateUsingStoryboard.h"
+#import "UIViewController+displayErrorAlert.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
