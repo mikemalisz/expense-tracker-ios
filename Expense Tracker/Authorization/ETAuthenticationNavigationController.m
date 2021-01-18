@@ -23,7 +23,6 @@ static void *AuthenticationControllerAuthenticationStateContext = &Authenticatio
      forKeyPath:ETAuthenticationManagerStateKeyPath
      options:NSKeyValueObservingOptionNew
      context:AuthenticationControllerAuthenticationStateContext];
-    NSLog(@"add observer");
     [self updateRootController];
 }
 
@@ -38,10 +37,7 @@ static void *AuthenticationControllerAuthenticationStateContext = &Authenticatio
 }
 
 - (void)updateRootController {
-    switch ([[self authenticationManager] authenticationState]) {
-        case ETAuthenticationLoading:
-            [self showLoadingController];
-            break;
+    switch ([self.authenticationManager authenticationState]) {
         case ETUnauthenticated:
             [self showLoginController];
             break;
@@ -51,14 +47,10 @@ static void *AuthenticationControllerAuthenticationStateContext = &Authenticatio
     }
 }
 
-- (void)showLoadingController {
-    NSLog(@"loading...");
-}
-
 - (void)showLoginController {
     ETLoginViewController *controller = [ETLoginViewController initiateUsingStoryboard];
     [controller setAuthenticationManager:[self authenticationManager]];
-    [self setViewControllers:@[controller] animated:true];
+    [self setViewControllers:@[controller] animated:YES];
 }
 
 - (void)showExpenseOverviewController {
@@ -68,7 +60,7 @@ static void *AuthenticationControllerAuthenticationStateContext = &Authenticatio
     ETExpenseItemManager *itemManager = [[ETExpenseItemManager alloc] initWithServerAPI:server];
     
     [controller setItemManager:itemManager];
-    [self setViewControllers:@[controller] animated:true];
+    [self setViewControllers:@[controller] animated:YES];
 }
 
 @end

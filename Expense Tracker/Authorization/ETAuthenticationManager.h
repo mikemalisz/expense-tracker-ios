@@ -13,9 +13,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, ETAuthenticationState) {
-    ETAuthenticated,
-    ETUnauthenticated,
-    ETAuthenticationLoading
+    ETUnauthenticated = 0,
+    ETAuthenticated
 };
 
 extern NSString * const ETAuthenticationManagerStateKeyPath;

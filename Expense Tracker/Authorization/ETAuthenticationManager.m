@@ -9,12 +9,9 @@
 
 NSString * const ETAuthenticationManagerStateKeyPath = @"authenticationState";
 
-NSString *const ETAuthenticationService = @"authentication";
-NSString *const ETUserAccount = @"userAccount";
+NSString * const ETIsAuthenticatedKey = @"isAuthenticated";
 
 @interface ETAuthenticationManager ()
-
-@property ETKeychainItem *identityTokenKeychain;
 
 @property id <ETAuthenticationServer> server;
 
@@ -26,10 +23,12 @@ NSString *const ETUserAccount = @"userAccount";
 - (instancetype)initWithAuthenticationServer:(id<ETAuthenticationServer>)server {
     self = [super init];
     if (self) {
-        _identityTokenKeychain = [[ETKeychainItem alloc] initWithServiceString:ETAuthenticationService accountString:ETUserAccount];
         _server = server;
-        _authenticationState = ETAuthenticationLoading;
         
+        BOOL wasPreviouslyAuthenticated = [NSUserDefaults.standardUserDefaults boolForKey:ETIsAuthenticatedKey];
+        
+        // set authentication state to the last known authentication state
+        _authenticationState = wasPreviouslyAuthenticated ? ETAuthenticated : ETUnauthenticated;
         [self checkAuthenticationStatus];
     }
     return self;
@@ -38,18 +37,18 @@ NSString *const ETUserAccount = @"userAccount";
 #pragma mark - Authentication Status
 
 - (void)checkAuthenticationStatus {
-    [self setAuthenticationState:ETAuthenticationLoading];
-    
     [[self server] requestAuthenticationStatusWithCompletionHandler:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
         if (error != nil) {
             #warning handle error
         } else if (data != nil) {
             // determine authentication state from returned data
             NSNumber *isAuthenticated = [data objectForKey:@"isAuthenticated"];
-            if ([isAuthenticated boolValue]) {
-                [self setAuthenticationState:ETAuthenticated];
-            } else {
-                [self setAuthenticationState:ETUnauthenticated];
+            
+            ETAuthenticationState newState = isAuthenticated.boolValue ? ETAuthenticated : ETUnauthenticated;
+            
+            if (newState != self.authenticationState) {
+                [self setAuthenticationState:newState];
+                [NSUserDefaults.standardUserDefaults setBool:newState forKey:ETIsAuthenticatedKey];
             }
         }
     }];
@@ -89,36 +88,6 @@ NSString *const ETUserAccount = @"userAccount";
                 [weakSelf checkAuthenticationStatus];
             }
         }];
-    }
-}
-
-- (void)persistAppleIDCredentialToKeychain:(ASAuthorizationAppleIDCredential *)credential {
-    // create a dictionary containing the user's account details
-    NSMutableDictionary *valuesToPersist = [NSMutableDictionary new];
-    [valuesToPersist setObject:[credential user] forKey:@"userId"];
-    if ([credential email]) {
-        [valuesToPersist setObject:[credential email] forKey:@"email"];
-    }
-    if ([credential identityToken]) {
-        NSString *decodedToken = [[NSString alloc] initWithData:[credential identityToken] encoding:NSUTF8StringEncoding];
-        if (decodedToken) {
-            [valuesToPersist setObject:decodedToken forKey:@"identityToken"];
-        }
-    }
-    
-    // serialize and persist the dictionry as a keychain item
-    
-    NSError *error;
-    NSData *serializedData = [NSJSONSerialization dataWithJSONObject:[valuesToPersist copy] options:0 error:&error];
-    if (serializedData == nil) {
-        #warning handle error
-        return NSLog(@"%@", error);
-    }
-    
-    BOOL isSuccessful = [[self identityTokenKeychain] setItemValueWithItemData:serializedData error:&error];
-    if (!isSuccessful) {
-        #warning handle error
-        NSLog(@"Couldn't set identityTokenKeychain: %@", error);
     }
 }
 
