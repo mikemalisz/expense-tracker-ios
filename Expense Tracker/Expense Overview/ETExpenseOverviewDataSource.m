@@ -44,10 +44,11 @@
 }
 
 - (UITableViewCell*)totalSpendOverviewCellForTableView:(UITableView*)tableView at:(NSIndexPath*)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TotalSpendOverviewCell" forIndexPath:indexPath];
-    
-    NSInteger totalSpend = [[self itemManager] retrieveTotalSpend];
-    [[cell textLabel] setText:[NSString stringWithFormat:@"%ld", totalSpend]];
+    ETSpendSummaryTableViewCell *cell = [tableView
+                             dequeueReusableCellWithIdentifier:[ETSpendSummaryTableViewCell cellIdentifier]
+                             forIndexPath:indexPath];
+    NSInteger totalSpend = [self.itemManager retrieveTotalSpend];
+    [cell setSpendAmountFromCents:totalSpend];
     return cell;
 }
 

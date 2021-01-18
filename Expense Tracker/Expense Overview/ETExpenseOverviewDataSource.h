@@ -9,11 +9,12 @@
 #import "ETExpenseItemManager.h"
 #import "ETExpenseItemTableViewCell.h"
 #import "UITableViewCell+cellIdentifier.h"
+#import "ETSpendSummaryTableViewCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, ETExpenseOverviewSection) {
-    ETExpenseOverviewSectionTotalSpendOverview,
+    ETExpenseOverviewSectionTotalSpendOverview = 0,
     ETExpenseOverviewSectionExpenseItems
 };
 
