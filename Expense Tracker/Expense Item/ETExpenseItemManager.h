@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ETServerAPI.h"
+#import "EtItemServer.h"
 #import "ETExpenseItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -16,7 +16,7 @@ extern NSString *const ETExpenseItemManagerItemListKeyPath;
 @interface ETExpenseItemManager : NSObject
 @property (readonly) NSArray<ETExpenseItem *> *expenseItemList;
 
-- (instancetype)initWithServerAPI:(id<ETServerAPI>)networkService;
+- (instancetype)initWithServerAPI:(id<ETItemServer>)networkService;
 
 - (NSInteger)retrieveTotalSpend;
 - (void)refreshExpenseItems;

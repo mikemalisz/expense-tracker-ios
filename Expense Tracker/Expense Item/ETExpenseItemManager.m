@@ -12,11 +12,11 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
 @interface ETExpenseItemManager ()
 @property (readwrite) NSArray<ETExpenseItem *> *expenseItemList;
 
-@property id<ETServerAPI> networkService;
+@property id<ETItemServer> networkService;
 @end
 
 @implementation ETExpenseItemManager
-- (instancetype)initWithServerAPI:(id<ETServerAPI>)networkService {
+- (instancetype)initWithServerAPI:(id<ETItemServer>)networkService {
 	self = [super init];
 	if (self) {
 		_networkService = networkService;

@@ -9,8 +9,8 @@
 #import "ETAuthenticationManager.h"
 #import "ETLoginViewController.h"
 #import "ETExpenseOverviewTableViewController.h"
-#import "ETServerProvider.h"
 #import "ETExpenseItemManager.h"
+#import "ETItemServerProvider.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

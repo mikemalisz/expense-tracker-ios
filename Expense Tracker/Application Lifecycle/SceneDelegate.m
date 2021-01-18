@@ -8,7 +8,7 @@
 #import "SceneDelegate.h"
 #import "ETAuthenticationNavigationController.h"
 #import "ETAuthenticationManager.h"
-#import "ETServerProvider.h"
+#import "ETAuthenticationServerProvider.h"
 
 @interface SceneDelegate ()
 
@@ -20,7 +20,7 @@
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     ETAuthenticationNavigationController *controller = (id)[[self window] rootViewController];
     if (controller) {
-        ETServerProvider *server = [ETServerProvider new];
+        ETAuthenticationServerProvider *server = [ETAuthenticationServerProvider new];
         ETAuthenticationManager *authenticationManager = [[ETAuthenticationManager alloc] initWithAuthenticationServer:server];
         
         ETAuthenticationNavigationController *controller = [ETAuthenticationNavigationController new];

@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ETExpenseOverviewDataSource.h"
-#import "ETServerAPI.h"
+#import "EtItemServer.h"
 #import "ETExpenseItemManager.h"
 #import "ETExpenseOverviewKVOManager.h"
 #import "ETAddExpenseTableViewController.h"

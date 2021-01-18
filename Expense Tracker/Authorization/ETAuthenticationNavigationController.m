@@ -64,7 +64,7 @@ static void *AuthenticationControllerAuthenticationStateContext = &Authenticatio
 - (void)showExpenseOverviewController {
     ETExpenseOverviewTableViewController *controller = [ETExpenseOverviewTableViewController initiateUsingStoryboard];
     
-    ETServerProvider *server = [ETServerProvider new];
+    ETItemServerProvider *server = [ETItemServerProvider new];
     ETExpenseItemManager *itemManager = [[ETExpenseItemManager alloc] initWithServerAPI:server];
     
     [controller setItemManager:itemManager];

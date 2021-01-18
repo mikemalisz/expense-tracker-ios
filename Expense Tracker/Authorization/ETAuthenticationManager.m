@@ -6,7 +6,6 @@
 //
 
 #import "ETAuthenticationManager.h"
-#import "ETServerProvider.h"
 
 NSString * const ETAuthenticationManagerStateKeyPath = @"authenticationState";
 
