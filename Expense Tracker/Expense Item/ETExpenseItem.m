@@ -7,7 +7,7 @@
 
 #import "ETExpenseItem.h"
 
-NSString *const ETExpenseItemIdentifierKey = @"id";
+NSString *const ETExpenseItemIdentifierKey = @"itemId";
 NSString *const ETExpenseItemAmountInCentsKey = @"amountInCents";
 NSString *const ETExpenseItemExpenseTitleKey = @"title";
 NSString *const ETExpenseItemExpenseDescriptionKey = @"description";
