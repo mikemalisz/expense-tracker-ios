@@ -9,8 +9,8 @@
 
 NSString *const ETExpenseItemIdentifierKey = @"itemId";
 NSString *const ETExpenseItemAmountInCentsKey = @"amountInCents";
-NSString *const ETExpenseItemExpenseTitleKey = @"title";
-NSString *const ETExpenseItemExpenseDescriptionKey = @"description";
+NSString *const ETExpenseItemExpenseTitleKey = @"expenseTitle";
+NSString *const ETExpenseItemExpenseDescriptionKey = @"expenseDescription";
 NSString *const ETExpenseItemDateOfPurchaseKey = @"dateOfPurchase";
 NSString *const ETExpenseItemDateCreatedKey = @"dateCreated";
 

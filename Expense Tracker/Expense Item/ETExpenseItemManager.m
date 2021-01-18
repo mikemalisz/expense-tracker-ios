@@ -34,12 +34,28 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
 
 - (void)refreshExpenseItems {
 	typeof(self) __weak weakSelf = self;
-	[[self itemServer] retrieveExpenseItems:^(NSArray<ETExpenseItem *> *expenseItems, NSError *error) {
-		typeof(self) strongSelf = weakSelf;
-		if (strongSelf) {
-			[strongSelf setExpenseItemList:expenseItems];
-		}
-	}];
+    [self.itemServer retrieveExpenseItems:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+        if (error != nil) {
+            #warning handle error
+            NSLog(@"%@", error);
+        } else if (data != nil) {
+            [weakSelf setExpenseItemListFromData:data];
+        }
+    }];
+}
+
+- (void)setExpenseItemListFromData:(NSDictionary *)data {
+    NSMutableArray *expenseItems = [NSMutableArray new];
+    for (NSDictionary *itemData in [data objectForKey:@"expenseItems"]) {
+        NSLog(@"%@", itemData);
+        ETExpenseItem *newItem = [[ETExpenseItem alloc] initWithDictionary:itemData];
+        if (newItem != nil) {
+            [expenseItems addObject:newItem];
+            
+        }
+    }
+    [self setExpenseItemList:expenseItems];
+    NSLog(@"%@", self.expenseItemList);
 }
 
 - (void)submitNewExpenseItemWithTitle:(NSString *)title dollarAmount:(NSString *)amountText datePurchased:(NSDate *)datePurchased completionHandler:(void (^)(NSError * _Nullable))onCompletion {
@@ -48,33 +64,52 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
     NSInteger dollarAmount = [[formatter numberFromString:amountText] integerValue];
     NSNumber *amountInCents = [NSNumber numberWithInteger:(dollarAmount * 100)];
     
-    NSDictionary *initializationItems = @{
-        ETExpenseItemIdentifierKey: [[NSUUID new] UUIDString],
+    NSDictionary *newItem = @{
         ETExpenseItemAmountInCentsKey: amountInCents,
         ETExpenseItemExpenseTitleKey: title,
-        ETExpenseItemExpenseDescriptionKey: @"",
-        ETExpenseItemDateOfPurchaseKey: datePurchased,
-        ETExpenseItemDateCreatedKey: [NSDate new]};
+        ETExpenseItemDateOfPurchaseKey: [NSNumber numberWithDouble:[datePurchased timeIntervalSince1970]]};
     
-    ETExpenseItem *newItem = [[ETExpenseItem alloc] initWithDictionary:initializationItems];
-    [[self itemServer] persistNewExpenseItem:newItem completionHandler:^(NSError * _Nullable error) {
-        NSLog(@"%@", error);
-        onCompletion(error);
+    NSError *error;
+    NSData *serializedItem = [NSJSONSerialization dataWithJSONObject:newItem options:0 error:&error];
+    
+    if (serializedItem == nil) {
+        #warning handle error
+        return;
+    }
+    
+    typeof(self) __weak weakSelf = self;
+    [self.itemServer persistNewExpenseItem:serializedItem completionHandler:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+        if (data) {
+            [weakSelf setExpenseItemListFromData:data];
+        } else if (error) {
+            #warning handle error
+            NSLog(@"%@", error);
+        }
     }];
 }
 
 - (void)deleteExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError * _Nullable))onCompletion {
     
-    [[self itemServer] deleteExpenseItem:expenseItem completionHandler:^(NSError * _Nullable error) {
-        onCompletion(error);
-    }];
+    NSDictionary *data = @{
+        ETExpenseItemIdentifierKey: expenseItem.identifier
+    };
     
-    NSPredicate *filterPredicate = [NSPredicate predicateWithBlock:^BOOL(ETExpenseItem  *obj, id bindings) {
-        BOOL isIdentifiersEqual = [[obj identifier] isEqualToString:[expenseItem identifier]];
-        return !isIdentifiersEqual;
+    NSError *error;
+    NSData *serializedData = [NSJSONSerialization dataWithJSONObject:data options:0 error:&error];
+    
+    if (serializedData == nil) {
+        #warning handle error
+        return;
+    }
+    
+    typeof(self) __weak weakSelf = self;
+    [self.itemServer deleteExpenseItem:serializedData completionHandler:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+        if (data) {
+            [weakSelf setExpenseItemListFromData:data];
+        } else if (error) {
+            #warning handle error
+            NSLog(@"%@", error);
+        }
     }];
-    NSArray *filteredExpenseItems = [[self expenseItemList] filteredArrayUsingPredicate:filterPredicate];
-    NSLog(@"%@ -> %@", [self expenseItemList], filteredExpenseItems);
-    [self setExpenseItemList:filteredExpenseItems];
 }
 @end
