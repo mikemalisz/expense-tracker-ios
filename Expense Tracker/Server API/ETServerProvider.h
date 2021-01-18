@@ -13,8 +13,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ETServerProvider : NSObject <ETAuthenticationServer>
-- (void)testServerConnection;
-- (void)testServerConnectionWithCompletionHandler:(ServerCompletionHandler)onCompletion;
 @end
 
 NS_ASSUME_NONNULL_END

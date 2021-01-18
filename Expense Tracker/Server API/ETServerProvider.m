@@ -18,34 +18,25 @@ NSInteger const ETHTTPStatusOKCode = 200;
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    
-    typeof(self) __weak weakSelf = self;
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        [weakSelf dataTaskCompletionHandler:data response:response error:error completionHandler:onCompletion];
-    }];
-    
-    [task resume];
+    [self performDataTaskWithRequest:request completionHandler:onCompletion];
 }
 
-- (void)testServerConnection {
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLRequest *request = [self generateRequestWithPath:nil];
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSLog(@"Error: %@", error);
-    }];
-    
-    [task resume];
+- (void)requestAuthenticationStatusWithCompletionHandler:(ServerCompletionHandler)onCompletion {
+    NSMutableURLRequest *request = [self generateRequestWithPath:@"auth/status"];
+    [self performDataTaskWithRequest:request completionHandler:onCompletion];
 }
 
-- (void)testServerConnectionWithCompletionHandler:(void (^)(NSDictionary * _Nullable, NSError * _Nullable))onCompletion {
+- (void)deauthenticateFromServerWithCompletionHandler:(ServerCompletionHandler)onCompletion {
+    NSMutableURLRequest *request = [self generateRequestWithPath:@"auth/status"];
+    [request setHTTPMethod:@"POST"];
+    [self performDataTaskWithRequest:request completionHandler:onCompletion];
+}
+
+- (void)performDataTaskWithRequest:(NSURLRequest *)request completionHandler:(ServerCompletionHandler)onCompletion {
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLRequest *request = [self generateRequestWithPath:nil];
-    
     typeof(self) __weak weakSelf = self;
+    
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSLog(@"Completion handler");
         [weakSelf dataTaskCompletionHandler:data response:response error:error completionHandler:onCompletion];
     }];
     
