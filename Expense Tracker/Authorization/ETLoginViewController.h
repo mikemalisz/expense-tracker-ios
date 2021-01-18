@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ETLoginViewController : UIViewController <ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding>
+@interface ETLoginViewController : UIViewController <ASAuthorizationControllerPresentationContextProviding>
 
 @property ETAuthenticationManager *_Null_unspecified authenticationManager;
 

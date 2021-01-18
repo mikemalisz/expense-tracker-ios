@@ -87,4 +87,21 @@ NSInteger const ETHTTPStatusOKCode = 200;
     NSMutableURLRequest *newRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLString]];
     return newRequest;
 }
+
+- (void)deleteExpenseItem:(nonnull ETExpenseItem *)expenseItem completionHandler:(nonnull void (^)(NSError * _Nullable))onCompletion {
+    
+}
+
+- (void)persistNewExpenseItem:(nonnull ETExpenseItem *)expenseItem completionHandler:(nonnull void (^)(NSError * _Nullable))onCompletion {
+    
+}
+
+- (void)retrieveExpenseItems:(nonnull void (^)(NSArray<ETExpenseItem *> * _Nonnull, NSError * _Nullable))onCompletion {
+    
+}
+
+- (void)updateExistingExpenseItem:(nonnull ETExpenseItem *)expenseItem completionHandler:(nonnull void (^)(NSError * _Nullable))onCompletion {
+    
+}
+
 @end

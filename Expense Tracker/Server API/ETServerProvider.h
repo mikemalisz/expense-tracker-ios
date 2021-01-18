@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ETServerProvider : NSObject <ETAuthenticationServer>
+@interface ETServerProvider : NSObject <ETAuthenticationServer, ETServerAPI>
 @end
 
 NS_ASSUME_NONNULL_END

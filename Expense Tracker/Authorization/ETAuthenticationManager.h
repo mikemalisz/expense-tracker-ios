@@ -18,6 +18,8 @@ typedef NS_ENUM(NSUInteger, ETAuthenticationState) {
     ETAuthenticationLoading
 };
 
+extern NSString * const ETAuthenticationManagerStateKeyPath;
+
 @interface ETAuthenticationManager : NSObject <ASAuthorizationControllerDelegate>
 
 - (instancetype)initWithAuthenticationServer:(id <ETAuthenticationServer>)server;

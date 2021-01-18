@@ -6,8 +6,9 @@
 //
 
 #import "SceneDelegate.h"
-#import "ETMockServerAPI.h"
-#import "ETExpenseOverviewTableViewController.h"
+#import "ETAuthenticationNavigationController.h"
+#import "ETAuthenticationManager.h"
+#import "ETServerProvider.h"
 
 @interface SceneDelegate ()
 
@@ -17,18 +18,13 @@
 
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
-    
-    UIViewController *rootController = [[self window] rootViewController];
-    if (![rootController isKindOfClass:[UINavigationController class]]) {
-        return;
-    }
-    BOOL expenseOverviewControllerExists = [[(UINavigationController *)rootController topViewController] isKindOfClass:[ETExpenseOverviewTableViewController class]];
-    if (expenseOverviewControllerExists) {
-        ETExpenseOverviewTableViewController *expenseController = (ETExpenseOverviewTableViewController *)[(UINavigationController *) rootController topViewController];
-		
-		ETExpenseItemManager *itemManager = [[ETExpenseItemManager alloc] initWithServerAPI:[ETMockServerAPI new]];
-        [expenseController setItemManager:itemManager];
-        NSLog(@"%@", itemManager);
+    ETAuthenticationNavigationController *controller = (id)[[self window] rootViewController];
+    if (controller) {
+        ETServerProvider *server = [ETServerProvider new];
+        ETAuthenticationManager *authenticationManager = [[ETAuthenticationManager alloc] initWithAuthenticationServer:server];
+        
+        ETAuthenticationNavigationController *controller = [ETAuthenticationNavigationController new];
+        [controller setAuthenticationManager:authenticationManager];
     }
 }
 

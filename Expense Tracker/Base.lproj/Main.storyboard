@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SU7-2L-4LI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eMI-YJ-afQ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -13,7 +13,7 @@
         <!--Expense Overview Table View Controller-->
         <scene sceneID="gyF-GT-d3S">
             <objects>
-                <tableViewController id="SfQ-Uz-hW3" customClass="ETExpenseOverviewTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ETExpenseOverviewTableViewController" id="SfQ-Uz-hW3" customClass="ETExpenseOverviewTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="LeD-P3-p8C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -267,6 +267,19 @@
             </objects>
             <point key="canvasLocation" x="1292.753623188406" y="-14.0625"/>
         </scene>
+        <!--Authentication Navigation Controller-->
+        <scene sceneID="FoQ-Jl-JKa">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O5o-E5-fh0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="eMI-YJ-afQ" customClass="ETAuthenticationNavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RwM-sW-dmt">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-3486" y="-435"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="jSm-u3-nNe">
             <objects>
@@ -300,24 +313,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ous-ht-rlH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-642" y="-727"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="C6L-bn-ZP2">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="85a-48-gSQ" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aLV-DQ-Srm">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="SfQ-Uz-hW3" kind="relationship" relationship="rootViewController" id="jqw-pW-Twj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="06S-td-0BD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-694.20289855072474" y="-14.0625"/>
         </scene>
     </scenes>
     <resources>

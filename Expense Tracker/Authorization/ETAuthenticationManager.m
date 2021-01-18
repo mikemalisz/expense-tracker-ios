@@ -8,6 +8,8 @@
 #import "ETAuthenticationManager.h"
 #import "ETServerProvider.h"
 
+NSString * const ETAuthenticationManagerStateKeyPath = @"authenticationState";
+
 NSString *const ETAuthenticationService = @"authentication";
 NSString *const ETUserAccount = @"userAccount";
 
@@ -50,6 +52,8 @@ NSString *const ETUserAccount = @"userAccount";
             } else {
                 [self setAuthenticationState:ETUnauthenticated];
             }
+            
+            NSLog(@"authState: %ld", [self authenticationState]);
         }
     }];
 }
@@ -82,8 +86,13 @@ NSString *const ETUserAccount = @"userAccount";
     NSData *serializedData = [NSJSONSerialization dataWithJSONObject:data options:0 error:nil];
     if (serializedData != nil) {
         
+        typeof(self) __weak weakSelf = self;
         [[self server] authenticateWithPostData:serializedData completionHandler:^(NSDictionary * _Nullable response, NSError * _Nullable error) {
-            NSLog(@"response: %@, error: %@", response, error);
+            if (error != nil) {
+                #warning handle error
+            } else {
+                [weakSelf checkAuthenticationStatus];
+            }
         }];
     }
 }
