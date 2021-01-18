@@ -56,6 +56,7 @@
 		8C375D7125AD3CED00EFB202 /* ETMockServerAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETMockServerAPI.h; sourceTree = "<group>"; };
 		8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETMockServerAPI.m; sourceTree = "<group>"; };
 		8C375D7D25AD47F900EFB202 /* mock-expenses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mock-expenses.json"; sourceTree = "<group>"; };
+		8C58B31B25B4FC0E006BA7E6 /* ETAuthenticationServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETAuthenticationServer.h; sourceTree = "<group>"; };
 		8C879CF725B0D51900BBD953 /* Expense Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Expense Tracker.entitlements"; sourceTree = "<group>"; };
 		8C879D0525B0D74800BBD953 /* ETLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETLoginViewController.h; sourceTree = "<group>"; };
 		8C879D0625B0D74800BBD953 /* ETLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETLoginViewController.m; sourceTree = "<group>"; };
@@ -283,6 +284,7 @@
 				8C375D7225AD3CED00EFB202 /* ETMockServerAPI.m */,
 				8CAC311725B246320071AF9B /* ETServerProvider.h */,
 				8CAC311825B246320071AF9B /* ETServerProvider.m */,
+				8C58B31B25B4FC0E006BA7E6 /* ETAuthenticationServer.h */,
 			);
 			path = "Server API";
 			sourceTree = "<group>";

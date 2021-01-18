@@ -8,10 +8,13 @@
 #import <Foundation/Foundation.h>
 #import <AuthenticationServices/AuthenticationServices.h>
 #import "ETKeychainItem.h"
+#import "ETAuthenticationServer.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ETAuthenticationManager : NSObject <ASAuthorizationControllerDelegate>
+
+- (instancetype)initWithAuthenticationServer:(id <ETAuthenticationServer>)server;
 
 @end
 

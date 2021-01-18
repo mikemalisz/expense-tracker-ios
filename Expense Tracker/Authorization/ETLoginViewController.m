@@ -19,7 +19,8 @@
     [super viewDidLoad];
     [self configureSignInButton];
     
-    [self setAuthenticationManager:[ETAuthenticationManager new]];
+    ETAuthenticationManager *authManager = [[ETAuthenticationManager alloc] initWithAuthenticationServer:[ETServerProvider new]];
+    [self setAuthenticationManager:authManager];
     
 }
 

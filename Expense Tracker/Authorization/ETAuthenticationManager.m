@@ -6,6 +6,7 @@
 //
 
 #import "ETAuthenticationManager.h"
+#import "ETServerProvider.h"
 
 NSString *const ETAuthenticationService = @"authentication";
 NSString *const ETUserAccount = @"userAccount";
@@ -14,15 +15,18 @@ NSString *const ETUserAccount = @"userAccount";
 
 @property ETKeychainItem *identityTokenKeychain;
 
+@property id <ETAuthenticationServer> server;
+
 @end
 
 
 @implementation ETAuthenticationManager
 
-- (instancetype)init {
+- (instancetype)initWithAuthenticationServer:(id<ETAuthenticationServer>)server {
     self = [super init];
     if (self) {
         _identityTokenKeychain = [[ETKeychainItem alloc] initWithServiceString:ETAuthenticationService accountString:ETUserAccount];
+        _server = server;
     }
     return self;
 }
@@ -30,12 +34,12 @@ NSString *const ETUserAccount = @"userAccount";
 #pragma mark - Authorization Controller Delegate
 
 - (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithAuthorization:(ASAuthorization *)authorization {
+    
     NSLog(@"%@", authorization.provider);
     id credential = [authorization credential];
     
     if ([credential isKindOfClass:[ASAuthorizationAppleIDCredential class]]) {
-        [self persistAppleIDCredentialToKeychain:credential];
-        NSLog(@"%@", [[NSString alloc] initWithData:[credential identityToken] encoding:NSUTF8StringEncoding]);
+        [self handleServerAuthenticationWithCredential:credential];
     }
 }
 
@@ -45,6 +49,21 @@ NSString *const ETUserAccount = @"userAccount";
 }
 
 #pragma mark - Convenience
+
+- (void)handleServerAuthenticationWithCredential: (ASAuthorizationAppleIDCredential *)credential {
+    NSDictionary *data = @{
+        @"identityToken": [[NSString alloc] initWithData: [credential identityToken] encoding:NSUTF8StringEncoding],
+        @"clientId": [[NSBundle mainBundle] bundleIdentifier]
+    };
+    
+    NSData *serializedData = [NSJSONSerialization dataWithJSONObject:data options:0 error:nil];
+    if (serializedData != nil) {
+        
+        [[self server] authenticateWithPostData:serializedData completionHandler:^(NSDictionary * _Nullable response, NSError * _Nullable error) {
+            NSLog(@"response: %@, error: %@", response, error);
+        }];
+    }
+}
 
 - (void)persistAppleIDCredentialToKeychain:(ASAuthorizationAppleIDCredential *)credential {
     // create a dictionary containing the user's account details
