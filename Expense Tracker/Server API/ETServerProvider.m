@@ -27,7 +27,7 @@ NSInteger const ETHTTPStatusOKCode = 200;
 }
 
 - (void)deauthenticateFromServerWithCompletionHandler:(ServerCompletionHandler)onCompletion {
-    NSMutableURLRequest *request = [self generateRequestWithPath:@"auth/status"];
+    NSMutableURLRequest *request = [self generateRequestWithPath:@"auth/logout"];
     [request setHTTPMethod:@"POST"];
     [self performDataTaskWithRequest:request completionHandler:onCompletion];
 }
