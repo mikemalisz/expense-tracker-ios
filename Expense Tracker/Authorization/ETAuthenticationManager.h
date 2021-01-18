@@ -12,9 +12,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, ETAuthenticationState) {
+    ETAuthenticated,
+    ETUnauthenticated,
+    ETAuthenticationLoading
+};
+
 @interface ETAuthenticationManager : NSObject <ASAuthorizationControllerDelegate>
 
 - (instancetype)initWithAuthenticationServer:(id <ETAuthenticationServer>)server;
+
+@property ETAuthenticationState authenticationState;
 
 @end
 

@@ -27,8 +27,31 @@ NSString *const ETUserAccount = @"userAccount";
     if (self) {
         _identityTokenKeychain = [[ETKeychainItem alloc] initWithServiceString:ETAuthenticationService accountString:ETUserAccount];
         _server = server;
+        _authenticationState = ETAuthenticationLoading;
+        
+        [self checkAuthenticationStatus];
     }
     return self;
+}
+
+#pragma mark - Authentication Status
+
+- (void)checkAuthenticationStatus {
+    [self setAuthenticationState:ETAuthenticationLoading];
+    
+    [[self server] requestAuthenticationStatusWithCompletionHandler:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+        if (error != nil) {
+            #warning handle error
+        } else if (data != nil) {
+            // determine authentication state from returned data
+            NSNumber *isAuthenticated = [data objectForKey:@"isAuthenticated"];
+            if ([isAuthenticated boolValue]) {
+                [self setAuthenticationState:ETAuthenticated];
+            } else {
+                [self setAuthenticationState:ETUnauthenticated];
+            }
+        }
+    }];
 }
 
 #pragma mark - Authorization Controller Delegate
