@@ -57,9 +57,9 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
 - (void)submitNewExpenseItemWithTitle:(NSString *)title description:(NSString *)expenseDescription dollarAmount:(NSString *)amountText datePurchased:(NSDate *)datePurchased completionHandler:(void (^)(NSError * _Nullable))onCompletion {
     
     NSNumberFormatter *formatter = [NSNumberFormatter new];
-    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    NSInteger dollarAmount = [[formatter numberFromString:amountText] integerValue];
-    NSNumber *amountInCents = [NSNumber numberWithInteger:(dollarAmount * 100)];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    double dollarAmount = [[formatter numberFromString:amountText] doubleValue];
+    NSNumber *amountInCents = [NSNumber numberWithInteger:round(dollarAmount * 100)];
     
     NSDictionary *newItem = @{
         ETExpenseItemAmountInCentsKey: amountInCents,
