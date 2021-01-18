@@ -6,12 +6,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ETServerCompletionHandler.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol ETAuthenticationServer
 
-- (void)authenticateWithPostData:(NSData *)postData completionHandler:(void (^)(NSDictionary * _Nullable, NSError * _Nullable))onCompletion;
+- (void)authenticateWithPostData:(NSData *)postData completionHandler:(ServerCompletionHandler)onCompletion;
+
+- (void)requestAuthenticationStatusWithCompletionHandler:(ServerCompletionHandler)onCompletion;
 
 @end
 
