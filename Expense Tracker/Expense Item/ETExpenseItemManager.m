@@ -58,7 +58,8 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
     NSLog(@"%@", self.expenseItemList);
 }
 
-- (void)submitNewExpenseItemWithTitle:(NSString *)title dollarAmount:(NSString *)amountText datePurchased:(NSDate *)datePurchased completionHandler:(void (^)(NSError * _Nullable))onCompletion {
+- (void)submitNewExpenseItemWithTitle:(NSString *)title description:(NSString *)expenseDescription dollarAmount:(NSString *)amountText datePurchased:(NSDate *)datePurchased completionHandler:(void (^)(NSError * _Nullable))onCompletion {
+    
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSInteger dollarAmount = [[formatter numberFromString:amountText] integerValue];
@@ -67,7 +68,8 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
     NSDictionary *newItem = @{
         ETExpenseItemAmountInCentsKey: amountInCents,
         ETExpenseItemExpenseTitleKey: title,
-        ETExpenseItemDateOfPurchaseKey: [NSNumber numberWithDouble:[datePurchased timeIntervalSince1970]]};
+        ETExpenseItemDateOfPurchaseKey: [NSNumber numberWithDouble:[datePurchased timeIntervalSince1970]],
+        ETExpenseItemExpenseDescriptionKey: expenseDescription};
     
     NSError *error;
     NSData *serializedItem = [NSJSONSerialization dataWithJSONObject:newItem options:0 error:&error];

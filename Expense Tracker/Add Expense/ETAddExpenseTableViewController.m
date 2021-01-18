@@ -36,6 +36,7 @@
         typeof(self) weakSelf = self;
         [[self itemManager]
          submitNewExpenseItemWithTitle:expenseTitle
+         description:[NSString new]
          dollarAmount:amount
          datePurchased:datePurchased
          completionHandler:^(NSError * _Nullable error) {
