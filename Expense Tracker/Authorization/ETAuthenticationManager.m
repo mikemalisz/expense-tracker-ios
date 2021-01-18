@@ -51,8 +51,6 @@ NSString *const ETUserAccount = @"userAccount";
             } else {
                 [self setAuthenticationState:ETUnauthenticated];
             }
-            
-            NSLog(@"authState: %ld", [self authenticationState]);
         }
     }];
 }
@@ -60,8 +58,6 @@ NSString *const ETUserAccount = @"userAccount";
 #pragma mark - Authorization Controller Delegate
 
 - (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithAuthorization:(ASAuthorization *)authorization {
-    
-    NSLog(@"%@", authorization.provider);
     id credential = [authorization credential];
     
     if ([credential isKindOfClass:[ASAuthorizationAppleIDCredential class]]) {

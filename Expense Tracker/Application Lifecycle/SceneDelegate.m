@@ -16,14 +16,12 @@
 
 @implementation SceneDelegate
 
-
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     ETAuthenticationNavigationController *controller = (id)[[self window] rootViewController];
     if (controller) {
         ETAuthenticationServerProvider *server = [ETAuthenticationServerProvider new];
         ETAuthenticationManager *authenticationManager = [[ETAuthenticationManager alloc] initWithAuthenticationServer:server];
         
-        ETAuthenticationNavigationController *controller = [ETAuthenticationNavigationController new];
         [controller setAuthenticationManager:authenticationManager];
     }
 }
