@@ -25,6 +25,8 @@ extern NSString * const ETAuthenticationManagerStateKeyPath;
 
 @property ETAuthenticationState authenticationState;
 
+@property void (^ _Nullable handleErrorAction)(NSError *);
+
 @end
 
 NS_ASSUME_NONNULL_END

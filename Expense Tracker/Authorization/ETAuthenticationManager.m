@@ -37,17 +37,21 @@ NSString * const ETIsAuthenticatedKey = @"isAuthenticated";
 #pragma mark - Authentication Status
 
 - (void)checkAuthenticationStatus {
+    typeof(self) __weak weakSelf = self;
     [[self server] requestAuthenticationStatusWithCompletionHandler:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+        if (weakSelf == nil) { return; }
+        
         if (error != nil) {
-            #warning handle error
+            weakSelf.handleErrorAction(error);
         } else if (data != nil) {
             // determine authentication state from returned data
+            
             NSNumber *isAuthenticated = [data objectForKey:@"isAuthenticated"];
             
             ETAuthenticationState newState = isAuthenticated.boolValue ? ETAuthenticated : ETUnauthenticated;
             
-            if (newState != self.authenticationState) {
-                [self setAuthenticationState:newState];
+            if (newState != weakSelf.authenticationState) {
+                [weakSelf setAuthenticationState:newState];
                 [NSUserDefaults.standardUserDefaults setBool:newState forKey:ETIsAuthenticatedKey];
             }
         }
@@ -65,8 +69,7 @@ NSString * const ETIsAuthenticatedKey = @"isAuthenticated";
 }
 
 - (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error {
-    #warning handle error
-    NSLog(@"%@", error);
+    self.handleErrorAction(error);
 }
 
 #pragma mark - Convenience
@@ -83,7 +86,7 @@ NSString * const ETIsAuthenticatedKey = @"isAuthenticated";
         typeof(self) __weak weakSelf = self;
         [[self server] authenticateWithPostData:serializedData completionHandler:^(NSDictionary * _Nullable response, NSError * _Nullable error) {
             if (error != nil) {
-                #warning handle error
+                weakSelf.handleErrorAction(error);
             } else {
                 [weakSelf checkAuthenticationStatus];
             }

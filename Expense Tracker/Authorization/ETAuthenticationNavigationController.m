@@ -21,6 +21,11 @@ static void *AuthenticationControllerAuthenticationStateContext = &Authenticatio
     [super viewDidLoad];
     [self attachObservers];
     [self updateRootController];
+    
+    typeof(self) __weak weakSelf = self;
+    [self.authenticationManager setHandleErrorAction:^(NSError *error) {
+        [weakSelf displayErrorAlertWithMessage:error.localizedDescription];
+    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
