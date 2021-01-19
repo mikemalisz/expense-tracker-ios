@@ -15,15 +15,33 @@ static void *AuthenticationControllerAuthenticationStateContext = &Authenticatio
 
 @implementation ETAuthenticationNavigationController
 
+#pragma mark - Controller lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [[self authenticationManager]
+    [self attachObservers];
+    [self updateRootController];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self removeObservers];
+}
+
+#pragma mark - KVO
+
+- (void)attachObservers {
+    [self.authenticationManager
      addObserver:self
      forKeyPath:ETAuthenticationManagerStateKeyPath
      options:NSKeyValueObservingOptionNew
      context:AuthenticationControllerAuthenticationStateContext];
-    [self updateRootController];
+}
+
+- (void)removeObservers {
+    [self.authenticationManager
+     removeObserver:self
+     forKeyPath:ETAuthenticationManagerStateKeyPath];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -34,6 +52,8 @@ static void *AuthenticationControllerAuthenticationStateContext = &Authenticatio
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
+
+#pragma mark - Navigation
 
 - (void)updateRootController {
     switch ([self.authenticationManager authenticationState]) {
