@@ -19,10 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ETExpenseOverviewDataSource *dataSource = [[ETExpenseOverviewDataSource alloc] initWithExpenseItemManager:[self itemManager]];
-    [self setDataSource:dataSource];
-    [[self tableView] setDataSource:dataSource];
-	
+    [self configureTableViewDataSource];
 	[self configurePropertyObserver];
     [self retrieveExpenseItems];
 }
@@ -33,6 +30,20 @@
 }
 
 #pragma mark - Configuration
+
+- (void)configureTableViewDataSource {
+    ETExpenseOverviewDataSource *dataSource = [[ETExpenseOverviewDataSource alloc] initWithExpenseItemManager:[self itemManager]];
+    
+    // error handling
+    typeof(self) __weak weakSelf = self;
+    [dataSource setHandleErrorAction:^(NSError * _Nonnull error) {
+        [weakSelf displayErrorAlertWithMessage:error.localizedDescription];
+    }];
+    
+    // update property and table view's data source
+    [self setDataSource:dataSource];
+    [self.tableView setDataSource:dataSource];
+}
 
 - (void)retrieveExpenseItems {
     typeof(self) __weak weakSelf = self;

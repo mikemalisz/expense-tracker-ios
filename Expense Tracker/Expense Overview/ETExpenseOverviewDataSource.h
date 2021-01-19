@@ -20,6 +20,9 @@ typedef NS_ENUM(NSUInteger, ETExpenseOverviewSection) {
 
 @interface ETExpenseOverviewDataSource : NSObject <UITableViewDataSource>
 - (instancetype)initWithExpenseItemManager:(ETExpenseItemManager *)itemManager;
+
+@property void (^ _Nullable handleErrorAction)(NSError *);
+
 @end
 
 NS_ASSUME_NONNULL_END
