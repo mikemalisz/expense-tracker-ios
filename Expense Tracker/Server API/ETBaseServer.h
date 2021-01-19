@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)performDataTaskWithRequest:(NSURLRequest *)request completionHandler:(ServerCompletionHandler)onCompletion;
 
-- (void)dataTaskCompletionHandler:(NSData * _Nullable)taskData response:(NSURLResponse * _Nullable)taskResponse error:(NSError * _Nullable)taskError completionHandler:(void (^)(NSDictionary * _Nullable, NSError * _Nullable))onCompletion;
+- (void)dataTaskCompletionHandler:(NSData * _Nullable)taskData response:(NSURLResponse * _Nullable)taskResponse error:(NSError * _Nullable)taskError completionHandler:(ServerCompletionHandler)onCompletion;
 
 - (NSMutableURLRequest *)generateRequestWithPath:(NSString * _Nullable)path;
 

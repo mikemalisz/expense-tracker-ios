@@ -23,7 +23,7 @@ NSInteger const ETHTTPStatusOKCode = 200;
 }
 
 /// Generic data task completion handler
-- (void)dataTaskCompletionHandler:(NSData * _Nullable)taskData response:(NSURLResponse * _Nullable)taskResponse error:(NSError * _Nullable)taskError completionHandler:(void (^)(NSDictionary * _Nullable, NSError * _Nullable))onCompletion {
+- (void)dataTaskCompletionHandler:(NSData * _Nullable)taskData response:(NSURLResponse * _Nullable)taskResponse error:(NSError * _Nullable)taskError completionHandler:(ServerCompletionHandler)onCompletion {
     if (taskError != nil) {
         dispatch_async(dispatch_get_main_queue(), ^{
             onCompletion(nil, taskError);
