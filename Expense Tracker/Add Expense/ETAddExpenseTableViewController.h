@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ETAddExpenseTableViewController : UITableViewController
+@interface ETAddExpenseTableViewController : UITableViewController <UITextFieldDelegate>
 
 @property ETExpenseItemManager * _Null_unspecified itemManager;
 

@@ -7,9 +7,17 @@
 
 #import "ETExpenseOverviewDataSource.h"
 
+#pragma mark - Constants
+
+NSString * const ETExpenseItemSectionTitle = @"Itemized";
+
+#pragma mark - Properties
+
 @interface ETExpenseOverviewDataSource ()
 @property ETExpenseItemManager *itemManager;
 @end
+
+#pragma mark - Methods
 
 @implementation ETExpenseOverviewDataSource
 
@@ -33,6 +41,8 @@
 			return [[[self itemManager] expenseItemList] count];
     }
 }
+
+#pragma mark - Cell Providers
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
 	ETExpenseOverviewSection section = [indexPath section];
@@ -63,6 +73,8 @@
     return cell;
 }
 
+#pragma mark - Row Editing
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
@@ -77,6 +89,18 @@
                 #warning handle error
             }
         }];
+    }
+}
+
+#pragma mark - Section Titles
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch ((ETExpenseOverviewSection)section) {
+        case ETExpenseOverviewSectionExpenseItems: {
+            BOOL isItemListEmpty = (self.itemManager.expenseItemList.count == 0);
+            return isItemListEmpty ? nil : ETExpenseItemSectionTitle;
+        }
+        default: return nil;
     }
 }
 @end

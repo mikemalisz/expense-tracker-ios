@@ -7,7 +7,13 @@
 
 #import "ETAddExpenseTableViewController.h"
 
+typedef NS_ENUM(NSUInteger, ETAddExpenseTextFieldTag) {
+    ETAddExpenseTitleTextFieldTag,
+    ETAddExpenseAmountTextFieldTag
+};
+
 @interface ETAddExpenseTableViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *expenseTitleField;
 @property (weak, nonatomic) IBOutlet UITextField *expenseAmountField;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePurchasedPicker;
@@ -18,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self configureTextFields];
 }
 
 #pragma mark - User Intents
@@ -47,5 +53,36 @@
             }
         }];
     }
+}
+
+#pragma mark - Configuration
+
+- (void)configureTextFields {
+    [self.expenseTitleField setDelegate:self];
+    [self.expenseAmountField setDelegate:self];
+    [self.expenseTitleField becomeFirstResponder];
+}
+
+#pragma mark - Text Field Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    ETAddExpenseTextFieldTag fieldTag = textField.tag;
+    switch (fieldTag) {
+        case ETAddExpenseTitleTextFieldTag:
+            [self.expenseAmountField becomeFirstResponder];
+            break;
+        case ETAddExpenseAmountTextFieldTag:
+            [self.datePurchasedPicker becomeFirstResponder];
+            break;
+    }
+    return YES;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 108;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
 }
 @end

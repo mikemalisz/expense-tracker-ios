@@ -24,13 +24,7 @@
     [[self tableView] setDataSource:dataSource];
 	
 	[self configurePropertyObserver];
-    
-    typeof(self) __weak weakSelf = self;
-    [self.itemManager refreshExpenseItemsWithCompletionHandler:^(NSError * _Nullable error) {
-        if (error) {
-            [weakSelf displayErrorAlertWithMessage:error.localizedDescription];
-        }
-    }];
+    [self retrieveExpenseItems];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -39,6 +33,15 @@
 }
 
 #pragma mark - Configuration
+
+- (void)retrieveExpenseItems {
+    typeof(self) __weak weakSelf = self;
+    [self.itemManager refreshExpenseItemsWithCompletionHandler:^(NSError * _Nullable error) {
+        if (error) {
+            [weakSelf displayErrorAlertWithMessage:error.localizedDescription];
+        }
+    }];
+}
 
 - (void)configurePropertyObserver {
 	ETExpenseOverviewKVOManager *propertyObserver = [[ETExpenseOverviewKVOManager alloc] initWithExpenseItemManager:[self itemManager]];
@@ -60,7 +63,8 @@
 - (IBAction)didPressAddExpense:(UIBarButtonItem *)sender {
     ETAddExpenseTableViewController *controller = [ETAddExpenseTableViewController initiateUsingStoryboard];
     [controller setItemManager:[self itemManager]];
-    [self presentViewController:controller animated:true completion:nil];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 @end

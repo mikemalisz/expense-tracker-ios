@@ -29,7 +29,7 @@ float ETExpenseItemCentsToDollarsMultiplier = 0.01;
     // date of purchase
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateStyle:NSDateFormatterShortStyle];
-    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setTimeStyle:NSDateFormatterNoStyle];
     NSString *dateOfPurchaseText = [formatter stringFromDate:expenseItem.dateOfPurchase];
     
     [[self datePurchasedLabel] setText:dateOfPurchaseText];
