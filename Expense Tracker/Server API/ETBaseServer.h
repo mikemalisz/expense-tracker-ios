@@ -8,10 +8,14 @@
 #import <Foundation/Foundation.h>
 #import "ETServerCompletionHandler.h"
 #import "ETAppError.h"
+#import "ETNetworkSession.h"
+#import "NSURLSession+ETNetworkSession.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ETBaseServer : NSObject
+
+- (instancetype)initWithNetworkSession:(id<ETNetworkSession>)networkSession;
 
 - (void)performDataTaskWithRequest:(NSURLRequest *)request completionHandler:(ServerCompletionHandler)onCompletion;
 

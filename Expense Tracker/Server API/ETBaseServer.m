@@ -9,25 +9,47 @@
 
 NSInteger const ETHTTPStatusOKCode = 200;
 
+@interface ETBaseServer ()
+
+@property id<ETNetworkSession> networkSession;
+
+@end
+
 @implementation ETBaseServer
 
+#pragma mark - Initialization
+
+- (instancetype)initWithNetworkSession:(id<ETNetworkSession>)networkSession {
+    self = [super init];
+    if (self) {
+        _networkSession = networkSession;
+    }
+    return self;
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _networkSession = [NSURLSession sharedSession];
+    }
+    return self;
+}
+
+#pragma mark - Intents
+
 - (void)performDataTaskWithRequest:(NSURLRequest *)request completionHandler:(ServerCompletionHandler)onCompletion {
-    NSURLSession *session = [NSURLSession sharedSession];
     typeof(self) __weak weakSelf = self;
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    [self.networkSession
+     performDataTaskWithRequest:request
+     completionHandler:^(NSData * _Nullable data, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error) {
         [weakSelf dataTaskCompletionHandler:data response:response error:error completionHandler:onCompletion];
     }];
-    
-    [task resume];
 }
 
 /// Generic data task completion handler
-- (void)dataTaskCompletionHandler:(NSData * _Nullable)taskData response:(NSURLResponse * _Nullable)taskResponse error:(NSError * _Nullable)taskError completionHandler:(ServerCompletionHandler)onCompletion {
+- (void)dataTaskCompletionHandler:(NSData * _Nullable)taskData response:(NSHTTPURLResponse * _Nullable)taskResponse error:(NSError * _Nullable)taskError completionHandler:(ServerCompletionHandler)onCompletion {
     if (taskError != nil) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            onCompletion(nil, taskError);
-        });
+        onCompletion(nil, taskError);
     } else if ([(NSHTTPURLResponse *)taskResponse statusCode] != ETHTTPStatusOKCode) {
         // task data should contain some type of error dictionary
         NSDictionary *errorDetails = [NSJSONSerialization JSONObjectWithData:taskData options:0 error:nil];
@@ -39,9 +61,7 @@ NSInteger const ETHTTPStatusOKCode = 200;
             serverResponseError = [ETAppError appErrorWithErrorCode:ETServerResponseErrorCode];
         }
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            onCompletion(nil, serverResponseError);
-        });
+        onCompletion(nil, serverResponseError);
     } else if (taskData != nil) {
         // received task data successfully
         NSError *error;
@@ -51,9 +71,7 @@ NSInteger const ETHTTPStatusOKCode = 200;
         }
         
         // json data should be populated if successful, otherwise error should exist
-        dispatch_async(dispatch_get_main_queue(), ^{
-            onCompletion(jsonData, error);
-        });
+        onCompletion(jsonData, error);
     }
 }
 

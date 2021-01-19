@@ -11,6 +11,7 @@
 		7819C06725AE94CA00D4569A /* ETExpenseItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7819C06625AE94CA00D4569A /* ETExpenseItemManager.m */; };
 		7819C06C25AEA26900D4569A /* ETExpenseOverviewKVOManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7819C06B25AEA26900D4569A /* ETExpenseOverviewKVOManager.m */; };
 		8C375D7E25AD47F900EFB202 /* mock-expenses.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C375D7D25AD47F900EFB202 /* mock-expenses.json */; };
+		8C41543525B6802C008167BB /* NSURLSession+ETNetworkSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C41543425B6802C008167BB /* NSURLSession+ETNetworkSession.m */; };
 		8C58B31F25B522AA006BA7E6 /* ETServerCompletionHandler.h in Sources */ = {isa = PBXBuildFile; fileRef = 8C58B31E25B522AA006BA7E6 /* ETServerCompletionHandler.h */; };
 		8C58B32625B536BA006BA7E6 /* ETAuthenticationNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C58B32525B536BA006BA7E6 /* ETAuthenticationNavigationController.m */; };
 		8C58B33925B54402006BA7E6 /* ETBaseServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C58B33825B54402006BA7E6 /* ETBaseServer.m */; };
@@ -60,6 +61,8 @@
 		7819C06A25AEA26900D4569A /* ETExpenseOverviewKVOManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseOverviewKVOManager.h; sourceTree = "<group>"; };
 		7819C06B25AEA26900D4569A /* ETExpenseOverviewKVOManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseOverviewKVOManager.m; sourceTree = "<group>"; };
 		8C375D7D25AD47F900EFB202 /* mock-expenses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mock-expenses.json"; sourceTree = "<group>"; };
+		8C41543325B6802C008167BB /* NSURLSession+ETNetworkSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+ETNetworkSession.h"; sourceTree = "<group>"; };
+		8C41543425B6802C008167BB /* NSURLSession+ETNetworkSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+ETNetworkSession.m"; sourceTree = "<group>"; };
 		8C58B31B25B4FC0E006BA7E6 /* ETAuthenticationServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETAuthenticationServer.h; sourceTree = "<group>"; };
 		8C58B31E25B522AA006BA7E6 /* ETServerCompletionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETServerCompletionHandler.h; sourceTree = "<group>"; };
 		8C58B32425B536BA006BA7E6 /* ETAuthenticationNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETAuthenticationNavigationController.h; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 		8C9CBFFA25B646C800A4995F /* ETSpendSummaryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETSpendSummaryTableViewCell.m; sourceTree = "<group>"; };
 		8C9CBFFF25B6678D00A4995F /* ETSubmitButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETSubmitButton.h; sourceTree = "<group>"; };
 		8C9CC00025B6678D00A4995F /* ETSubmitButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETSubmitButton.m; sourceTree = "<group>"; };
+		8C9CC00D25B67F1F00A4995F /* ETNetworkSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETNetworkSession.h; sourceTree = "<group>"; };
 		8CA6196625AE137A001F3547 /* ETExpenseOverviewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseOverviewDataSource.h; sourceTree = "<group>"; };
 		8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseOverviewDataSource.m; sourceTree = "<group>"; };
 		8CC0BAC525AF3CE00064EBEC /* UITableViewCell+cellIdentifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+cellIdentifier.h"; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 				8CC0BADF25AFA8D90064EBEC /* UIViewController+initiateUsingStoryboard.m */,
 				8C9CBFF425B6434000A4995F /* UIViewController+displayErrorAlert.h */,
 				8C9CBFF525B6434000A4995F /* UIViewController+displayErrorAlert.m */,
+				8C41543325B6802C008167BB /* NSURLSession+ETNetworkSession.h */,
+				8C41543425B6802C008167BB /* NSURLSession+ETNetworkSession.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -321,6 +327,7 @@
 				8C58B31E25B522AA006BA7E6 /* ETServerCompletionHandler.h */,
 				8C58B33725B54402006BA7E6 /* ETBaseServer.h */,
 				8C58B33825B54402006BA7E6 /* ETBaseServer.m */,
+				8C9CC00D25B67F1F00A4995F /* ETNetworkSession.h */,
 			);
 			path = "Server API";
 			sourceTree = "<group>";
@@ -434,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C41543525B6802C008167BB /* NSURLSession+ETNetworkSession.m in Sources */,
 				8CD6DBB025ABE886005DE50B /* AppDelegate.m in Sources */,
 				8CC8717025B27733008F6B66 /* ETAppError.m in Sources */,
 				8CC0BAE025AFA8D90064EBEC /* UIViewController+initiateUsingStoryboard.m in Sources */,
