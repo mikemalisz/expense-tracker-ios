@@ -64,7 +64,14 @@ NSString * const ETIsAuthenticatedKey = @"isAuthenticated";
     id credential = [authorization credential];
     
     if ([credential isKindOfClass:[ASAuthorizationAppleIDCredential class]]) {
-        [self handleServerAuthenticationWithCredential:credential];
+        // convert token from data encoding to string
+        ASAuthorizationAppleIDCredential *applieIDCredential = credential;
+        NSString *token = [[NSString alloc]
+                           initWithData:applieIDCredential.identityToken
+                           encoding:NSUTF8StringEncoding];
+        NSString *bundleId = [NSBundle mainBundle].bundleIdentifier;
+        
+        [self authenticateWithIdentityToken:token bundleId:bundleId];
     }
 }
 
@@ -72,12 +79,12 @@ NSString * const ETIsAuthenticatedKey = @"isAuthenticated";
     self.handleErrorAction(error);
 }
 
-#pragma mark - Convenience
+#pragma mark - Server Authentication
 
-- (void)handleServerAuthenticationWithCredential: (ASAuthorizationAppleIDCredential *)credential {
+- (void)authenticateWithIdentityToken:(NSString *)token bundleId:(NSString *)bundleId {
     NSDictionary *data = @{
-        @"identityToken": [[NSString alloc] initWithData: [credential identityToken] encoding:NSUTF8StringEncoding],
-        @"clientId": [[NSBundle mainBundle] bundleIdentifier]
+        @"identityToken": token,
+        @"clientId": bundleId
     };
     
     NSData *serializedData = [NSJSONSerialization dataWithJSONObject:data options:0 error:nil];
