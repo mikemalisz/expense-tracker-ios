@@ -32,18 +32,9 @@
         XCTAssertNil(error);
     }];
     
-    // make sure equal item in sut's expense item list is equal to what we expect
-    for (int i = 0; i < sut.expenseItemList.count; ++i) {
-        // get ith expense item from response and from sut's expense item list
-        NSDictionary *itemFromResponse = [expenseItemsDictionaries objectAtIndex:i];
-        ETExpenseItem *item = [sut.expenseItemList objectAtIndex:i];
-        
-        BOOL isItemsEqual = [[item toDictionary] isEqualToDictionary:itemFromResponse];
-        XCTAssert(isItemsEqual);
-    }
-    
-    // number of expense items should be equal between input dictionary and sut's expense list
-    XCTAssert(sut.expenseItemList.count == expenseItemsDictionaries.count);
+    [self
+     assertExpenseItemListIsEqualToReference:sut.expenseItemList
+     reference:expenseItemsDictionaries];
 }
 
 - (void)test_refreshExpenseItemWithErrorResponse_thatErrorActionBlockExecutes {
@@ -125,18 +116,9 @@
         XCTAssertNil(error);
     }];
     
-    // make sure equal item in sut's expense item list is equal to what we expect
-    for (int i = 0; i < sut.expenseItemList.count; ++i) {
-        // get ith expense item from response and from sut's expense item list
-        NSDictionary *itemFromResponse = [expenseItemsDictionaries objectAtIndex:i];
-        ETExpenseItem *item = [sut.expenseItemList objectAtIndex:i];
-        
-        BOOL isItemsEqual = [[item toDictionary] isEqualToDictionary:itemFromResponse];
-        XCTAssert(isItemsEqual);
-    }
-    
-    // number of expense items should be equal between input dictionary and sut's expense list
-    XCTAssert(sut.expenseItemList.count == expenseItemsDictionaries.count);
+    [self
+     assertExpenseItemListIsEqualToReference:sut.expenseItemList
+     reference:expenseItemsDictionaries];
 }
 
 - (void)test_submitExpenseItemWithErrorResponse_thatErrorActionBlockExecutes {
@@ -216,18 +198,9 @@
         XCTAssertNil(error);
     }];
     
-    // make sure equal item in sut's expense item list is equal to what we expect
-    for (int i = 0; i < sut.expenseItemList.count; ++i) {
-        // get ith expense item from response and from sut's expense item list
-        NSDictionary *itemFromResponse = [expenseItemsDictionaries objectAtIndex:i];
-        ETExpenseItem *item = [sut.expenseItemList objectAtIndex:i];
-        
-        BOOL isItemsEqual = [[item toDictionary] isEqualToDictionary:itemFromResponse];
-        XCTAssert(isItemsEqual);
-    }
-    
-    // number of expense items should be equal between input dictionary and sut's expense list
-    XCTAssert(sut.expenseItemList.count == expenseItemsDictionaries.count);
+    [self
+     assertExpenseItemListIsEqualToReference:sut.expenseItemList
+     reference:expenseItemsDictionaries];
 }
 
 - (void)test_deleteExpenseItemWithErrorResponse_thatErrorActionBlockExecutes {
@@ -301,6 +274,21 @@
         [serverData setObject:createdTimestamp forKey:ETExpenseItemDateCreatedKey];
     }
     return serverData;
+}
+
+- (void)assertExpenseItemListIsEqualToReference:(NSArray<ETExpenseItem *> *)expenseItemList reference:(NSArray<NSDictionary *> *)reference {
+    // number of expense items should be equal between input list and reference item count
+    XCTAssert(expenseItemList.count == reference.count);
+    
+    // make sure each list expense item is equal to each item in reference
+    for (int i = 0; i < expenseItemList.count; ++i) {
+        // get ith expense item from response and from sut's expense item list
+        NSDictionary *itemFromResponse = [reference objectAtIndex:i];
+        ETExpenseItem *item = [expenseItemList objectAtIndex:i];
+        
+        BOOL isItemsEqual = [[item toDictionary] isEqualToDictionary:itemFromResponse];
+        XCTAssert(isItemsEqual);
+    }
 }
 
 @end
