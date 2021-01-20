@@ -19,6 +19,7 @@
 - (void)test_refreshExpenseItemsWithCorrectResponse_thatExpenseItemsSetProperly {
     // setup
     NSDictionary *responseData = [self dictionaryForRefresh];
+    NSArray *expenseItemsDictionaries = [responseData objectForKey:@"expenseItems"];
     ETItemServerMock *serverMock = [ETItemServerMock itemServerMockWithCompletionHandlerData:responseData error:nil];
     
     // sut creation
@@ -32,37 +33,110 @@
     // make sure equal item in sut's expense item list is equal to what we expect
     for (int i = 0; i < sut.expenseItemList.count; ++i) {
         // get ith expense item from response and from sut's expense item list
-        NSDictionary *itemFromResponse = [[responseData objectForKey:@"expenseItems"] objectAtIndex:i];
+        NSDictionary *itemFromResponse = [expenseItemsDictionaries objectAtIndex:i];
         ETExpenseItem *item = [sut.expenseItemList objectAtIndex:i];
-        
-        NSLog(@"%@ - %@", itemFromResponse, [item toDictionary]);
         
         BOOL isItemsEqual = [[item toDictionary] isEqualToDictionary:itemFromResponse];
         XCTAssert(isItemsEqual);
     }
+    
+    // number of expense items should be equal between input dictionary and sut's expense list
+    XCTAssert(sut.expenseItemList.count == expenseItemsDictionaries.count);
 }
+
+- (void)test_submitExpenseItem_thatDataSentToServerIsCorrect {
+    // input setup
+    NSString *title = @"test title";
+    NSString *description = @"description of an expense";
+    NSString *dollarAmount = @"500.00";
+    NSDate *datePurchased = [NSDate new];
+
+    // result setup
+    // convert our date to a milliseconds EPOCH timestamp
+    NSTimeInterval purchasedInterval = round(datePurchased.timeIntervalSince1970 * 1000);
+    NSDictionary *expectedDictionary = [self
+                                        dictionaryForServerWithItemId:nil
+                                        title:title
+                                        description:description
+                                        amountInCents:@50000
+                                        purchaseTimestamp:[NSNumber numberWithDouble:purchasedInterval]
+                                        createdTimestamp:nil];
+    
+    ETItemServerMock *serverMock = [ETItemServerMock itemServerMockWithCompletionHandlerData:nil error:nil];
+    
+    // sut creation
+    ETExpenseItemManager *sut = [[ETExpenseItemManager alloc] initWithServerAPI:serverMock];
+    
+    // testing
+    // server mock will intercept the data it's called with from the item manager
+    // and call this block to let us check the data is formatted correctly
+    [serverMock setOnPersistItemActionWithProvidedData:^(NSData *submittedData) {
+        NSError *error;
+        NSDictionary *submittedDictionary = [NSJSONSerialization JSONObjectWithData:submittedData options:0 error:&error];
+        
+        // error should be nil
+        XCTAssertNil(error);
+        // dictionary should contain our inputted parameters, formatted
+        // to the way the backend is expecting it
+        XCTAssert([submittedDictionary isEqualToDictionary:expectedDictionary]);
+    }];
+    
+    [sut submitNewExpenseItemWithTitle:title description:description dollarAmount:dollarAmount datePurchased:datePurchased completionHandler:^(NSError * _Nullable error) {
+        XCTAssertNil(error);
+    }];
+}
+
+#pragma mark - Convenience
 
 - (NSDictionary *)dictionaryForRefresh {
     return @{
         @"expenseItems": @[
             @{
-                @"itemId": @"randomId1",
-                @"amountInCents": @500,
-                @"expenseTitle": @"lorem",
-                @"expenseDescription": @"ipsum",
-                @"dateOfPurchase": @1611165665,
-                @"dateCreated": @1611165665
+                ETExpenseItemIdentifierKey: @"randomId1",
+                ETExpenseItemAmountInCentsKey: @500,
+                ETExpenseItemExpenseTitleKey: @"lorem",
+                ETExpenseItemExpenseDescriptionKey: @"ipsum",
+                ETExpenseItemDateOfPurchaseKey: @1611165665,
+                ETExpenseItemDateCreatedKey: @1611165665
             },
             @{
-                @"itemId": @"randomId2",
-                @"amountInCents": @700,
-                @"expenseTitle": @"dolor",
-                @"expenseDescription": @"consectetur adipiscing elit",
-                @"dateOfPurchase": @1611165665,
-                @"dateCreated": @1611165665
+                ETExpenseItemIdentifierKey: @"randomId2",
+                ETExpenseItemAmountInCentsKey: @700,
+                ETExpenseItemExpenseTitleKey: @"dolor",
+                ETExpenseItemExpenseDescriptionKey: @"consectetur adipiscing elit",
+                ETExpenseItemDateOfPurchaseKey: @1611165665,
+                ETExpenseItemDateCreatedKey: @1611165665
             }
         ]
     };
+}
+
+- (NSDictionary *)dictionaryForServerWithItemId:(NSString * _Nullable)itemId
+                                          title:(NSString * _Nullable)title
+                                    description:(NSString * _Nullable)description
+                                  amountInCents:(NSNumber * _Nullable)amountInCents
+                              purchaseTimestamp:(NSNumber * _Nullable)purchaseTimestamp
+                               createdTimestamp:(NSNumber * _Nullable)createdTimestamp {
+    NSMutableDictionary *serverData = [NSMutableDictionary new];
+    if (itemId != nil) {
+        [serverData setObject:itemId forKey:ETExpenseItemIdentifierKey];
+    }
+    if (title != nil) {
+        [serverData setObject:title forKey:ETExpenseItemExpenseTitleKey];
+    }
+    if (description != nil) {
+        [serverData setObject:description forKey:ETExpenseItemExpenseDescriptionKey];
+    }
+    if (amountInCents != nil) {
+        [serverData setObject:amountInCents forKey:ETExpenseItemAmountInCentsKey];
+    }
+    if (purchaseTimestamp != nil) {
+        [serverData setObject:purchaseTimestamp forKey:ETExpenseItemDateOfPurchaseKey];
+    }
+    if (createdTimestamp != nil) {
+        [serverData setObject:createdTimestamp forKey:ETExpenseItemDateCreatedKey];
+    }
+    return serverData;
 }
 
 @end

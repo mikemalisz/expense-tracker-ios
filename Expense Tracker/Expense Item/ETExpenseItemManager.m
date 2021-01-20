@@ -61,10 +61,12 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
     double dollarAmount = [[formatter numberFromString:amountText] doubleValue];
     NSNumber *amountInCents = [NSNumber numberWithInteger:round(dollarAmount * 100)];
     
+    // convert to milliseconds for backend
+    NSTimeInterval purchaseInterval = round(datePurchased.timeIntervalSince1970 * 1000);
     NSDictionary *newItem = @{
         ETExpenseItemAmountInCentsKey: amountInCents,
         ETExpenseItemExpenseTitleKey: title,
-        ETExpenseItemDateOfPurchaseKey: [NSNumber numberWithDouble:[datePurchased timeIntervalSince1970]],
+        ETExpenseItemDateOfPurchaseKey: [NSNumber numberWithDouble:purchaseInterval],
         ETExpenseItemExpenseDescriptionKey: expenseDescription};
     
     NSError *error;
