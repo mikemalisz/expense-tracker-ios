@@ -85,7 +85,7 @@ NSString * const ETExpenseItemSectionTitle = @"Itemized";
         ETExpenseItem *item = [itemList objectAtIndex:[indexPath row]];
         
         typeof(self) __weak weakSelf = self;
-        [self.itemManager deleteExpenseItem:item completionHandler:^(NSError * _Nullable error) {
+        [self.itemManager deleteExpenseItemWithItemId:item.identifier completionHandler:^(NSError * _Nullable error) {
             if (error != nil) {
                 weakSelf.handleErrorAction(error);
             }

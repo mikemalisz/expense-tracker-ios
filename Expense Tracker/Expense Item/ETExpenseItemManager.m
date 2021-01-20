@@ -86,10 +86,10 @@ NSString *const ETExpenseItemManagerItemListKeyPath = @"expenseItemList";
     }];
 }
 
-- (void)deleteExpenseItem:(ETExpenseItem *)expenseItem completionHandler:(void (^)(NSError * _Nullable))onCompletion {
+- (void)deleteExpenseItemWithItemId:(NSString *)itemId completionHandler:(void (^)(NSError * _Nullable))onCompletion {
     
     NSDictionary *data = @{
-        ETExpenseItemIdentifierKey: expenseItem.identifier
+        ETExpenseItemIdentifierKey: itemId
     };
     
     NSError *error;
