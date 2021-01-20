@@ -51,16 +51,16 @@ NSString *const ETExpenseItemDateCreatedKey = @"dateCreated";
 }
 
 - (NSDictionary<NSString *, id> *)toDictionary {
-    NSNumber *dateOfPurchaseTimestamp = [NSNumber numberWithDouble:[[self dateOfPurchase] timeIntervalSince1970]];
-    NSNumber *dateCreatedTimestamp = [NSNumber numberWithDouble:[[self dateCreated] timeIntervalSince1970]];
+    NSTimeInterval purchaseTimestamp = round([self.dateOfPurchase timeIntervalSince1970] * 1000);
+    NSTimeInterval createdTimestamp = round([self.dateCreated timeIntervalSince1970] * 1000);
     
 	NSDictionary<NSString *, id> *propertyValues = @{
 		ETExpenseItemIdentifierKey: [self identifier],
 		ETExpenseItemAmountInCentsKey: [NSNumber numberWithInteger:[self amountInCents]],
 		ETExpenseItemExpenseTitleKey: [self expenseTitle],
 		ETExpenseItemExpenseDescriptionKey: [self expenseDescription],
-		ETExpenseItemDateOfPurchaseKey: dateOfPurchaseTimestamp,
-        ETExpenseItemDateCreatedKey: dateCreatedTimestamp};
+		ETExpenseItemDateOfPurchaseKey: [NSNumber numberWithDouble:purchaseTimestamp],
+        ETExpenseItemDateCreatedKey: [NSNumber numberWithDouble:createdTimestamp]};
 	return propertyValues;
 }
 @end

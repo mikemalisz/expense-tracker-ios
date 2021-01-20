@@ -11,6 +11,8 @@
 		7819C06725AE94CA00D4569A /* ETExpenseItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7819C06625AE94CA00D4569A /* ETExpenseItemManager.m */; };
 		7819C06C25AEA26900D4569A /* ETExpenseOverviewKVOManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7819C06B25AEA26900D4569A /* ETExpenseOverviewKVOManager.m */; };
 		8C375D7E25AD47F900EFB202 /* mock-expenses.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C375D7D25AD47F900EFB202 /* mock-expenses.json */; };
+		8C3C706D25B89E6C00D8986B /* ETItemServerMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3C706C25B89E6C00D8986B /* ETItemServerMock.m */; };
+		8C3C707125B8A51100D8986B /* ETExpenseItemManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3C707025B8A51100D8986B /* ETExpenseItemManagerTests.m */; };
 		8C41543525B6802C008167BB /* NSURLSession+ETNetworkSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C41543425B6802C008167BB /* NSURLSession+ETNetworkSession.m */; };
 		8C41543D25B68689008167BB /* ETNetworkSessionMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C41543C25B68689008167BB /* ETNetworkSessionMock.m */; };
 		8C41544525B68920008167BB /* ETBaseServerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C41544425B68920008167BB /* ETBaseServerTests.m */; };
@@ -63,6 +65,9 @@
 		7819C06A25AEA26900D4569A /* ETExpenseOverviewKVOManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseOverviewKVOManager.h; sourceTree = "<group>"; };
 		7819C06B25AEA26900D4569A /* ETExpenseOverviewKVOManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseOverviewKVOManager.m; sourceTree = "<group>"; };
 		8C375D7D25AD47F900EFB202 /* mock-expenses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mock-expenses.json"; sourceTree = "<group>"; };
+		8C3C706B25B89E6C00D8986B /* ETItemServerMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETItemServerMock.h; sourceTree = "<group>"; };
+		8C3C706C25B89E6C00D8986B /* ETItemServerMock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETItemServerMock.m; sourceTree = "<group>"; };
+		8C3C707025B8A51100D8986B /* ETExpenseItemManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseItemManagerTests.m; sourceTree = "<group>"; };
 		8C41543325B6802C008167BB /* NSURLSession+ETNetworkSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+ETNetworkSession.h"; sourceTree = "<group>"; };
 		8C41543425B6802C008167BB /* NSURLSession+ETNetworkSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+ETNetworkSession.m"; sourceTree = "<group>"; };
 		8C41543B25B68689008167BB /* ETNetworkSessionMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETNetworkSessionMock.h; sourceTree = "<group>"; };
@@ -352,6 +357,9 @@
 			isa = PBXGroup;
 			children = (
 				8CD6DC0F25AC0072005DE50B /* ETExpenseItemTests.m */,
+				8C3C706B25B89E6C00D8986B /* ETItemServerMock.h */,
+				8C3C706C25B89E6C00D8986B /* ETItemServerMock.m */,
+				8C3C707025B8A51100D8986B /* ETExpenseItemManagerTests.m */,
 			);
 			path = "Expense Item Tests";
 			sourceTree = "<group>";
@@ -494,8 +502,10 @@
 				8CD6DC1025AC0072005DE50B /* ETExpenseItemTests.m in Sources */,
 				8CC8718725B28F9F008F6B66 /* ETAppErrorTests.m in Sources */,
 				8CD6DBCB25ABE888005DE50B /* Expense_TrackerTests.m in Sources */,
+				8C3C707125B8A51100D8986B /* ETExpenseItemManagerTests.m in Sources */,
 				8C41544525B68920008167BB /* ETBaseServerTests.m in Sources */,
 				8CC8718D25B29202008F6B66 /* ETKeychainItemTests.m in Sources */,
+				8C3C706D25B89E6C00D8986B /* ETItemServerMock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
