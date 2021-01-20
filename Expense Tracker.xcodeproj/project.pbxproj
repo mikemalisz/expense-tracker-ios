@@ -41,7 +41,6 @@
 		8CD6DBBB25ABE887005DE50B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6DBBA25ABE887005DE50B /* Assets.xcassets */; };
 		8CD6DBBE25ABE887005DE50B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6DBBC25ABE887005DE50B /* LaunchScreen.storyboard */; };
 		8CD6DBC125ABE887005DE50B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBC025ABE887005DE50B /* main.m */; };
-		8CD6DBCB25ABE888005DE50B /* Expense_TrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBCA25ABE888005DE50B /* Expense_TrackerTests.m */; };
 		8CD6DBFC25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DBFB25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m */; };
 		8CD6DC0A25ABF88B005DE50B /* ETExpenseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DC0925ABF88B005DE50B /* ETExpenseItem.m */; };
 		8CD6DC1025AC0072005DE50B /* ETExpenseItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD6DC0F25AC0072005DE50B /* ETExpenseItemTests.m */; };
@@ -122,7 +121,6 @@
 		8CD6DBBF25ABE887005DE50B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CD6DBC025ABE887005DE50B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8CD6DBC625ABE887005DE50B /* Expense TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Expense TrackerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CD6DBCA25ABE888005DE50B /* Expense_TrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Expense_TrackerTests.m; sourceTree = "<group>"; };
 		8CD6DBCC25ABE888005DE50B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CD6DBFA25ABEF39005DE50B /* ETExpenseOverviewTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseOverviewTableViewController.h; sourceTree = "<group>"; };
 		8CD6DBFB25ABEF39005DE50B /* ETExpenseOverviewTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseOverviewTableViewController.m; sourceTree = "<group>"; };
@@ -226,6 +224,13 @@
 			path = "Expense Overview";
 			sourceTree = "<group>";
 		};
+		8CC085D425B8EDDE000290BA /* Authentication Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Authentication Tests";
+			sourceTree = "<group>";
+		};
 		8CC0BAD325AF52600064EBEC /* Add Expense */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,10 +312,10 @@
 		8CD6DBC925ABE888005DE50B /* Expense TrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				8CC085D425B8EDDE000290BA /* Authentication Tests */,
 				8C41543A25B68661008167BB /* Server API Tests */,
 				8CC8717525B28F16008F6B66 /* Utility Tests */,
 				8CD6DC0E25AC0042005DE50B /* Expense Item Tests */,
-				8CD6DBCA25ABE888005DE50B /* Expense_TrackerTests.m */,
 				8CD6DBCC25ABE888005DE50B /* Info.plist */,
 			);
 			path = "Expense TrackerTests";
@@ -501,7 +506,6 @@
 				8C41543D25B68689008167BB /* ETNetworkSessionMock.m in Sources */,
 				8CD6DC1025AC0072005DE50B /* ETExpenseItemTests.m in Sources */,
 				8CC8718725B28F9F008F6B66 /* ETAppErrorTests.m in Sources */,
-				8CD6DBCB25ABE888005DE50B /* Expense_TrackerTests.m in Sources */,
 				8C3C707125B8A51100D8986B /* ETExpenseItemManagerTests.m in Sources */,
 				8C41544525B68920008167BB /* ETBaseServerTests.m in Sources */,
 				8CC8718D25B29202008F6B66 /* ETKeychainItemTests.m in Sources */,
