@@ -16,6 +16,8 @@
 
 @implementation ETExpenseItemManagerTests
 
+#pragma mark Refresh Item Tests
+
 - (void)test_refreshExpenseItemsWithCorrectResponse_thatExpenseItemsSetProperly {
     // setup
     NSDictionary *responseData = [self dictionaryForRefresh];
@@ -43,6 +45,24 @@
     // number of expense items should be equal between input dictionary and sut's expense list
     XCTAssert(sut.expenseItemList.count == expenseItemsDictionaries.count);
 }
+
+- (void)test_refreshExpenseItemWithErrorResponse_thatErrorActionBlockExecutes {
+    ETAppError *testError = [ETAppError appErrorWithErrorCode:ETServerResponseErrorCode];
+    ETItemServerMock *serverMock = [ETItemServerMock itemServerMockWithCompletionHandlerData:nil error:testError];
+    
+    // sut creation & setup
+    ETExpenseItemManager *sut = [[ETExpenseItemManager alloc] initWithServerAPI:serverMock];
+    
+    // testing
+    [sut refreshExpenseItemsWithCompletionHandler:^(NSError * _Nullable error) {
+        XCTAssert([error isEqual:testError]);
+    }];
+    
+    // No expense items should be set
+    XCTAssert(sut.expenseItemList.count == 0);
+}
+
+#pragma mark Submit New Item Tests
 
 - (void)test_submitExpenseItem_thatDataSentToServerIsCorrect {
     // input setup
@@ -85,6 +105,64 @@
         XCTAssertNil(error);
     }];
 }
+
+- (void)test_submitExpenseItemWithCorrectResponse_thatExpenseItemsSetProperly {
+    // setup
+    NSDictionary *responseData = [self dictionaryForRefresh];
+    NSArray *expenseItemsDictionaries = [responseData objectForKey:@"expenseItems"];
+    ETItemServerMock *serverMock = [ETItemServerMock itemServerMockWithCompletionHandlerData:responseData error:nil];
+    
+    // sut creation
+    ETExpenseItemManager *sut = [[ETExpenseItemManager alloc] initWithServerAPI:serverMock];
+    
+    // testing
+    [sut
+     submitNewExpenseItemWithTitle:[NSString new]
+     description:[NSString new]
+     dollarAmount:[NSString new]
+     datePurchased:[NSDate new]
+     completionHandler:^(NSError * _Nullable error) {
+        XCTAssertNil(error);
+    }];
+    
+    // make sure equal item in sut's expense item list is equal to what we expect
+    for (int i = 0; i < sut.expenseItemList.count; ++i) {
+        // get ith expense item from response and from sut's expense item list
+        NSDictionary *itemFromResponse = [expenseItemsDictionaries objectAtIndex:i];
+        ETExpenseItem *item = [sut.expenseItemList objectAtIndex:i];
+        
+        BOOL isItemsEqual = [[item toDictionary] isEqualToDictionary:itemFromResponse];
+        XCTAssert(isItemsEqual);
+    }
+    
+    // number of expense items should be equal between input dictionary and sut's expense list
+    XCTAssert(sut.expenseItemList.count == expenseItemsDictionaries.count);
+}
+
+- (void)test_submitExpenseItemWithErrorResponse_thatErrorActionBlockExecutes {
+    ETAppError *testError = [ETAppError appErrorWithErrorCode:ETServerResponseErrorCode];
+    ETItemServerMock *serverMock = [ETItemServerMock itemServerMockWithCompletionHandlerData:nil error:testError];
+    
+    // sut creation
+    ETExpenseItemManager *sut = [[ETExpenseItemManager alloc] initWithServerAPI:serverMock];
+    
+    // testing
+    [sut
+     submitNewExpenseItemWithTitle:[NSString new]
+     description:[NSString new]
+     dollarAmount:[NSString new]
+     datePurchased:[NSDate new]
+     completionHandler:^(NSError * _Nullable error) {
+        XCTAssert([error isEqual:testError]);
+    }];
+    
+    // No expense items should be set
+    XCTAssert(sut.expenseItemList.count == 0);
+}
+
+#pragma mark Delete Item Tests
+
+#pragma mark Retrieve Total Spend Tests
 
 #pragma mark - Convenience
 

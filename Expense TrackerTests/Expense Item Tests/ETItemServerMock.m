@@ -17,12 +17,16 @@
 }
 
 - (void)deleteExpenseItem:(NSData *)expenseItem completionHandler:(ServerCompletionHandler)onCompletion {
-    self.onDeleteItemActionWithProvidedData(expenseItem);
+    if (self.onDeleteItemActionWithProvidedData) {
+        self.onDeleteItemActionWithProvidedData(expenseItem);
+    }
     onCompletion(self.completionHandlerData, self.completionHandlerError);
 }
 
 - (void)persistNewExpenseItem:(NSData *)expenseItem completionHandler:(ServerCompletionHandler)onCompletion {
-    self.onPersistItemActionWithProvidedData(expenseItem);
+    if (self.onPersistItemActionWithProvidedData) {
+        self.onPersistItemActionWithProvidedData(expenseItem);
+    }
     onCompletion(self.completionHandlerData, self.completionHandlerError);
 }
 
@@ -31,7 +35,9 @@
 }
 
 - (void)updateExistingExpenseItem:(NSData *)expenseItem completionHandler:(ServerCompletionHandler)onCompletion {
-    self.onUpdateItemActionWithProvidedData(expenseItem);
+    if (self.onUpdateItemActionWithProvidedData) {
+        self.onUpdateItemActionWithProvidedData(expenseItem);
+    }
     onCompletion(self.completionHandlerData, self.completionHandlerError);
 }
 
