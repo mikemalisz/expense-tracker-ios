@@ -25,7 +25,7 @@ extern NSString * const ETAuthenticationManagerStateKeyPath;
 
 - (void)authenticateWithIdentityToken:(NSString *)token bundleId:(NSString *)bundleId;
 
-@property ETAuthenticationState authenticationState;
+@property (readonly) ETAuthenticationState authenticationState;
 
 @property void (^ _Nullable handleErrorAction)(NSError *);
 

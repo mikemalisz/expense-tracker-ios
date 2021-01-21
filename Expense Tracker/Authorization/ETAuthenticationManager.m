@@ -13,6 +13,8 @@ NSString * const ETIsAuthenticatedKey = @"isAuthenticated";
 
 @interface ETAuthenticationManager ()
 
+@property (readwrite) ETAuthenticationState authenticationState;
+
 @property id <ETAuthenticationServer> server;
 
 @end

@@ -27,6 +27,7 @@
 		8C9CC00125B6678D00A4995F /* ETSubmitButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CC00025B6678D00A4995F /* ETSubmitButton.m */; };
 		8CA6196825AE137A001F3547 /* ETExpenseOverviewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSource.m */; };
 		8CC085D925B8EE4B000290BA /* ETAuthenticationServerMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC085D825B8EE4B000290BA /* ETAuthenticationServerMock.m */; };
+		8CC085E325B8F240000290BA /* ETAuthenticationManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC085E225B8F240000290BA /* ETAuthenticationManagerTests.m */; };
 		8CC0BAC725AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0BAC625AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m */; };
 		8CC0BAD025AF3F130064EBEC /* ETExpenseItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0BACF25AF3F130064EBEC /* ETExpenseItemTableViewCell.m */; };
 		8CC0BAD625AF52800064EBEC /* ETAddExpenseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC0BAD525AF52800064EBEC /* ETAddExpenseTableViewController.m */; };
@@ -97,6 +98,7 @@
 		8CA6196725AE137A001F3547 /* ETExpenseOverviewDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseOverviewDataSource.m; sourceTree = "<group>"; };
 		8CC085D725B8EE4B000290BA /* ETAuthenticationServerMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETAuthenticationServerMock.h; sourceTree = "<group>"; };
 		8CC085D825B8EE4B000290BA /* ETAuthenticationServerMock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETAuthenticationServerMock.m; sourceTree = "<group>"; };
+		8CC085E225B8F240000290BA /* ETAuthenticationManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETAuthenticationManagerTests.m; sourceTree = "<group>"; };
 		8CC0BAC525AF3CE00064EBEC /* UITableViewCell+cellIdentifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+cellIdentifier.h"; sourceTree = "<group>"; };
 		8CC0BAC625AF3CE00064EBEC /* UITableViewCell+cellIdentifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+cellIdentifier.m"; sourceTree = "<group>"; };
 		8CC0BACE25AF3F130064EBEC /* ETExpenseItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseItemTableViewCell.h; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				8CC085D725B8EE4B000290BA /* ETAuthenticationServerMock.h */,
 				8CC085D825B8EE4B000290BA /* ETAuthenticationServerMock.m */,
+				8CC085E225B8F240000290BA /* ETAuthenticationManagerTests.m */,
 			);
 			path = "Authentication Tests";
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 			files = (
 				8C41543D25B68689008167BB /* ETNetworkSessionMock.m in Sources */,
 				8CC085D925B8EE4B000290BA /* ETAuthenticationServerMock.m in Sources */,
+				8CC085E325B8F240000290BA /* ETAuthenticationManagerTests.m in Sources */,
 				8CD6DC1025AC0072005DE50B /* ETExpenseItemTests.m in Sources */,
 				8CC8718725B28F9F008F6B66 /* ETAppErrorTests.m in Sources */,
 				8C3C707125B8A51100D8986B /* ETExpenseItemManagerTests.m in Sources */,
