@@ -9,7 +9,7 @@
 
 NSString * const ETAuthenticationManagerStateKeyPath = @"authenticationState";
 
-NSString * const ETIsAuthenticatedKey = @"isAuthenticated";
+NSString * const ETAuthenticationStateStorageKey = @"isAuthenticated";
 
 @interface ETAuthenticationManager ()
 
@@ -27,20 +27,19 @@ NSString * const ETIsAuthenticatedKey = @"isAuthenticated";
     if (self) {
         _server = server;
         
-        BOOL wasPreviouslyAuthenticated = [NSUserDefaults.standardUserDefaults boolForKey:ETIsAuthenticatedKey];
+        BOOL wasPreviouslyAuthenticated = [NSUserDefaults.standardUserDefaults boolForKey:ETAuthenticationStateStorageKey];
         
         // set authentication state to the last known authentication state
         _authenticationState = wasPreviouslyAuthenticated ? ETAuthenticated : ETUnauthenticated;
-        [self checkAuthenticationStatus];
     }
     return self;
 }
 
 #pragma mark - Authentication Status
 
-- (void)checkAuthenticationStatus {
+- (void)refreshAuthenticationStatus {
     typeof(self) __weak weakSelf = self;
-    [[self server] requestAuthenticationStatusWithCompletionHandler:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+    [self.server requestAuthenticationStatusWithCompletionHandler:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
         if (weakSelf == nil) { return; }
         
         if (error != nil) {
@@ -54,7 +53,7 @@ NSString * const ETIsAuthenticatedKey = @"isAuthenticated";
             
             if (newState != weakSelf.authenticationState) {
                 [weakSelf setAuthenticationState:newState];
-                [NSUserDefaults.standardUserDefaults setBool:newState forKey:ETIsAuthenticatedKey];
+                [NSUserDefaults.standardUserDefaults setBool:newState forKey:ETAuthenticationStateStorageKey];
             }
         }
     }];
@@ -97,7 +96,7 @@ NSString * const ETIsAuthenticatedKey = @"isAuthenticated";
             if (error != nil) {
                 weakSelf.handleErrorAction(error);
             } else {
-                [weakSelf checkAuthenticationStatus];
+                [weakSelf refreshAuthenticationStatus];
             }
         }];
     }

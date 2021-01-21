@@ -9,6 +9,13 @@
 
 @implementation ETAuthenticationServerMock
 
++ (ETAuthenticationServerMock *)authenticationServerMockWithCompletionHandlerData:(NSDictionary * _Nullable)data error:(NSError * _Nullable)error {
+    ETAuthenticationServerMock *mockServer = [ETAuthenticationServerMock new];
+    [mockServer setCompletionHandlerData:data];
+    [mockServer setCompletionHandlerError:error];
+    return mockServer;
+}
+
 - (void)authenticateWithPostData:(NSData *)postData completionHandler:(ServerCompletionHandler)onCompletion {
     if (self.onAuthenticateActionWithProvidedData) {
         self.onAuthenticateActionWithProvidedData(postData);

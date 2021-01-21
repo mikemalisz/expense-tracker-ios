@@ -11,9 +11,26 @@ static void *AuthenticationControllerAuthenticationStateContext = &Authenticatio
 
 @interface ETAuthenticationNavigationController ()
 
+@property ETAuthenticationManager *authenticationManager;
+
 @end
 
 @implementation ETAuthenticationNavigationController
+
+#pragma mark - Initialization
+
+- (void)configureWithAuthenticationManager:(ETAuthenticationManager *)authenticationManager {
+    [self setAuthenticationManager:authenticationManager];
+    
+    typeof(self) __weak weakSelf = self;
+    [self.authenticationManager setHandleErrorAction:^(NSError *error) {
+        if (weakSelf.isViewLoaded) {
+            [weakSelf displayErrorAlertWithMessage:error.localizedDescription];
+        }
+    }];
+    
+    [self.authenticationManager refreshAuthenticationStatus];
+}
 
 #pragma mark - Controller lifecycle
 
@@ -21,11 +38,6 @@ static void *AuthenticationControllerAuthenticationStateContext = &Authenticatio
     [super viewDidLoad];
     [self attachObservers];
     [self updateRootController];
-    
-    typeof(self) __weak weakSelf = self;
-    [self.authenticationManager setHandleErrorAction:^(NSError *error) {
-        [weakSelf displayErrorAlertWithMessage:error.localizedDescription];
-    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

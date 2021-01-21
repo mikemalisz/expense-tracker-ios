@@ -20,9 +20,10 @@
     ETAuthenticationNavigationController *controller = (id)[[self window] rootViewController];
     if (controller) {
         ETAuthenticationServerProvider *server = [ETAuthenticationServerProvider new];
-        ETAuthenticationManager *authenticationManager = [[ETAuthenticationManager alloc] initWithAuthenticationServer:server];
+        ETAuthenticationManager *authenticationManager = [[ETAuthenticationManager alloc]
+                                                          initWithAuthenticationServer:server];
         
-        [controller setAuthenticationManager:authenticationManager];
+        [controller configureWithAuthenticationManager:authenticationManager];
     }
 }
 

@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ETAuthenticationNavigationController : UINavigationController
 
-@property ETAuthenticationManager * _Null_unspecified authenticationManager;
+- (void)configureWithAuthenticationManager:(ETAuthenticationManager *)authenticationManager;
 
 @end
 

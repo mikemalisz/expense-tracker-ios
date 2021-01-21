@@ -17,11 +17,15 @@ typedef NS_ENUM(NSUInteger, ETAuthenticationState) {
     ETAuthenticated
 };
 
+extern NSString * const ETAuthenticationStateStorageKey;
+
 extern NSString * const ETAuthenticationManagerStateKeyPath;
 
 @interface ETAuthenticationManager : NSObject <ASAuthorizationControllerDelegate>
 
 - (instancetype)initWithAuthenticationServer:(id <ETAuthenticationServer>)server;
+
+- (void)refreshAuthenticationStatus;
 
 - (void)authenticateWithIdentityToken:(NSString *)token bundleId:(NSString *)bundleId;
 
