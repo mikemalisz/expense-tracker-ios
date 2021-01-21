@@ -99,10 +99,65 @@
     // setup
     ETAuthenticationManager *sut = [[ETAuthenticationManager alloc]
                                     initWithAuthenticationServer:mockServer];
+    
+    BOOL __block didInvokeErrorAction = NO;
     [sut setHandleErrorAction:^(NSError *error) {
+        didInvokeErrorAction = YES;
         XCTAssert([error isEqual:appError]);
     }];
     [sut refreshAuthenticationStatus];
+    XCTAssert(didInvokeErrorAction);
+}
+
+#pragma mark Server Authentication
+
+- (void)test_authenticateWithIdentityToken_thatDataSentToServerIsFormattedCorrectly {
+    // setup
+    NSString *identityToken = [NSUUID new].UUIDString;
+    NSString *bundleId = [[NSBundle mainBundle] bundleIdentifier];
+    NSDictionary *expectedResponse = @{
+        @"identityToken": identityToken,
+        @"clientId": bundleId
+    };
+    ETAuthenticationServerMock *mockServer = [ETAuthenticationServerMock
+                                              authenticationServerMockWithCompletionHandlerData:nil
+                                              error:nil];
+    
+    // testing
+    ETAuthenticationManager *sut = [[ETAuthenticationManager alloc]
+                                    initWithAuthenticationServer:mockServer];
+    [mockServer setOnAuthenticateActionWithProvidedData:^(NSData *providedData) {
+        // convert data to dictionary
+        NSError *error;
+        NSDictionary *dataForServer = [NSJSONSerialization JSONObjectWithData:providedData options:0 error:&error];
+        
+        XCTAssertNil(error);
+        BOOL isServerDataFormattedCorrectly = [dataForServer isEqualToDictionary:expectedResponse];
+        XCTAssert(isServerDataFormattedCorrectly);
+    }];
+    
+    [sut authenticateWithIdentityToken:identityToken bundleId:bundleId];
+}
+
+- (void)test_authenticateWithIdentityTokenWithError_thatErrorActionIsExecuted {
+    // setup
+    ETAppError *appError = [ETAppError appErrorWithErrorCode:ETServerResponseErrorCode];
+    ETAuthenticationServerMock *mockServer = [ETAuthenticationServerMock
+                                              authenticationServerMockWithCompletionHandlerData:nil
+                                              error:appError];
+    
+    // testing
+    ETAuthenticationManager *sut = [[ETAuthenticationManager alloc]
+                                    initWithAuthenticationServer:mockServer];
+    
+    BOOL __block didInvokeErrorAction = NO;
+    [sut setHandleErrorAction:^(NSError *error) {
+        didInvokeErrorAction = YES;
+        XCTAssert([error isEqual:appError]);
+    }];
+    
+    [sut authenticateWithIdentityToken:[NSString new] bundleId:[NSString new]];
+    XCTAssert(didInvokeErrorAction);
 }
 
 @end
