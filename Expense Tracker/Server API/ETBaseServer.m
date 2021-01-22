@@ -76,7 +76,7 @@ NSInteger const ETHTTPStatusOKCode = 200;
 }
 
 - (NSMutableURLRequest *)generateRequestWithPath:(NSString * _Nullable)path {
-    NSMutableString *URLString = [NSMutableString stringWithString:@"http://192.168.1.27:3000/"];
+    NSMutableString *URLString = [[ETEnvironment serverURL] mutableCopy];
     if (path != nil) {
         [URLString appendString:path];
     }

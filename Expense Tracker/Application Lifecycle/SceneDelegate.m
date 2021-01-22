@@ -9,6 +9,7 @@
 #import "ETAuthenticationNavigationController.h"
 #import "ETAuthenticationManager.h"
 #import "ETAuthenticationServerProvider.h"
+#import "ETEnvironment.h"
 
 @interface SceneDelegate ()
 
@@ -17,6 +18,8 @@
 @implementation SceneDelegate
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
+    NSLog(@"Running %@ mode", [ETEnvironment appMode]);
+    
     ETAuthenticationNavigationController *controller = (id)[[self window] rootViewController];
     if (controller) {
         ETAuthenticationServerProvider *server = [ETAuthenticationServerProvider new];

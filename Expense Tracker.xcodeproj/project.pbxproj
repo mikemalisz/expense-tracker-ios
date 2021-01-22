@@ -10,6 +10,7 @@
 		7819C06225AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7819C06125AE6BA900D4569A /* NSFileManager+documentsDirectoryForCurrentUser.m */; };
 		7819C06725AE94CA00D4569A /* ETExpenseItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7819C06625AE94CA00D4569A /* ETExpenseItemManager.m */; };
 		7819C06C25AEA26900D4569A /* ETExpenseOverviewKVOManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7819C06B25AEA26900D4569A /* ETExpenseOverviewKVOManager.m */; };
+		8C32558725BA75E900315009 /* ETEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C32558625BA75E900315009 /* ETEnvironment.m */; };
 		8C375D7E25AD47F900EFB202 /* mock-expenses.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C375D7D25AD47F900EFB202 /* mock-expenses.json */; };
 		8C3C706D25B89E6C00D8986B /* ETItemServerMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3C706C25B89E6C00D8986B /* ETItemServerMock.m */; };
 		8C3C707125B8A51100D8986B /* ETExpenseItemManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3C707025B8A51100D8986B /* ETExpenseItemManagerTests.m */; };
@@ -65,6 +66,10 @@
 		7819C06625AE94CA00D4569A /* ETExpenseItemManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseItemManager.m; sourceTree = "<group>"; };
 		7819C06A25AEA26900D4569A /* ETExpenseOverviewKVOManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETExpenseOverviewKVOManager.h; sourceTree = "<group>"; };
 		7819C06B25AEA26900D4569A /* ETExpenseOverviewKVOManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETExpenseOverviewKVOManager.m; sourceTree = "<group>"; };
+		8C32558525BA75E900315009 /* ETEnvironment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETEnvironment.h; sourceTree = "<group>"; };
+		8C32558625BA75E900315009 /* ETEnvironment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETEnvironment.m; sourceTree = "<group>"; };
+		8C32559525BA7CDA00315009 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		8C32559625BA7CE300315009 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		8C375D7D25AD47F900EFB202 /* mock-expenses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mock-expenses.json"; sourceTree = "<group>"; };
 		8C3C706B25B89E6C00D8986B /* ETItemServerMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETItemServerMock.h; sourceTree = "<group>"; };
 		8C3C706C25B89E6C00D8986B /* ETItemServerMock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETItemServerMock.m; sourceTree = "<group>"; };
@@ -168,6 +173,15 @@
 				8C41543425B6802C008167BB /* NSURLSession+ETNetworkSession.m */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8C32559425BA7CC800315009 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				8C32559525BA7CDA00315009 /* Development.xcconfig */,
+				8C32559625BA7CE300315009 /* Production.xcconfig */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		8C375D7825AD479200EFB202 /* Mock Data */ = {
@@ -286,6 +300,7 @@
 			children = (
 				8CD6DBAD25ABE886005DE50B /* Expense Tracker */,
 				8CD6DBC925ABE888005DE50B /* Expense TrackerTests */,
+				8C32559425BA7CC800315009 /* Configuration */,
 				8CD6DBAC25ABE886005DE50B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -349,6 +364,8 @@
 				8CD6DBBC25ABE887005DE50B /* LaunchScreen.storyboard */,
 				8CD6DBBF25ABE887005DE50B /* Info.plist */,
 				8C879CF725B0D51900BBD953 /* Expense Tracker.entitlements */,
+				8C32558525BA75E900315009 /* ETEnvironment.h */,
+				8C32558625BA75E900315009 /* ETEnvironment.m */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -500,6 +517,7 @@
 				8CD6DBC125ABE887005DE50B /* main.m in Sources */,
 				8CD6DBB325ABE886005DE50B /* SceneDelegate.m in Sources */,
 				8C9CBFFB25B646C800A4995F /* ETSpendSummaryTableViewCell.m in Sources */,
+				8C32558725BA75E900315009 /* ETEnvironment.m in Sources */,
 				8C58B33925B54402006BA7E6 /* ETBaseServer.m in Sources */,
 				8CD6DC0A25ABF88B005DE50B /* ETExpenseItem.m in Sources */,
 				7819C06725AE94CA00D4569A /* ETExpenseItemManager.m in Sources */,
@@ -553,8 +571,9 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		8CD6DBD825ABE888005DE50B /* Debug */ = {
+		8C32557725BA745400315009 /* Development-Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C32559525BA7CDA00315009 /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -610,10 +629,163 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
-			name = Debug;
+			name = "Development-Debug";
 		};
-		8CD6DBD925ABE888005DE50B /* Release */ = {
+		8C32557825BA745400315009 /* Development-Debug */ = {
 			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_STATIC_ANALYZER_MODE = deep;
+				CODE_SIGN_ENTITLEMENTS = "Expense Tracker/Supporting Files/Expense Tracker.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MN9J6C3HRT;
+				INFOPLIST_FILE = "Expense Tracker/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ski.maliszew.Expense-Tracker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Development-Debug";
+		};
+		8C32557925BA745400315009 /* Development-Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_STATIC_ANALYZER_MODE = deep;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MN9J6C3HRT;
+				INFOPLIST_FILE = "Expense TrackerTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ski.maliszew.Expense-TrackerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Expense Tracker.app/Expense Tracker";
+			};
+			name = "Development-Debug";
+		};
+		8C32557A25BA745D00315009 /* Production-Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C32559625BA7CE300315009 /* Production.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = "Production-Debug";
+		};
+		8C32557B25BA745D00315009 /* Production-Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_STATIC_ANALYZER_MODE = deep;
+				CODE_SIGN_ENTITLEMENTS = "Expense Tracker/Supporting Files/Expense Tracker.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MN9J6C3HRT;
+				INFOPLIST_FILE = "Expense Tracker/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ski.maliszew.Expense-Tracker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Production-Debug";
+		};
+		8C32557C25BA745D00315009 /* Production-Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_STATIC_ANALYZER_MODE = deep;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MN9J6C3HRT;
+				INFOPLIST_FILE = "Expense TrackerTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ski.maliszew.Expense-TrackerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Expense Tracker.app/Expense Tracker";
+			};
+			name = "Production-Debug";
+		};
+		8C32557D25BA746600315009 /* Development-Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C32559525BA7CDA00315009 /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -663,9 +835,9 @@
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = "Development-Release";
 		};
-		8CD6DBDB25ABE888005DE50B /* Debug */ = {
+		8C32557E25BA746600315009 /* Development-Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -687,9 +859,85 @@
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Debug;
+			name = "Development-Release";
 		};
-		8CD6DBDC25ABE888005DE50B /* Release */ = {
+		8C32557F25BA746600315009 /* Development-Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_STATIC_ANALYZER_MODE = deep;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MN9J6C3HRT;
+				INFOPLIST_FILE = "Expense TrackerTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ski.maliszew.Expense-TrackerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Expense Tracker.app/Expense Tracker";
+			};
+			name = "Development-Release";
+		};
+		8C32558025BA747300315009 /* Production-Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C32559625BA7CE300315009 /* Production.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Production-Release";
+		};
+		8C32558125BA747300315009 /* Production-Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -711,9 +959,9 @@
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Release;
+			name = "Production-Release";
 		};
-		8CD6DBDE25ABE888005DE50B /* Debug */ = {
+		8C32558225BA747300315009 /* Production-Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -733,29 +981,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Expense Tracker.app/Expense Tracker";
 			};
-			name = Debug;
-		};
-		8CD6DBDF25ABE888005DE50B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_STATIC_ANALYZER_MODE = deep;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MN9J6C3HRT;
-				INFOPLIST_FILE = "Expense TrackerTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ski.maliszew.Expense-TrackerTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				RUN_CLANG_STATIC_ANALYZER = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Expense Tracker.app/Expense Tracker";
-			};
-			name = Release;
+			name = "Production-Release";
 		};
 /* End XCBuildConfiguration section */
 
@@ -763,29 +989,35 @@
 		8CD6DBA625ABE886005DE50B /* Build configuration list for PBXProject "Expense Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8CD6DBD825ABE888005DE50B /* Debug */,
-				8CD6DBD925ABE888005DE50B /* Release */,
+				8C32557A25BA745D00315009 /* Production-Debug */,
+				8C32557725BA745400315009 /* Development-Debug */,
+				8C32558025BA747300315009 /* Production-Release */,
+				8C32557D25BA746600315009 /* Development-Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Production-Debug";
 		};
 		8CD6DBDA25ABE888005DE50B /* Build configuration list for PBXNativeTarget "Expense Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8CD6DBDB25ABE888005DE50B /* Debug */,
-				8CD6DBDC25ABE888005DE50B /* Release */,
+				8C32557B25BA745D00315009 /* Production-Debug */,
+				8C32557825BA745400315009 /* Development-Debug */,
+				8C32558125BA747300315009 /* Production-Release */,
+				8C32557E25BA746600315009 /* Development-Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Production-Debug";
 		};
 		8CD6DBDD25ABE888005DE50B /* Build configuration list for PBXNativeTarget "Expense TrackerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8CD6DBDE25ABE888005DE50B /* Debug */,
-				8CD6DBDF25ABE888005DE50B /* Release */,
+				8C32557C25BA745D00315009 /* Production-Debug */,
+				8C32557925BA745400315009 /* Development-Debug */,
+				8C32558225BA747300315009 /* Production-Release */,
+				8C32557F25BA746600315009 /* Development-Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Production-Debug";
 		};
 /* End XCConfigurationList section */
 	};
