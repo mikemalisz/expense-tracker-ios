@@ -77,7 +77,10 @@ NSString * const ETAuthenticationStateStorageKey = @"isAuthenticated";
 }
 
 - (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error {
-    self.handleErrorAction(error);
+    // avoid showing alert when user cancels
+    if (error.code != ASAuthorizationErrorCanceled) {
+        self.handleErrorAction(error);
+    }
 }
 
 #pragma mark - Server Authentication

@@ -84,12 +84,16 @@ static void *AuthenticationControllerAuthenticationStateContext = &Authenticatio
 }
 
 - (void)showLoginController {
+    [self setNavigationBarHidden:YES animated:NO];
+    
     ETLoginViewController *controller = [ETLoginViewController initiateUsingStoryboard];
     [controller setAuthenticationManager:[self authenticationManager]];
     [self setViewControllers:@[controller] animated:YES];
 }
 
 - (void)showExpenseOverviewController {
+    [self setNavigationBarHidden:NO animated:NO];
+    
     ETExpenseOverviewTableViewController *controller = [ETExpenseOverviewTableViewController initiateUsingStoryboard];
     
     ETItemServerProvider *server = [ETItemServerProvider new];

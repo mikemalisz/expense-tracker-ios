@@ -22,8 +22,14 @@
 
 - (void)configureSignInButton {
     ASAuthorizationAppleIDButton *button = [ASAuthorizationAppleIDButton new];
+    [button setTranslatesAutoresizingMaskIntoConstraints:NO];
     [button addTarget:self action:@selector(handleSignInButtonPress) forControlEvents:UIControlEventTouchUpInside];
-    [[self loginProviderStackView] addArrangedSubview:button];
+    [self.loginProviderStackView addArrangedSubview:button];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [button.heightAnchor constraintEqualToConstant:44],
+        [button.widthAnchor constraintEqualToConstant:240]
+    ]];
 }
 
 - (void)handleSignInButtonPress {
