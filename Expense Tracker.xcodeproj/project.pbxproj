@@ -995,7 +995,7 @@
 				8C32557D25BA746600315009 /* Development-Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Production-Debug";
+			defaultConfigurationName = "Production-Release";
 		};
 		8CD6DBDA25ABE888005DE50B /* Build configuration list for PBXNativeTarget "Expense Tracker" */ = {
 			isa = XCConfigurationList;
@@ -1006,7 +1006,7 @@
 				8C32557E25BA746600315009 /* Development-Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Production-Debug";
+			defaultConfigurationName = "Production-Release";
 		};
 		8CD6DBDD25ABE888005DE50B /* Build configuration list for PBXNativeTarget "Expense TrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -1017,7 +1017,7 @@
 				8C32557F25BA746600315009 /* Development-Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Production-Debug";
+			defaultConfigurationName = "Production-Release";
 		};
 /* End XCConfigurationList section */
 	};
