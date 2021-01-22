@@ -76,7 +76,14 @@ NSString * const ETExpenseItemSectionTitle = @"Itemized";
 #pragma mark - Row Editing
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
+    ETExpenseOverviewSection section = indexPath.section;
+    switch (section) {
+        case ETExpenseOverviewSectionExpenseItems:
+            return YES;
+            
+        default:
+            return NO;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
