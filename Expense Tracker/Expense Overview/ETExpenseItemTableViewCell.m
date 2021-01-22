@@ -36,10 +36,11 @@ float ETExpenseItemCentsToDollarsMultiplier = 0.01;
 }
 
 - (NSString *)createFormattedDollarAmountFromCents:(NSInteger)cents {
+    double dollarAmount = cents * ETExpenseItemCentsToDollarsMultiplier;
+    
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    [formatter setMultiplier:[NSNumber numberWithDouble:0.01]];
-    return [formatter stringFromNumber:[NSNumber numberWithInteger:cents]];
+    return [formatter stringFromNumber:[NSNumber numberWithDouble:dollarAmount]];
 }
 
 @end

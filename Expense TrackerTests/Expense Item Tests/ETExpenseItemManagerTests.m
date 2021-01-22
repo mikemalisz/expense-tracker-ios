@@ -59,7 +59,7 @@
     // input setup
     NSString *title = @"test title";
     NSString *description = @"description of an expense";
-    NSString *dollarAmount = @"500.00";
+    NSString *dollarAmount = @"543.24";
     NSDate *datePurchased = [NSDate new];
 
     // result setup
@@ -69,7 +69,7 @@
                                         dictionaryForServerWithItemId:nil
                                         title:title
                                         description:description
-                                        amountInCents:@50000
+                                        amountInCents:@54324
                                         purchaseTimestamp:[NSNumber numberWithDouble:purchasedInterval]
                                         createdTimestamp:nil];
     
@@ -230,7 +230,7 @@
         @"expenseItems": @[
             @{
                 ETExpenseItemIdentifierKey: @"randomId1",
-                ETExpenseItemAmountInCentsKey: @500,
+                ETExpenseItemAmountInCentsKey: @549,
                 ETExpenseItemExpenseTitleKey: @"lorem",
                 ETExpenseItemExpenseDescriptionKey: @"ipsum",
                 ETExpenseItemDateOfPurchaseKey: @1611165665,
@@ -238,7 +238,7 @@
             },
             @{
                 ETExpenseItemIdentifierKey: @"randomId2",
-                ETExpenseItemAmountInCentsKey: @700,
+                ETExpenseItemAmountInCentsKey: @721,
                 ETExpenseItemExpenseTitleKey: @"dolor",
                 ETExpenseItemExpenseDescriptionKey: @"consectetur adipiscing elit",
                 ETExpenseItemDateOfPurchaseKey: @1611165665,
