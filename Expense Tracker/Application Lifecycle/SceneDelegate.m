@@ -20,6 +20,10 @@
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     NSLog(@"Running %@ mode", [ETEnvironment appMode]);
     
+    // set tint color
+    [self.window setTintColor:[UIColor colorNamed:@"AccentColor"]];
+    
+    // configure authentication navigation controller
     ETAuthenticationNavigationController *controller = (id)[[self window] rootViewController];
     if (controller) {
         ETAuthenticationServerProvider *server = [ETAuthenticationServerProvider new];
