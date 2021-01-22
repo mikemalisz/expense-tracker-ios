@@ -9,6 +9,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// convenience for converting between cents and dollars
+extern double const ETExpenseItemCentsToDollarsMultiplier;
+
+// property key paths
 extern NSString *const ETExpenseItemIdentifierKey;
 extern NSString *const ETExpenseItemAmountInCentsKey;
 extern NSString *const ETExpenseItemExpenseTitleKey;

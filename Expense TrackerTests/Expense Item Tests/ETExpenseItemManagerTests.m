@@ -223,6 +223,27 @@
 
 #pragma mark Retrieve Total Spend Tests
 
+- (void)test_retrieveTotalSpend_thatCorrectNumberIsReturned {
+    // setup
+    NSDictionary *responseData = [self dictionaryForRefresh];
+    NSArray *expenseItemsDictionaries = [responseData objectForKey:@"expenseItems"];
+    ETItemServerMock *serverMock = [ETItemServerMock itemServerMockWithCompletionHandlerData:responseData error:nil];
+    
+    // sut creation
+    ETExpenseItemManager *sut = [[ETExpenseItemManager alloc] initWithServerAPI:serverMock];
+    
+    // testing
+    [sut refreshExpenseItemsWithCompletionHandler:^(NSError * _Nullable error) {}];
+    
+    NSInteger totalSpend = 0;
+    for (NSDictionary *item in expenseItemsDictionaries) {
+        NSNumber *amount = [item objectForKey:ETExpenseItemAmountInCentsKey];
+        totalSpend += amount.integerValue;
+    }
+    
+    XCTAssert([sut retrieveTotalSpend] == totalSpend);
+}
+
 #pragma mark - Convenience
 
 - (NSDictionary *)dictionaryForRefresh {

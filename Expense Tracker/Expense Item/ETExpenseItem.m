@@ -7,6 +7,8 @@
 
 #import "ETExpenseItem.h"
 
+double const ETExpenseItemCentsToDollarsMultiplier = 0.01;
+
 NSString *const ETExpenseItemIdentifierKey = @"itemId";
 NSString *const ETExpenseItemAmountInCentsKey = @"amountInCents";
 NSString *const ETExpenseItemExpenseTitleKey = @"expenseTitle";

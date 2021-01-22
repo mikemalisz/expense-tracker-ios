@@ -7,8 +7,6 @@
 
 #import "ETExpenseItemTableViewCell.h"
 
-float ETExpenseItemCentsToDollarsMultiplier = 0.01;
-
 @interface ETExpenseItemTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *dollarAmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *expenseTitleLabel;

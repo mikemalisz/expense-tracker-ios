@@ -9,10 +9,11 @@
 
 @implementation ETSpendSummaryTableViewCell
 - (void)setSpendAmountFromCents:(NSInteger)amountInCents {
+    double dollarAmount = amountInCents * ETExpenseItemCentsToDollarsMultiplier;
+    
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    [formatter setMultiplier:[NSNumber numberWithDouble:0.01]];
-    NSString *spendAmount = [formatter stringFromNumber:[NSNumber numberWithInteger:amountInCents]];
+    NSString *spendAmount = [formatter stringFromNumber:[NSNumber numberWithDouble:dollarAmount]];
     
     [self.spendAmountLabel setText:spendAmount];
 }
