@@ -1,5 +1,7 @@
 # Expense Tracker iOS
 
+[View on App Store](https://apps.apple.com/us/app/expense-tracker-itemized-list/id1550367538)
+
 Expense Tracker is an iOS app that can help you itemize your expenses and keep track of your spending habits. It is written in Objective C and is supported by a Node.js backend utilizing the Express framework and PostgreSQL for data persistence.
 
 ## Project Goals
