@@ -2,11 +2,11 @@
 
 [View on App Store](https://apps.apple.com/us/app/expense-tracker-itemized-list/id1550367538)
 
-Expense Tracker is an iOS app that can help you itemize your expenses and keep track of your spending habits. It is written in Objective C and is supported by a Node.js backend utilizing the Express framework and PostgreSQL for data persistence.
+Expense Tracker is an iOS app that can help you itemize your expenses and keep track of your spending habits. It is written in Objective-C and is supported by a Node.js backend utilizing the Express framework and PostgreSQL for data persistence.
 
 ## Project Goals
 
-My biggest goal of this project was to learn Objective C, while also learning some other frameworks provided by Apple that I haven't used yet. I decided to get exposure to the Authentication Services framework by implementing Sign in with Apple, which I was able to use to implement user authentication on my server. I also got experience creating unit tests in Objective C as well as working with table views and basic navigation.
+My biggest goal of this project was to learn Objective-C, while also learning some other frameworks provided by Apple that I haven't used yet. I decided to get exposure to the Authentication Services framework by implementing Sign in with Apple, which I was able to use to implement user authentication on my server. I also got experience creating unit tests in Objective-C as well as working with table views and basic navigation.
 
 ## Table of Contents
 
