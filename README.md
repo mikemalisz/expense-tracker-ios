@@ -41,7 +41,3 @@ SERVER_URL=http:/${}/localhost:3000/
 3. Update each configuration to use this new xcconfig file under `Expense Tracker > Project > Expense Tracker > Configurations`
 
 4. The app should now build and run 🚀
-
-#container img {
-align="middle"
-}
