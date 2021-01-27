@@ -1,10 +1,20 @@
 # Expense Tracker iOS
 
-[View on App Store](https://apps.apple.com/us/app/expense-tracker-itemized-list/id1550367538)
+<p align="center">
+   <img src="Documentation/resources/demo.gif" width="300">
+</p>
+
+<p align="center">
+   <a href="https://apps.apple.com/us/app/expense-tracker-itemized-list/id1550367538">
+   <img src="Documentation/resources/App-Store-Badge.png">
+   </a>
+</p>
 
 Expense Tracker is an iOS app that can help you itemize your expenses and keep track of your spending habits. It is written in Objective-C and is supported by a Node.js backend utilizing the Express framework and PostgreSQL for data persistence.
 
 ## Project Goals
+
+<img src="Documentation/resources/login-screen.png" height="500">
 
 My biggest goal of this project was to learn Objective-C, while also learning some other frameworks provided by Apple that I haven't used yet. I decided to get exposure to the Authentication Services framework by implementing Sign in with Apple, which I was able to use to implement user authentication on my server. I also got experience creating unit tests in Objective-C as well as working with table views and basic navigation.
 
@@ -31,3 +41,7 @@ SERVER_URL=http:/${}/localhost:3000/
 3. Update each configuration to use this new xcconfig file under `Expense Tracker > Project > Expense Tracker > Configurations`
 
 4. The app should now build and run 🚀
+
+#container img {
+align="middle"
+}
