@@ -43,3 +43,35 @@ Now that we have an identity token from Apple that represents this user, we can 
 If the server determines the identity token is valid, it will mark this user as authenticated for future requests. More information can be found about how the server verifies the token and manages user authentication state in the [Expense Tracker Server Repository](https://github.com/mikemalisz/expense-tracker-server).
 
 ## Expense Items
+
+Now that user is authenticated, they will have access to their expense items. From here, the user can either create a new itemized expense, or delete existings ones.
+
+<img src="resources/demo.gif" height="500">
+
+#### Data Structure
+
+An expense item is simply a container of a few properties such as the expense title, amount, date purchased, and date created. Here is what a JSON representation of an expense item would look like coming from the server:
+
+```json
+{
+	"itemId": "0be79211-d813-402a-b2d1-11c78be98695",
+	"amountInCents": 329,
+	"expenseTitle": "Milk",
+	"dateOfPurchase": 1610919480000,
+	"dateCreated": 1611351573627
+}
+```
+
+Coming from Swift, structs are the perfect container for storing simple data like this from the server. Normally, I would adopt `Codable` for my data container structs and would be able to convert them to and from JSON objects easily. I learned quickly that Objective-C's structs are very different. Since Objective-C structures aren't objects, they don't play nicely with other Objective-C data structures like `NSArray` which only accepts objects.
+
+This led me to create an `ETExpenseItem` class which would contain all the information as properties, and would be compatible with other common data structures.
+
+#### Expense Item Manager
+
+The `ETExpenseItemManager` class is the Swiss Army Knife when it comes to working with expense items. It can retrieve the user's expense items from the server and store them locally, create new expense items, and delete existing ones. All interactions with expense items go through this object.
+
+Some of the methods require sending the server some information, such as `submitNewExpenseItemWithTitle` and `deleteExpenseItemWithItemId`. In these cases, the information that's passed into the method is bundled up into an `NSDictionary` object, and then serialized using the `NSJSONSerialization dataWithJSONObject` API. Once this data is serialized, it can be handed off to the `ETItemServer` property which takes care of performing the network request. `ETItemServer` is a protocol, which makes it easy to swap in different implementations when unit testing or using it normally.
+
+Each method that requires a network request (such as refresh/submit/delete expense item) expects to be provided a completion handler block. This block gets executed when the server request has completed and can optionally contain an error if something goes wrong.
+
+The server returns the user's updated list of expense items for each network request related to expense items. For example, if the `submitNewExpenseItemWithTitle` method is called, the server will first insert the new expense item into the database and then query for all of the user's expense items before returning a JSON object of them. This makes it easy to keep the client always up to date with what is stored in the database.
