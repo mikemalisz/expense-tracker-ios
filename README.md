@@ -20,10 +20,12 @@ My biggest goal of this project was to learn Objective-C, while also learning so
 
 ## Table of Contents
 
--  Architecture
--  Unit Testing
--  Build Configuration and Deployment
--  Server Backend and Database
+Here are some deep dives into the technical details of the app:
+
+1. [Architecture](Documentation/Architecture.md)
+2. [Unit Testing](Documentation/unit-testing.md)
+3. [Build Configuration and Deployment](Documentation/build-and-deployment.md)
+4. [Server Backend and Database](https://github.com/mikemalisz/expense-tracker-server)
 
 ## Building Locally
 
