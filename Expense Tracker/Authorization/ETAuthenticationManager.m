@@ -66,9 +66,9 @@ NSString * const ETAuthenticationStateStorageKey = @"isAuthenticated";
     
     if ([credential isKindOfClass:[ASAuthorizationAppleIDCredential class]]) {
         // convert token from data encoding to string
-        ASAuthorizationAppleIDCredential *applieIDCredential = credential;
+        ASAuthorizationAppleIDCredential *appleIDCredential = credential;
         NSString *token = [[NSString alloc]
-                           initWithData:applieIDCredential.identityToken
+                           initWithData:appleIDCredential.identityToken
                            encoding:NSUTF8StringEncoding];
         NSString *bundleId = [NSBundle mainBundle].bundleIdentifier;
         
