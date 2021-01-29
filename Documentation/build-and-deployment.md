@@ -1,4 +1,4 @@
-# Build Configuration and Deployment
+# 📦 Build Configuration and Deployment
 
 I used XCConfig files, Schemes, and Configurations under project settings to create multiple build environments. These build environments can be accessed easily through the use of different Schemes. Currently, there is an "Expense Tracker DEV" and "Expense Tracker PROD" scheme representing development and production environemnts, respectively.
 
