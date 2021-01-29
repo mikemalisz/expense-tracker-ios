@@ -2,7 +2,13 @@
 
 Expense Tracker is a relatively simple application, currently sporting three unique screens. Although simple, I utilized MVC to architect the app such that adding more features in the future should be easy. It consists of an authentication component that manages authenticating the user, and an expense item component which allows the user to create and delete different expense items. Both of these components depend on network connectivity to perform their respective actions, so I utilized protocols and objective inheritance to build a robust network layer that can be unit tested easily.
 
-## Authentication
+## Table of Contents
+
+1. [Authentication](#authentication)
+2. [Expense Items](#expense-items)
+3. [Network Layer](#network-layer)
+
+<h2 id="authentication">Authentication</h2>
 
 #### Overview
 
@@ -42,7 +48,7 @@ Now that we have an identity token from Apple that represents this user, we can 
 
 If the server determines the identity token is valid, it will mark this user as authenticated for future requests. More information can be found about how the server verifies the token and manages user authentication state in the [Expense Tracker Server Repository](https://github.com/mikemalisz/expense-tracker-server).
 
-## Expense Items
+<h2 id="expense-items">Expense Items</h2>
 
 Now that user is authenticated, they will have access to their expense items. From here, the user can either create a new itemized expense, or delete existings ones.
 
@@ -75,3 +81,19 @@ Some of the methods require sending the server some information, such as `submit
 Each method that requires a network request (such as refresh/submit/delete expense item) expects to be provided a completion handler block. This block gets executed when the server request has completed and can optionally contain an error if something goes wrong.
 
 The server returns the user's updated list of expense items for each network request related to expense items. For example, if the `submitNewExpenseItemWithTitle` method is called, the server will first insert the new expense item into the database and then query for all of the user's expense items before returning a JSON object of them. This makes it easy to keep the client always up to date with what is stored in the database.
+
+<h2 id="network-layer">Network Layer</h2>
+
+Since this app requires many of its components to interact with a single back-end server, I decided to utilize subclassing and protocols to make the network code easily expandable and testable.
+
+#### Base Server
+
+The `ETBaseServer` class is meant to be an "abstract" class of sorts, or in other words: It should be used only through subclasses. It offers an API for performing data tasks using a supplied request, and then converts the server response into either a `NSDictionary` containing the data from the server, or an error if something went wrong along the way. It then passes the data or error back to the completionHandler block that was supplied in the method.
+
+###### Initialization
+
+`ETBaseServer` and its subclasses expect an object which adopts the `ETNetworkSession` protocol to be provided during initialization. The `ETNetworkSession` protocol is designed to be very similar to the `NSURLSession dataTaskWithRequest` API. This allows Base Server implementations to be decoupled from the `NSURLSession` object, making it very easy to create a `MockNetworkSession` class which can be used for unit testing and intercepting raw network requests. To use the standard `NSURLSession` object in the actual application code, I extended the `NSURLSession` class using categories and adopted the `ETNetworkSession` protocol.
+
+#### Server Providers
+
+These are the concrete subclasses of the `ETBaseServer` class and configure the requests appropriately for each use case, before calling the `performDataTaskWithRequest` method on the base class implementation. Examples include `ETAuthenticationServerProvider` which handles network requests around authentication, and `ETItemServerProvider` which handles expense item network requests. The server providers primarily just configure `NSURLRequest` instances for each task, like setting the path for the request, and setting the HTTP body and method properties of the request.
