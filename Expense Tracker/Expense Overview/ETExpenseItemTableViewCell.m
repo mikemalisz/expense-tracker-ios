@@ -7,6 +7,9 @@
 
 #import "ETExpenseItemTableViewCell.h"
 
+static NSDateFormatter *dateOfPurchaseFormatter = nil;
+static NSNumberFormatter *dollarFormatter = nil;
+
 @interface ETExpenseItemTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *dollarAmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *expenseTitleLabel;
@@ -18,27 +21,31 @@
 - (void)updateCellUsingExpenseItem:(ETExpenseItem *)expenseItem {
     
     // dollar amount
-    NSString *dollarAmountText = [self createFormattedDollarAmountFromCents:[expenseItem amountInCents]];
-    [[self dollarAmountLabel] setText:dollarAmountText];
+    NSString *dollarAmountText = [self createFormattedDollarAmountFromCents:expenseItem.amountInCents];
+    [self.dollarAmountLabel setText:dollarAmountText];
     
     // item title
-    [[self expenseTitleLabel] setText:[expenseItem expenseTitle]];
+    [self.expenseTitleLabel setText:[expenseItem expenseTitle]];
     
     // date of purchase
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateStyle:NSDateFormatterShortStyle];
-    [formatter setTimeStyle:NSDateFormatterNoStyle];
-    NSString *dateOfPurchaseText = [formatter stringFromDate:expenseItem.dateOfPurchase];
+    if (dateOfPurchaseFormatter == nil) {
+        dateOfPurchaseFormatter = [NSDateFormatter new];
+        [dateOfPurchaseFormatter setDateStyle:NSDateFormatterShortStyle];
+        [dateOfPurchaseFormatter setTimeStyle:NSDateFormatterNoStyle];
+    }
     
-    [[self datePurchasedLabel] setText:dateOfPurchaseText];
+    NSString *dateOfPurchaseText = [dateOfPurchaseFormatter stringFromDate:expenseItem.dateOfPurchase];
+    [self.datePurchasedLabel setText:dateOfPurchaseText];
 }
 
 - (NSString *)createFormattedDollarAmountFromCents:(NSInteger)cents {
     double dollarAmount = cents * ETExpenseItemCentsToDollarsMultiplier;
     
-    NSNumberFormatter *formatter = [NSNumberFormatter new];
-    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    return [formatter stringFromNumber:[NSNumber numberWithDouble:dollarAmount]];
+    if (dollarFormatter == nil) {
+        dollarFormatter = [NSNumberFormatter new];
+        [dollarFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    }
+    return [dollarFormatter stringFromNumber:[NSNumber numberWithDouble:dollarAmount]];
 }
 
 @end
