@@ -7,13 +7,17 @@
 
 #import "ETSpendSummaryTableViewCell.h"
 
+static NSNumberFormatter *dollarFormatter = nil;
+
 @implementation ETSpendSummaryTableViewCell
 - (void)setSpendAmountFromCents:(NSInteger)amountInCents {
     double dollarAmount = amountInCents * ETExpenseItemCentsToDollarsMultiplier;
     
-    NSNumberFormatter *formatter = [NSNumberFormatter new];
-    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    NSString *spendAmount = [formatter stringFromNumber:[NSNumber numberWithDouble:dollarAmount]];
+    if (dollarFormatter == nil) {
+        dollarFormatter = [NSNumberFormatter new];
+        [dollarFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    }
+    NSString *spendAmount = [dollarFormatter stringFromNumber:[NSNumber numberWithDouble:dollarAmount]];
     
     [self.spendAmountLabel setText:spendAmount];
 }
