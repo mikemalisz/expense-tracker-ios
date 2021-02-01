@@ -1,7 +1,7 @@
 # Expense Tracker iOS
 
 <p align="center">
-   <img src="Documentation/resources/demo.gif" width="300">
+   <img src="Documentation/resources/demo.gif" width="400">
 </p>
 
 <p align="center">
